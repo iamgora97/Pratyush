@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Pratyush Ghosh — MBBS, DNB Medicine, MRCP Part 1</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Scroll Progress Bar ── -->
+  <div id="progress-bar"></div>
+
+  <!-- ── Particle Canvas ── -->
+  <canvas id="bg-canvas"></canvas>
+
+
+  <!-- ════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════ -->
+  <nav id="main-nav">
+    <div class="nav-logo">Dr. Pratyush Ghosh<sup>MRCP</sup></div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════
+       HERO
+  ════════════════════════════════════ -->
+  <div class="hero">
+    <!-- Ambient glow blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="hero-inner">
+
+      <!-- Left: Text content -->
+      <div>
+        <div class="hero-tag">
+          <span class="blink-dot"></span>
+          Available for Opportunities
+        </div>
+
+        <h1>Dr. <em>Pratyush</em><br>Ghosh</h1>
+
+        <p class="hero-credentials">
+          MBBS &nbsp;·&nbsp; DNB Medicine &nbsp;·&nbsp; MRCP Part 1 &nbsp;·&nbsp; ACLS &amp; BLS Certified
+        </p>
+
+        <p class="hero-bio">
+          A dedicated medical professional with expertise in Internal Medicine
+          and critical care — committed to patient wellbeing through
+          evidence-based practice and advanced clinical procedures.
+        </p>
+
+        <!-- Stats row -->
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num" id="sn1">5<span class="suf">+</span></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="sn2">12<span class="suf">+</span></div>
+            <div class="stat-label">Clinical Procedures</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="sn3">5<span class="suf">+</span></div>
+            <div class="stat-label">Poster Presentations</div>
+          </div>
+        </div>
+
+        <!-- CTA buttons -->
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Get in Touch
+          </a>
+          <a href="#experience" class="btn btn-outline">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 8 12 12 14 14"/>
+            </svg>
+            View Experience
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Photo card -->
+      <div class="hero-photo-wrap">
+        <div class="photo-card" id="photo3d">
+          <div class="photo-bg"></div>
+          <div class="photo-initials">PG</div>
+          <div class="photo-badge">
+            <div class="badge-name">Dr. Pratyush Ghosh</div>
+            <div class="badge-spec">MBBS · DNB Medicine · MRCP Part 1</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hero-inner -->
+
+    <!-- ECG heartbeat strip decoration -->
+    <div class="ecg-wrap">
+      <svg viewBox="0 0 1200 60" fill="none" preserveAspectRatio="none">
+        <polyline
+          points="0,30 50,30 70,30 82,8 94,52 106,4 118,56 130,30 155,30 205,30
+                  225,30 237,14 249,46 261,8 273,52 285,30 310,30 360,30 380,30
+                  392,8 404,52 416,4 428,56 440,30 465,30 515,30 535,30 547,14
+                  559,46 571,8 583,52 595,30 620,30 670,30 690,30 702,8 714,52
+                  726,4 738,56 750,30 775,30 825,30 845,30 857,14 869,46 881,8
+                  893,52 905,30 930,30 980,30 1000,30 1012,8 1024,52 1036,4
+                  1048,56 1060,30 1085,30 1135,30 1155,30 1167,14 1179,46
+                  1191,8 1200,30"
+          stroke="#1fb8a8" stroke-width="1.5" stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div><!-- /hero -->
+
+  <div class="divider"></div>
+
+
+  <!-- ════════════════════════════════════
+       EXPERIENCE
+  ════════════════════════════════════ -->
+  <div class="section-wrap" id="experience">
+    <div class="section-eyebrow">Career Journey</div>
+    <div class="section-title">Clinical Experience</div>
+
+    <div class="timeline">
+
+      <!-- DNB Residency -->
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div class="timeline-date">Oct 2022 – Oct 2025</div>
+          <div class="timeline-org">Ruby General Hospital<br>Kolkata</div>
+        </div>
+        <div class="timeline-content">
+          <h3>DNB Residency — Internal Medicine</h3>
+          <p>
+            Three-year postgraduate residency with comprehensive training in IPD and OPD
+            patient management. Achieved 69.7% in DNB Final Practical examination.
+          </p>
+          <div class="achievements-list">
+            <div class="achievement">Platform presentation at APICON — national-level medicine conference</div>
+            <div class="achievement">5+ poster presentations at state and national conferences; active Quizer</div>
+            <div class="achievement">4-month critical care and Emergency Medicine posting on SOS basis</div>
+            <div class="achievement">Subspecialty exposure: Endocrine, Rheumatology, Pulmonology, Transplant &amp; Dialysis</div>
+            <div class="achievement">Advanced procedures: Bone Marrow Biopsy, Pericardiocentesis, TPN, Manometry, pH-metry</div>
+            <div class="achievement">Dermatology and Psychiatry posting at SSKM Hospital</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Housestaffship -->
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div class="timeline-date">Mar 2021 – Oct 2021</div>
+          <div class="timeline-org">BSMCH, Bankura</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Housestaffship — ENT Department</h3>
+          <p>
+            Served in the ENT department including the Mucormycosis ward during the critical
+            post-COVID surge period. Proficient in OPD management and minor non-surgical
+            ENT procedures.
+          </p>
+        </div>
+      </div>
+
+      <!-- Internship -->
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div class="timeline-date">Feb 2020 – Feb 2021</div>
+          <div class="timeline-org">NRS Medical College<br>Kolkata</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Medical Internship</h3>
+          <p>
+            Rotational internship including dedicated COVID ward duty. Gained strong
+            foundational clinical competencies across all major departments.
+          </p>
+          <div class="achievements-list">
+            <div class="achievement">Chest drain, tracheostomy, lumbar puncture, ascitic tapping, thoracocentesis</div>
+            <div class="achievement">Comprehensive patient management across medicine, surgery and allied branches</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div><!-- /experience -->
+
+  <div class="divider"></div>
+
+
+  <!-- ════════════════════════════════════
+       SKILLS
+  ════════════════════════════════════ -->
+  <div class="skills-bg">
+    <div class="section-wrap" id="skills">
+      <div class="section-eyebrow">Clinical Competencies</div>
+      <div class="section-title">Procedures &amp; Skills</div>
+
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">❤️</span> ACLS &amp; BLS Management</div>
+        <div class="skill-chip"><span class="skill-icon">🔬</span> Bone Marrow Biopsy</div>
+        <div class="skill-chip"><span class="skill-icon">🫁</span> Thoracocentesis</div>
+        <div class="skill-chip"><span class="skill-icon">🧠</span> Lumbar Puncture</div>
+        <div class="skill-chip"><span class="skill-icon">💉</span> Ascitic Tapping</div>
+        <div class="skill-chip"><span class="skill-icon">🦴</span> Intra-articular Steroid Injection</div>
+        <div class="skill-chip"><span class="skill-icon">🌬️</span> Intubation</div>
+        <div class="skill-chip"><span class="skill-icon">🫀</span> Chest Drain</div>
+        <div class="skill-chip"><span class="skill-icon">🩺</span> Pericardiocentesis</div>
+        <div class="skill-chip"><span class="skill-icon">⚡</span> Central Line Insertion</div>
+        <div class="skill-chip"><span class="skill-icon">🍼</span> TPN (Total Parenteral Nutrition)</div>
+        <div class="skill-chip"><span class="skill-icon">📈</span> TMT Interpretation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- ════════════════════════════════════
+       EDUCATION
+  ════════════════════════════════════ -->
+  <div class="section-wrap" id="education">
+    <div class="section-eyebrow">Academic Background</div>
+    <div class="section-title">Education</div>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-year">2022 – 2025</div>
+        <div class="edu-degree">DNB — Internal Medicine</div>
+        <div class="edu-school">Ruby General Hospital, Kolkata</div>
+        <div class="edu-score">69.7% in Final Practical</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-year">MBBS</div>
+        <div class="edu-degree">Bachelor of Medicine &amp; Surgery</div>
+        <div class="edu-school">NRS Medical College, Kolkata</div>
+        <div class="edu-score">1st yr 69.7% · 2nd yr 65.8% · 3rd yr 63.25% · 4th yr 62.89%</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-year">Higher Secondary</div>
+        <div class="edu-degree">Class XII — Science</div>
+        <div class="edu-school">Vivekananda Siksha Niketan H.S., Bankura</div>
+        <div class="edu-score">92.4%</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-year">2013</div>
+        <div class="edu-degree">Class X — Secondary</div>
+        <div class="edu-school">Vivekananda Siksha Niketan H.S., Bankura</div>
+        <div class="edu-score">92.7%</div>
+      </div>
+    </div>
+  </div><!-- /education -->
+
+
+  <!-- ════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════ -->
+  <div class="contact-section" id="contact">
+    <h2>Get in Touch</h2>
+    <p>Open to positions in Internal Medicine, Critical Care and General Medicine.</p>
+
+    <div class="contact-items">
+      <a href="mailto:Pratyushghosh24@gmail.com" class="contact-item">
+        <div class="contact-icon">✉</div>
+        Pratyushghosh24@gmail.com
+      </a>
+      <a href="tel:7031210890" class="contact-item">
+        <div class="contact-icon">☏</div>
+        703 121 0890
+      </a>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        Bankura, West Bengal
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════ -->
+  <footer>
+    © 2025 <span class="gold">Dr. Pratyush Ghosh</span> · MBBS, DNB Medicine, MRCP Part 1 · West Bengal
+  </footer>
+
+
+  <!-- JavaScript (deferred, loaded after DOM) -->
+  <script src="main.js" defer></script>
+
+</body>
+</html>
