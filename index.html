@@ -3,321 +3,540 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pratyush Blog — thoughtful articles, insights and stories.">
-  <link rel="stylesheet" href="css/blog.css">
-<script src="js/blog.js" defer></script>
+
+  <meta
+    name="description"
+    content="Pratyush Blog — thoughtful articles, insights and stories."
+  >
+
   <title>Blog | Pratyush</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <!-- MAIN BLOG CSS -->
+  <link rel="stylesheet" href="css/blog.css">
 
-    :root {
-      --text: #172033;
-      --muted: #667085;
-      --border: #e7eaf0;
-      --surface: #ffffff;
-      --background: #f7f8fb;
-      --accent: #1d4ed8;
-      --accent-dark: #173ea5;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: var(--background);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1100px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      font-size: 1.35rem;
-      font-weight: 750;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 80px 0 55px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 1.05;
-      letter-spacing: -0.045em;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    .posts {
-      padding: 10px 0 80px;
-    }
-
-    .section-title {
-      font-size: 1.35rem;
-      margin-bottom: 22px;
-      letter-spacing: -0.02em;
-    }
-
-    .post-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .post-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .post-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
-    }
-
-    .post-image {
-      min-height: 190px;
-      display: grid;
-      place-items: center;
-      padding: 30px;
-      background: linear-gradient(135deg, #eaf1ff, #f5f7ff);
-      color: var(--accent);
-      font-size: 3rem;
-      font-weight: 800;
-    }
-
-    .post-content {
-      padding: 26px;
-    }
-
-    .category {
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 750;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .post-card h2 {
-      margin: 9px 0 10px;
-      font-size: 1.45rem;
-      line-height: 1.25;
-      letter-spacing: -0.025em;
-    }
-
-    .post-card p {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .read-more:hover {
-      color: var(--accent-dark);
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        width: min(100% - 28px, 1100px);
-      }
-
-      .nav {
-        min-height: 64px;
-      }
-
-      .nav-links {
-        gap: 14px;
-      }
-
-      .hero {
-        padding: 60px 0 40px;
-      }
-
-      .post-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <!-- MAIN BLOG JAVASCRIPT -->
+  <script src="js/blog.js" defer></script>
 </head>
 
 <body>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="/">Pratyush</a>
+  <!-- ================================
+       HEADER / NAVIGATION
+  ================================= -->
+  <header class="site-header" id="siteHeader">
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
+    <div class="container nav">
+
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Pratyush Blog home"
+      >
+        <span class="brand-mark">P</span>
+
+        <span>
+          Pratyush<span class="brand-dot">.</span>
+        </span>
+      </a>
+
+
+      <!-- MOBILE MENU BUTTON -->
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+
+      <!-- NAVIGATION LINKS -->
+      <nav
+        class="nav-links"
+        id="navLinks"
+        aria-label="Main navigation"
+      >
+
+        <a
+          href="index.html"
+          class="active"
+        >
+          Blog
+        </a>
+
+        <a href="../index.html">
+          Website
+        </a>
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          <span id="themeIcon">☾</span>
+        </button>
+
       </nav>
+
     </div>
+
   </header>
 
+
+  <!-- ================================
+       MAIN CONTENT
+  ================================= -->
   <main>
+
+
+    <!-- ================================
+         HERO SECTION
+    ================================= -->
     <section class="hero">
-      <div class="container">
-        <span class="eyebrow">Pratyush Blog</span>
-        <h1>Ideas, insights &amp; stories.</h1>
-        <p>
-          A collection of articles exploring meaningful topics, useful ideas,
-          current issues and stories worth sharing.
+
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+
+      <div class="container hero-inner">
+
+        <p class="eyebrow">
+          PRATYUSH BLOG
         </p>
+
+
+        <h1>
+          Ideas worth<br>
+          <span>reading.</span>
+        </h1>
+
+
+        <p class="hero-copy">
+          Thoughtful articles, useful insights and stories about the things
+          that matter.
+        </p>
+
+
+        <a
+          href="#latest"
+          class="hero-button"
+        >
+          Explore articles
+          <span>↓</span>
+        </a>
+
       </div>
+
     </section>
 
-    <section class="posts">
+
+
+    <!-- ================================
+         ARTICLES SECTION
+    ================================= -->
+    <section
+      class="articles"
+      id="latest"
+    >
+
       <div class="container">
-        <h2 class="section-title">Latest Articles</h2>
-
-        <div class="post-grid">
 
 
-                              <!-- Blog post 2 -->
-          <article class="post-card">
-            <div class="post-image" aria-hidden="true">H</div>
+        <!-- SECTION HEADER -->
+        <div class="section-heading">
+
+          <div>
+
+            <p class="section-label">
+              FROM THE BLOG
+            </p>
+
+            <h2>
+              Latest articles
+            </h2>
+
+          </div>
+
+
+          <p class="article-count">
+
+            <span id="articleCount">
+              2
+            </span>
+
+            articles
+
+          </p>
+
+        </div>
+
+
+
+        <!-- ================================
+             ARTICLE GRID
+        ================================= -->
+        <div
+          class="post-grid"
+          id="postGrid"
+        >
+
+
+          <!-- =================================
+               ARTICLE 1 — HEPATITIS
+          ================================== -->
+          <article
+            class="post-card"
+            data-category="Health & Awareness"
+          >
+
+            <a
+              class="post-image"
+              href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
+              aria-label="Read Hepatitis Week article"
+            >
+
+              <div class="image-overlay"></div>
+
+              <span class="post-letter">
+                H
+              </span>
+
+              <span class="post-tag">
+                Health &amp; Awareness
+              </span>
+
+            </a>
+
 
             <div class="post-content">
-              <span class="category">Health &amp; Awareness</span>
 
-              <h2>National Nutrition Week</h2>
 
-              <p>
-                National Nutrition Week
-                Nutrition Is Not Just About Food — It Is About Health
+              <!-- ARTICLE META -->
+              <div class="post-meta">
 
-              </p>
+                <span>
+                  2026
+                </span>
 
-              <!-- Change this filename if your article uses a different name -->
-              <a class="read-more"
-                 href="National_Nutrition_Week.html">
-                Read article <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
+                <span class="meta-dot">
+                  •
+                </span>
 
-          <!-- Blog post 1 -->
-          <article class="post-card">
-            <div class="post-image" aria-hidden="true">H</div>
+                <span>
+                  5 min read
+                </span>
 
-            <div class="post-content">
-              <span class="category">Health &amp; Awareness</span>
+              </div>
 
-              <h2>Breaking Down the Silence: 5 Critical Insights from Hepatitis Week 2026</h2>
 
+              <!-- ARTICLE TITLE -->
+              <h3>
+
+                <a
+                  href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
+                >
+                  Breaking Down the Silence:
+                  5 Critical Insights from Hepatitis Week 2026
+                </a>
+
+              </h3>
+
+
+              <!-- ARTICLE DESCRIPTION -->
               <p>
                 Exploring why hepatitis remains a major global health concern
                 and the key insights behind Hepatitis Week 2026.
               </p>
 
-              <!-- Change this filename if your article uses a different name -->
-              <a class="read-more"
-                 href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">
-                Read article <span aria-hidden="true">→</span>
+
+              <!-- READ MORE -->
+              <a
+                class="read-more"
+                href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
+              >
+
+                Read article
+
+                <span>
+                  →
+                </span>
+
               </a>
+
             </div>
+
           </article>
 
 
 
-          <!-- Copy this article card when you add more posts -->
-          <!--
-          <article class="post-card">
-            <div class="post-image">A</div>
+          <!-- =================================
+               ARTICLE 2 — NATIONAL NUTRITION WEEK
+          ================================== -->
+          <article
+            class="post-card"
+            data-category="Health & Awareness"
+          >
+
+            <a
+              class="post-image"
+              href="National_Nutrition_Week.html"
+              aria-label="Read National Nutrition Week article"
+            >
+
+              <div class="image-overlay"></div>
+
+              <span class="post-letter">
+                N
+              </span>
+
+              <span class="post-tag">
+                Health &amp; Awareness
+              </span>
+
+            </a>
+
+
             <div class="post-content">
-              <span class="category">Category</span>
-              <h2>Your next article title</h2>
-              <p>A short description of your article.</p>
-              <a class="read-more" href="your-article.html">
-                Read article <span aria-hidden="true">→</span>
+
+
+              <!-- ARTICLE META -->
+              <div class="post-meta">
+
+                <span>
+                  2026
+                </span>
+
+                <span class="meta-dot">
+                  •
+                </span>
+
+                <span>
+                  5 min read
+                </span>
+
+              </div>
+
+
+              <!-- ARTICLE TITLE -->
+              <h3>
+
+                <a
+                  href="National_Nutrition_Week.html"
+                >
+                  National Nutrition Week —
+                  Nutrition Is Not Just About Food,
+                  It Is About Health
+                </a>
+
+              </h3>
+
+
+              <!-- ARTICLE DESCRIPTION -->
+              <p>
+                A reminder that balanced nutrition is not simply about weight
+                or appearance—it is a foundation for long-term health.
+              </p>
+
+
+              <!-- READ MORE -->
+              <a
+                class="read-more"
+                href="National_Nutrition_Week.html"
+              >
+
+                Read article
+
+                <span>
+                  →
+                </span>
+
               </a>
+
             </div>
+
           </article>
-          -->
+
+
+
+          <!-- =================================
+               FUTURE ARTICLES TEMPLATE
+
+               Copy this block whenever you
+               want to add another article.
+          ==================================
+
+          <article
+            class="post-card"
+            data-category="Technology"
+          >
+
+            <a
+              class="post-image"
+              href="your-article.html"
+              aria-label="Read your article"
+            >
+
+              <div class="image-overlay"></div>
+
+              <span class="post-letter">
+                T
+              </span>
+
+              <span class="post-tag">
+                Technology
+              </span>
+
+            </a>
+
+
+            <div class="post-content">
+
+              <div class="post-meta">
+
+                <span>
+                  2026
+                </span>
+
+                <span class="meta-dot">
+                  •
+                </span>
+
+                <span>
+                  5 min read
+                </span>
+
+              </div>
+
+
+              <h3>
+
+                <a href="your-article.html">
+                  Your article title
+                </a>
+
+              </h3>
+
+
+              <p>
+                Your short article description.
+              </p>
+
+
+              <a
+                class="read-more"
+                href="your-article.html"
+              >
+
+                Read article
+
+                <span>
+                  →
+                </span>
+
+              </a>
+
+            </div>
+
+          </article>
+
+          ================================= -->
+
 
         </div>
+
+
+
+        <!-- EMPTY STATE -->
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <h3>
+            No articles found
+          </h3>
+
+          <p>
+            Try another category.
+          </p>
+
+        </div>
+
       </div>
+
     </section>
+
   </main>
 
+
+
+  <!-- ================================
+       FOOTER
+  ================================= -->
   <footer>
-    <div class="container">
-      © 2026 Pratyush. All rights reserved.
+
+    <div class="container footer-inner">
+
+
+      <div>
+
+        <a
+          class="brand footer-brand"
+          href="index.html"
+        >
+
+          <span class="brand-mark">
+            P
+          </span>
+
+          <span>
+            Pratyush<span class="brand-dot">.</span>
+          </span>
+
+        </a>
+
+
+        <p>
+          Ideas, insights &amp; stories.
+        </p>
+
+      </div>
+
+
+      <p class="copyright">
+
+        ©
+        <span id="year">
+          2026
+        </span>
+
+        Pratyush.
+        All rights reserved.
+
+      </p>
+
     </div>
+
   </footer>
+
+
+
+  <!-- BACK TO TOP -->
+  <button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top"
+    type="button"
+  >
+    ↑
+  </button>
+
 
 </body>
 </html>
