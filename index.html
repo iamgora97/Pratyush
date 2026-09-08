@@ -1,121 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dr. Pratyush Ghosh — articles, perspectives and health awareness.">
-  <title>Blog | Dr. Pratyush Ghosh</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
+  <meta
+    name="description"
+    content="Pratyush Blog — thoughtful articles, insights and stories."
+  >
+
+  <title>Blog | Pratyush</title>
+
+  <!-- =====================================================
+       BLOG CSS
+  ====================================================== -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- =====================================================
+       BLOG JAVASCRIPT
+  ====================================================== -->
   <script src="main.js" defer></script>
+
 </head>
+
+
 <body>
 
-  <div id="progress-bar"></div>
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-  <nav id="main-nav">
-    <a class="nav-logo" href="index.html">Dr. Pratyush Ghosh <sup>BLOG</sup></a>
+  <!-- =====================================================
+       HEADER — START
+  ====================================================== -->
 
-    <ul class="nav-links" id="nav-links">
-      <li><a href="index.html" class="active">Blog</a></li>
-      <li><a href="#articles">Articles</a></li>
-      <li><a href="../index.html">Main Website</a></li>
-    </ul>
+  <header class="site-header" id="siteHeader">
 
-    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+    <div class="container nav">
 
-  <header class="blog-hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Pratyush Blog home"
+      >
 
-    <div class="blog-hero-inner reveal">
-      <div class="hero-tag"><span class="blink-dot"></span> Insights &amp; Perspectives</div>
+        <span class="brand-mark">P</span>
 
-      <h1>Ideas that inform.<br><em>Stories that matter.</em></h1>
+        <span>
+          Pratyush<span class="brand-dot">.</span>
+        </span>
 
-      <p class="hero-bio">
-        Thoughtful writing on health, medicine, awareness and the issues shaping
-        the way we understand wellbeing.
-      </p>
+      </a>
 
-      <a class="btn btn-primary" href="#articles">Explore Articles <span>↓</span></a>
-    </div>
 
-    <div class="ecg-wrap" aria-hidden="true">
-      <svg viewBox="0 0 1600 56" preserveAspectRatio="none">
-        <polyline points="0,28 120,28 145,28 155,14 165,42 178,4 192,49 205,28 310,28 420,28 445,28 455,14 465,42 478,4 492,49 505,28 610,28 720,28 745,28 755,14 765,42 778,4 792,49 805,28 910,28 1020,28 1045,28 1055,14 1065,42 1078,4 1092,49 1105,28 1210,28 1320,28 1345,28 1355,14 1365,42 1378,4 1392,49 1405,28 1600,28"
-          fill="none" stroke="rgba(31,184,168,.85)" stroke-width="1.3"/>
-      </svg>
-    </div>
-  </header>
+      <!-- Mobile Menu Button -->
 
-  <div class="divider"></div>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
 
-  <main class="section-wrap" id="articles">
-    <div class="section-eyebrow">From the Blog</div>
-    <div class="articles-heading">
-      <h2 class="section-title">Latest Articles</h2>
-      <span class="article-count"><span id="article-count">1</span> article</span>
-    </div>
+        <span></span>
+        <span></span>
+        <span></span>
 
-    <section class="blog-grid">
-      <article class="blog-card reveal">
-        <a class="blog-cover" href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">
-          <span class="cover-number">01</span>
-          <div class="cover-mark">H</div>
-          <span class="category">Health &amp; Awareness</span>
+      </button>
+
+
+      <!-- Navigation -->
+
+      <nav
+        class="nav-links"
+        id="navLinks"
+        aria-label="Main navigation"
+      >
+
+        <a
+          href="index.html"
+          class="active"
+        >
+          Blog
         </a>
 
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span>2026</span>
-            <span class="meta-dot">•</span>
-            <span>5 min read</span>
+        <a href="../index.html">
+          Website
+        </a>
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+
+          <span id="themeIcon">☾</span>
+
+        </button>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- =====================================================
+       HEADER — END
+  ====================================================== -->
+
+
+
+  <main>
+
+
+    <!-- =====================================================
+         HERO SECTION — START
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-glow hero-glow-one"></div>
+
+      <div class="hero-glow hero-glow-two"></div>
+
+
+      <div class="container hero-inner">
+
+        <p class="eyebrow">
+          PRATYUSH BLOG
+        </p>
+
+
+        <h1>
+          Ideas worth<br>
+          <span>reading.</span>
+        </h1>
+
+
+        <p class="hero-copy">
+
+          Thoughtful articles, useful insights and stories about the things
+          that matter.
+
+        </p>
+
+
+        <a
+          href="#latest"
+          class="hero-button"
+        >
+
+          Explore articles
+
+          <span>↓</span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         HERO SECTION — END
+    ====================================================== -->
+
+
+
+    <!-- =====================================================
+         ARTICLES SECTION — START
+    ====================================================== -->
+
+    <section
+      class="articles"
+      id="latest"
+    >
+
+      <div class="container">
+
+
+        <!-- Section Heading -->
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="section-label">
+              FROM THE BLOG
+            </p>
+
+            <h2>
+              Latest articles
+            </h2>
+
           </div>
 
-          <h3>
-            <a href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">
-              Breaking Down the Silence: 5 Critical Insights from Hepatitis Week 2026
+
+          <p class="article-count">
+
+            <span id="articleCount">
+              2
+            </span>
+
+            articles
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BLOG POSTS GRID — START
+        ================================================== -->
+
+        <div
+          class="post-grid"
+          id="postGrid"
+        >
+
+
+
+          <!-- =================================================
+               BLOG 1 — START
+               HEPATITIS WEEK 2026
+          ================================================== -->
+
+          <article
+            class="post-card"
+            data-category="Health & Awareness"
+          >
+
+
+            <!-- Blog 1 Image / Cover -->
+
+            <a
+              class="post-image"
+              href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
+              aria-label="Read Hepatitis Week article"
+            >
+
+              <div class="image-overlay"></div>
+
+              <span class="post-letter">
+                H
+              </span>
+
+              <span class="post-tag">
+                Health &amp; Awareness
+              </span>
+
             </a>
+
+
+
+            <!-- Blog 1 Content -->
+
+            <div class="post-content">
+
+
+              <!-- Blog 1 Meta -->
+
+              <div class="post-meta">
+
+                <span>
+                  2026
+                </span>
+
+                <span class="meta-dot">
+                  •
+                </span>
+
+                <span>
+                  5 min read
+                </span>
+
+              </div>
+
+
+
+              <!-- Blog 1 Title -->
+
+              <h3>
+
+                <a
+                  href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
+                >
+
+                  Breaking Down the Silence:
+                  5 Critical Insights from Hepatitis Week 2026
+
+                </a>
+
+              </h3>
+
+
+
+              <!-- Blog 1 Description -->
+
+              <p>
+
+                Exploring why hepatitis remains a major global health concern
+                and the key insights behind Hepatitis Week 2026.
+
+              </p>
+
+
+
+              <!-- Blog 1 Read More -->
+
+              <a
+                class="read-more"
+                href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
+              >
+
+                Read article
+
+                <span>
+                  →
+                </span>
+
+              </a>
+
+
+            </div>
+
+          </article>
+
+
+          <!-- =================================================
+               BLOG 1 — END
+          ================================================== -->
+
+
+
+
+
+          <!-- =================================================
+               BLOG 2 — START
+               NATIONAL NUTRITION WEEK
+          ================================================== -->
+
+          <article
+            class="post-card"
+            data-category="Health & Awareness"
+          >
+
+
+            <!-- Blog 2 Image / Cover -->
+
+            <a
+              class="post-image"
+              href="National_Nutrition_Week.html"
+              aria-label="Read National Nutrition Week article"
+            >
+
+              <div class="image-overlay"></div>
+
+              <span class="post-letter">
+                N
+              </span>
+
+              <span class="post-tag">
+                Health &amp; Awareness
+              </span>
+
+            </a>
+
+
+
+            <!-- Blog 2 Content -->
+
+            <div class="post-content">
+
+
+              <!-- Blog 2 Meta -->
+
+              <div class="post-meta">
+
+                <span>
+                  2026
+                </span>
+
+                <span class="meta-dot">
+                  •
+                </span>
+
+                <span>
+                  5 min read
+                </span>
+
+              </div>
+
+
+
+              <!-- Blog 2 Title -->
+
+              <h3>
+
+                <a
+                  href="National_Nutrition_Week.html"
+                >
+
+                  National Nutrition Week —
+                  Nutrition Is Not Just About Food,
+                  It Is About Health
+
+                </a>
+
+              </h3>
+
+
+
+              <!-- Blog 2 Description -->
+
+              <p>
+
+                A reminder that balanced nutrition is not simply about
+                weight or appearance—it is a foundation for long-term health.
+
+              </p>
+
+
+
+              <!-- Blog 2 Read More -->
+
+              <a
+                class="read-more"
+                href="National_Nutrition_Week.html"
+              >
+
+                Read article
+
+                <span>
+                  →
+                </span>
+
+              </a>
+
+
+            </div>
+
+          </article>
+
+
+          <!-- =================================================
+               BLOG 2 — END
+          ================================================== -->
+
+
+
+
+
+          <!-- =================================================
+               FUTURE BLOGS — TEMPLATE
+               
+               Copy this block whenever you add Blog 3,
+               Blog 4, Blog 5, etc.
+          ================================================== -->
+
+          <!--
+
+          <article
+            class="post-card"
+            data-category="Technology"
+          >
+
+            <a
+              class="post-image"
+              href="your-article.html"
+              aria-label="Read your article"
+            >
+
+              <div class="image-overlay"></div>
+
+              <span class="post-letter">
+                T
+              </span>
+
+              <span class="post-tag">
+                Technology
+              </span>
+
+            </a>
+
+
+            <div class="post-content">
+
+              <div class="post-meta">
+
+                <span>
+                  2026
+                </span>
+
+                <span class="meta-dot">
+                  •
+                </span>
+
+                <span>
+                  5 min read
+                </span>
+
+              </div>
+
+
+              <h3>
+
+                <a href="your-article.html">
+
+                  Your article title
+
+                </a>
+
+              </h3>
+
+
+              <p>
+
+                Your short article description.
+
+              </p>
+
+
+              <a
+                class="read-more"
+                href="your-article.html"
+              >
+
+                Read article
+
+                <span>
+                  →
+                </span>
+
+              </a>
+
+            </div>
+
+          </article>
+
+          -->
+
+
+        </div>
+
+        <!-- =================================================
+             BLOG POSTS GRID — END
+        ================================================== -->
+
+
+
+        <!-- Empty State -->
+
+        <div
+          class="empty-state"
+          id="emptyState"
+          hidden
+        >
+
+          <h3>
+            No articles found
           </h3>
 
           <p>
-            Exploring why hepatitis remains a major global health concern and
-            the key insights behind Hepatitis Week 2026.
+            Try another category.
           </p>
 
-          <a class="read-link" href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">
-            Read Article <span>→</span>
-          </a>
         </div>
-      </article>
 
-      <!-- Copy .blog-card to add another article. -->
+
+      </div>
+
     </section>
+
+    <!-- =====================================================
+         ARTICLES SECTION — END
+    ====================================================== -->
+
+
   </main>
 
-  <section class="blog-cta">
-    <div class="cta-glow"></div>
-    <div class="cta-content reveal">
-      <div class="section-eyebrow centered">Keep Exploring</div>
-      <h2>Knowledge is most useful<br><em>when it is shared.</em></h2>
-      <p>More articles and perspectives will be added here over time.</p>
-      <a class="btn btn-outline" href="../index.html">Visit Main Website <span>→</span></a>
-    </div>
-  </section>
+
+
+  <!-- =====================================================
+       FOOTER — START
+  ====================================================== -->
 
   <footer>
-    <span>© <span id="year">2026</span> <span class="gold">Dr. Pratyush Ghosh</span> · All rights reserved.</span>
+
+    <div class="container footer-inner">
+
+
+      <div>
+
+        <a
+          class="brand footer-brand"
+          href="index.html"
+        >
+
+          <span class="brand-mark">
+            P
+          </span>
+
+          <span>
+            Pratyush<span class="brand-dot">.</span>
+          </span>
+
+        </a>
+
+
+        <p>
+          Ideas, insights &amp; stories.
+        </p>
+
+      </div>
+
+
+
+      <p class="copyright">
+
+        ©
+
+        <span id="year">
+          2026
+        </span>
+
+        Pratyush.
+        All rights reserved.
+
+      </p>
+
+
+    </div>
+
   </footer>
 
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+  <!-- =====================================================
+       FOOTER — END
+  ====================================================== -->
+
+
+
+  <!-- =====================================================
+       BACK TO TOP
+  ====================================================== -->
+
+  <button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
+
+
 </body>
+
 </html>
