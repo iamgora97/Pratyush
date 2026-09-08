@@ -11,20 +11,17 @@
 
   <title>Blog | Pratyush</title>
 
-  <!-- MAIN BLOG CSS -->
-  <link rel="stylesheet" href="css/blog.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 
-  <!-- MAIN BLOG JAVASCRIPT -->
-  <script src="js/blog.js" defer></script>
+  <!-- JavaScript -->
+  <script src="main.js" defer></script>
 </head>
 
 <body>
 
-  <!-- ================================
-       HEADER / NAVIGATION
-  ================================= -->
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
-
     <div class="container nav">
 
       <a
@@ -33,34 +30,27 @@
         aria-label="Pratyush Blog home"
       >
         <span class="brand-mark">P</span>
-
         <span>
           Pratyush<span class="brand-dot">.</span>
         </span>
       </a>
 
-
-      <!-- MOBILE MENU BUTTON -->
       <button
         class="menu-toggle"
         id="menuToggle"
         aria-label="Open navigation"
         aria-expanded="false"
-        type="button"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-
-      <!-- NAVIGATION LINKS -->
       <nav
         class="nav-links"
         id="navLinks"
         aria-label="Main navigation"
       >
-
         <a
           href="index.html"
           class="active"
@@ -80,28 +70,20 @@
         >
           <span id="themeIcon">☾</span>
         </button>
-
       </nav>
 
     </div>
-
   </header>
 
 
-  <!-- ================================
-       MAIN CONTENT
-  ================================= -->
+  <!-- MAIN -->
   <main>
 
-
-    <!-- ================================
-         HERO SECTION
-    ================================= -->
+    <!-- HERO -->
     <section class="hero">
 
       <div class="hero-glow hero-glow-one"></div>
       <div class="hero-glow hero-glow-two"></div>
-
 
       <div class="container hero-inner">
 
@@ -109,18 +91,15 @@
           PRATYUSH BLOG
         </p>
 
-
         <h1>
           Ideas worth<br>
           <span>reading.</span>
         </h1>
 
-
         <p class="hero-copy">
           Thoughtful articles, useful insights and stories about the things
           that matter.
         </p>
-
 
         <a
           href="#latest"
@@ -135,10 +114,7 @@
     </section>
 
 
-
-    <!-- ================================
-         ARTICLES SECTION
-    ================================= -->
+    <!-- ARTICLES -->
     <section
       class="articles"
       id="latest"
@@ -146,12 +122,9 @@
 
       <div class="container">
 
-
-        <!-- SECTION HEADER -->
         <div class="section-heading">
 
           <div>
-
             <p class="section-label">
               FROM THE BLOG
             </p>
@@ -159,36 +132,23 @@
             <h2>
               Latest articles
             </h2>
-
           </div>
 
-
           <p class="article-count">
-
-            <span id="articleCount">
-              2
-            </span>
-
+            <span id="articleCount">2</span>
             articles
-
           </p>
 
         </div>
 
 
-
-        <!-- ================================
-             ARTICLE GRID
-        ================================= -->
         <div
           class="post-grid"
           id="postGrid"
         >
 
 
-          <!-- =================================
-               ARTICLE 1 — HEPATITIS
-          ================================== -->
+          <!-- HEPATITIS ARTICLE -->
           <article
             class="post-card"
             data-category="Health & Awareness"
@@ -215,8 +175,6 @@
 
             <div class="post-content">
 
-
-              <!-- ARTICLE META -->
               <div class="post-meta">
 
                 <span>
@@ -234,7 +192,6 @@
               </div>
 
 
-              <!-- ARTICLE TITLE -->
               <h3>
 
                 <a
@@ -247,25 +204,18 @@
               </h3>
 
 
-              <!-- ARTICLE DESCRIPTION -->
               <p>
                 Exploring why hepatitis remains a major global health concern
                 and the key insights behind Hepatitis Week 2026.
               </p>
 
 
-              <!-- READ MORE -->
               <a
                 class="read-more"
                 href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
               >
-
                 Read article
-
-                <span>
-                  →
-                </span>
-
+                <span>→</span>
               </a>
 
             </div>
@@ -273,10 +223,7 @@
           </article>
 
 
-
-          <!-- =================================
-               ARTICLE 2 — NATIONAL NUTRITION WEEK
-          ================================== -->
+          <!-- NATIONAL NUTRITION WEEK ARTICLE -->
           <article
             class="post-card"
             data-category="Health & Awareness"
@@ -303,8 +250,6 @@
 
             <div class="post-content">
 
-
-              <!-- ARTICLE META -->
               <div class="post-meta">
 
                 <span>
@@ -322,7 +267,6 @@
               </div>
 
 
-              <!-- ARTICLE TITLE -->
               <h3>
 
                 <a
@@ -336,119 +280,26 @@
               </h3>
 
 
-              <!-- ARTICLE DESCRIPTION -->
               <p>
                 A reminder that balanced nutrition is not simply about weight
                 or appearance—it is a foundation for long-term health.
               </p>
 
 
-              <!-- READ MORE -->
               <a
                 class="read-more"
                 href="National_Nutrition_Week.html"
               >
-
                 Read article
-
-                <span>
-                  →
-                </span>
-
+                <span>→</span>
               </a>
 
             </div>
 
           </article>
-
-
-
-          <!-- =================================
-               FUTURE ARTICLES TEMPLATE
-
-               Copy this block whenever you
-               want to add another article.
-          ==================================
-
-          <article
-            class="post-card"
-            data-category="Technology"
-          >
-
-            <a
-              class="post-image"
-              href="your-article.html"
-              aria-label="Read your article"
-            >
-
-              <div class="image-overlay"></div>
-
-              <span class="post-letter">
-                T
-              </span>
-
-              <span class="post-tag">
-                Technology
-              </span>
-
-            </a>
-
-
-            <div class="post-content">
-
-              <div class="post-meta">
-
-                <span>
-                  2026
-                </span>
-
-                <span class="meta-dot">
-                  •
-                </span>
-
-                <span>
-                  5 min read
-                </span>
-
-              </div>
-
-
-              <h3>
-
-                <a href="your-article.html">
-                  Your article title
-                </a>
-
-              </h3>
-
-
-              <p>
-                Your short article description.
-              </p>
-
-
-              <a
-                class="read-more"
-                href="your-article.html"
-              >
-
-                Read article
-
-                <span>
-                  →
-                </span>
-
-              </a>
-
-            </div>
-
-          </article>
-
-          ================================= -->
 
 
         </div>
-
 
 
         <!-- EMPTY STATE -->
@@ -475,14 +326,10 @@
   </main>
 
 
-
-  <!-- ================================
-       FOOTER
-  ================================= -->
+  <!-- FOOTER -->
   <footer>
 
     <div class="container footer-inner">
-
 
       <div>
 
@@ -501,7 +348,6 @@
 
         </a>
 
-
         <p>
           Ideas, insights &amp; stories.
         </p>
@@ -512,10 +358,7 @@
       <p class="copyright">
 
         ©
-        <span id="year">
-          2026
-        </span>
-
+        <span id="year">2026</span>
         Pratyush.
         All rights reserved.
 
@@ -526,13 +369,11 @@
   </footer>
 
 
-
   <!-- BACK TO TOP -->
   <button
     class="back-to-top"
     id="backToTop"
     aria-label="Back to top"
-    type="button"
   >
     ↑
   </button>
