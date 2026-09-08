@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pratyush Blog — thoughtful articles, insights and stories.">
+  <title>Blog | Pratyush</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --text: #172033;
+      --muted: #667085;
+      --border: #e7eaf0;
+      --surface: #ffffff;
+      --background: #f7f8fb;
+      --accent: #1d4ed8;
+      --accent-dark: #173ea5;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 80px 0 55px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .posts {
+      padding: 10px 0 80px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .post-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+    }
+
+    .post-image {
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #eaf1ff, #f5f7ff);
+      color: var(--accent);
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    .post-content {
+      padding: 26px;
+    }
+
+    .category {
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .post-card h2 {
+      margin: 9px 0 10px;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    .post-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .read-more:hover {
+      color: var(--accent-dark);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 28px, 1100px);
+      }
+
+      .nav {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding: 60px 0 40px;
+      }
+
+      .post-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/">Pratyush</a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Pratyush Blog</span>
+        <h1>Ideas, insights &amp; stories.</h1>
+        <p>
+          A collection of articles exploring meaningful topics, useful ideas,
+          current issues and stories worth sharing.
+        </p>
+      </div>
+    </section>
+
+    <section class="posts">
+      <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+
+        <div class="post-grid">
+
+          <!-- Blog post 1 -->
+          <article class="post-card">
+            <div class="post-image" aria-hidden="true">H</div>
+
+            <div class="post-content">
+              <span class="category">Health &amp; Awareness</span>
+
+              <h2>Breaking Down the Silence: 5 Critical Insights from Hepatitis Week 2026</h2>
+
+              <p>
+                Exploring why hepatitis remains a major global health concern
+                and the key insights behind Hepatitis Week 2026.
+              </p>
+
+              <!-- Change this filename if your article uses a different name -->
+              <a class="read-more"
+                 href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">
+                Read article <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Copy this article card when you add more posts -->
+          <!--
+          <article class="post-card">
+            <div class="post-image">A</div>
+            <div class="post-content">
+              <span class="category">Category</span>
+              <h2>Your next article title</h2>
+              <p>A short description of your article.</p>
+              <a class="read-more" href="your-article.html">
+                Read article <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+          -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Pratyush. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
