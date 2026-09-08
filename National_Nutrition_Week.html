@@ -38,7 +38,7 @@
   >
 
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles_for_blog.css">
   <script src="main_for_blog.js" defer></script>
 
 </head>
@@ -103,9 +103,12 @@
         class="hamburger"
         id="hamburger"
         aria-label="Open menu"
+        aria-expanded="false"
         type="button"
       >
-        ☰
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
 
@@ -151,7 +154,9 @@
        HERO — START
   ====================================================== -->
 
-  <header class="hero">
+  <header class="article-hero">
+    <div class="article-hero-inner">
+
 
 
     <div class="eyebrow">
@@ -186,6 +191,8 @@
     </div>
 
 
+  
+    </div>
   </header>
 
   <!-- =====================================================
@@ -227,10 +234,8 @@
        ARTICLE — START
   ====================================================== -->
 
-  <main
-    id="article"
-    class="layout"
-  >
+  <main id="article-body">
+    <div class="layout">
 
 
     <!-- ===================================================
@@ -759,12 +764,7 @@
 
 
         <p
-          style="
-            text-align:center;
-            font-family:'Cormorant Garamond',serif;
-            font-size:28px;
-            color:#fff;
-          "
+          class="nutrition-closing"
         >
 
           Happy National Nutrition Week. 🥗❤️
@@ -788,7 +788,7 @@
 
 
     </article>
-
+    </div>
   </main>
 
   <!-- =====================================================
