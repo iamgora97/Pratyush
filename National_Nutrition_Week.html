@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="National Nutrition Week — Nutrition Is Not Just About Food, It Is About Health.">
+  <title>National Nutrition Week | Dr. Pratyush Ghosh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#080f1e;
+      --deep:#0b1a34;
+      --panel:#0e2040;
+      --panel-2:#10294b;
+      --teal:#187a72;
+      --teal-l:#1fb8a8;
+      --gold:#c9a84c;
+      --gold-l:#e4c96f;
+      --text:#dde6f0;
+      --muted:#7a90b0;
+      --line:rgba(139,171,205,.15);
+      --white:#fff;
+      --shadow:0 24px 70px rgba(0,0,0,.32);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"DM Sans",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 15%,rgba(31,184,168,.08),transparent 28%),
+        radial-gradient(circle at 85% 30%,rgba(201,168,76,.06),transparent 25%),
+        var(--navy);
+      line-height:1.75;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:.55}
+    #progress-bar{
+      position:fixed;top:0;left:0;height:3px;width:0;
+      background:linear-gradient(90deg,var(--teal-l),var(--gold));
+      z-index:1000;
+    }
+
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:900;
+      padding:18px 5%;
+      background:rgba(8,15,30,.72);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(18px);
+      transition:.3s ease;
+    }
+    nav.scrolled{padding:11px 5%;background:rgba(8,15,30,.92)}
+    .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{
+      width:40px;height:40px;border:1px solid rgba(31,184,168,.55);
+      border-radius:50%;display:grid;place-items:center;color:var(--teal-l);
+      font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:700;
+      background:rgba(31,184,168,.07)
+    }
+    .brand-text strong{display:block;font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1;color:#fff}
+    .brand-text span{font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:27px;font-size:13px;color:var(--muted)}
+    .nav-links a{transition:.25s}
+    .nav-links a:hover{color:#fff}
+    .nav-links .active{color:var(--teal-l)}
+    .nav-cta{
+      padding:9px 15px;border:1px solid rgba(201,168,76,.45);
+      border-radius:5px;color:var(--gold-l)!important
+    }
+    .hamburger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+
+    .hero{
+      max-width:1050px;margin:0 auto;padding:170px 5% 70px;text-align:center;position:relative
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      color:var(--teal-l);font-size:11px;font-weight:700;
+      letter-spacing:2.5px;text-transform:uppercase;margin-bottom:22px
+    }
+    .eyebrow:before,.eyebrow:after{content:"";width:28px;height:1px;background:var(--gold)}
+    h1{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(48px,7vw,86px);line-height:.95;
+      color:#fff;font-weight:600;letter-spacing:-1px;margin-bottom:22px
+    }
+    .hero-sub{
+      max-width:760px;margin:auto;color:var(--gold-l);
+      font-family:"Cormorant Garamond",serif;font-size:clamp(25px,3vw,38px);
+      line-height:1.15
+    }
+    .meta{margin-top:27px;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+    .meta span{margin:0 9px;color:var(--gold)}
+
+    .ecg{
+      height:46px;overflow:hidden;margin:10px 0 60px;opacity:.75
+    }
+    .ecg svg{width:100%;height:46px}
+    .ecg path{fill:none;stroke:var(--teal-l);stroke-width:1.4;vector-effect:non-scaling-stroke}
+    .ecg .soft{stroke:rgba(31,184,168,.14);stroke-width:8;filter:blur(5px)}
+
+    .layout{
+      width:min(1080px,90%);margin:auto;
+      display:grid;grid-template-columns:185px minmax(0,760px);gap:65px;align-items:start
+    }
+    .side{
+      position:sticky;top:115px;padding-top:6px
+    }
+    .side-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+    .side a{display:block;color:var(--muted);font-size:12px;margin:9px 0;transition:.25s}
+    .side a:hover{color:var(--teal-l);transform:translateX(3px)}
+    .article{
+      background:linear-gradient(145deg,rgba(14,32,64,.78),rgba(8,20,39,.72));
+      border:1px solid var(--line);border-radius:10px;padding:clamp(28px,5vw,58px);
+      box-shadow:var(--shadow)
+    }
+    .intro{
+      font-family:"Cormorant Garamond",serif;font-size:25px;line-height:1.45;
+      color:#eef5fb;margin-bottom:38px
+    }
+    .section{margin:48px 0}
+    .section:first-of-type{margin-top:0}
+    .section-number{
+      color:var(--teal-l);font-size:11px;font-weight:700;letter-spacing:2px;
+      margin-bottom:7px
+    }
+    h2{
+      font-family:"Cormorant Garamond",serif;color:#fff;font-size:38px;
+      line-height:1.05;margin-bottom:18px;font-weight:600
+    }
+    p{color:#b9c7d7;margin:0 0 17px;font-size:15px}
+    ul{list-style:none;margin:20px 0}
+    li{
+      position:relative;margin:10px 0;padding:14px 17px 14px 42px;
+      background:rgba(255,255,255,.025);border:1px solid rgba(139,171,205,.09);
+      border-radius:6px;color:#c6d2df;font-size:14px
+    }
+    li:before{
+      content:"";position:absolute;left:18px;top:22px;width:7px;height:7px;
+      border-radius:50%;background:var(--teal-l);box-shadow:0 0 12px rgba(31,184,168,.5)
+    }
+    .highlight{
+      margin:30px 0;padding:25px 26px;
+      border-left:3px solid var(--gold);
+      background:rgba(201,168,76,.06)
+    }
+    .highlight p{margin:0;color:#e6dfc5;font-family:"Cormorant Garamond",serif;font-size:24px;line-height:1.35}
+    .conditions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+    .condition{
+      padding:14px 16px;background:rgba(31,184,168,.045);
+      border:1px solid rgba(31,184,168,.13);border-radius:6px;
+      color:#c7d4df;font-size:14px
+    }
+    .caution{
+      margin:25px 0;padding:20px 21px;border:1px solid rgba(201,168,76,.24);
+      background:rgba(201,168,76,.055);border-radius:7px
+    }
+    .caution strong{display:block;color:var(--gold-l);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px}
+    .caution p{margin:0}
+    .mantra{
+      text-align:center;margin:38px 0;padding:32px 20px;
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .mantra p{
+      color:#fff;font-family:"Cormorant Garamond",serif;font-size:27px;
+      line-height:1.4;margin:0
+    }
+    .disclaimer{
+      font-size:11px!important;color:#71839d!important;
+      border-top:1px solid var(--line);padding-top:20px;margin-top:34px!important
+    }
+
+    .back{
+      max-width:1080px;width:90%;margin:48px auto 80px;text-align:center
+    }
+    .back a{
+      display:inline-block;padding:12px 19px;border:1px solid rgba(31,184,168,.35);
+      border-radius:5px;color:var(--teal-l);font-size:12px;letter-spacing:1px;text-transform:uppercase;
+      transition:.25s
+    }
+    .back a:hover{background:rgba(31,184,168,.08);transform:translateY(-2px)}
+
+    footer{
+      border-top:1px solid var(--line);padding:34px 5%;color:var(--muted);
+      font-size:11px;text-align:center
+    }
+    footer strong{color:#b9c7d7}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    #top{
+      position:fixed;right:24px;bottom:24px;width:40px;height:40px;
+      border:1px solid var(--line);border-radius:50%;background:rgba(8,15,30,.85);
+      color:var(--teal-l);cursor:pointer;display:none;z-index:800
+    }
+
+    @media(max-width:800px){
+      .nav-links{
+        display:none;position:absolute;top:100%;left:0;right:0;
+        padding:18px 5%;background:rgba(8,15,30,.97);
+        border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:14px
+      }
+      .nav-links.open{display:flex}
+      .hamburger{display:block}
+      .layout{grid-template-columns:1fr;gap:0}
+      .side{position:static;display:flex;gap:15px;overflow:auto;margin-bottom:18px;padding-bottom:5px}
+      .side-label{display:none}
+      .side a{white-space:nowrap}
+    }
+    @media(max-width:560px){
+      nav{padding:13px 5%}
+      .brand-text strong{font-size:18px}
+      .brand-text span{font-size:8px}
+      .brand-mark{width:35px;height:35px}
+      .hero{padding-top:130px;padding-bottom:45px}
+      .article{padding:25px 20px}
+      h2{font-size:32px}
+      .intro{font-size:22px}
+      .conditions{grid-template-columns:1fr}
+      .mantra p{font-size:24px}
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progress-bar"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Dr. Pratyush Ghosh Blog">
+        <div class="brand-mark">P</div>
+        <div class="brand-text">
+          <strong>Dr. Pratyush Ghosh</strong>
+          <span>Medical Journal · Blog</span>
+        </div>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Blog Home</a>
+        <a class="active" href="#article">Article</a>
+        <a href="../index.html" class="nav-cta">Main Website ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Health &amp; Awareness</div>
+    <h1>National Nutrition Week</h1>
+    <div class="hero-sub">Nutrition Is Not Just About Food — It Is About Health</div>
+    <div class="meta">Nutrition · Preventive Health <span>•</span> Health Education</div>
+  </header>
+
+  <div class="ecg" aria-hidden="true">
+    <svg viewBox="0 0 1200 46" preserveAspectRatio="none">
+      <path class="soft" d="M0 24 H260 L275 24 L282 23 L288 25 L295 24 H430 L440 24 L447 6 L455 39 L464 24 H690 L700 24 L707 19 L714 29 L722 24 H900 L910 24 L917 23 L924 25 L932 24 H1200"/>
+      <path d="M0 24 H260 L275 24 L282 23 L288 25 L295 24 H430 L440 24 L447 6 L455 39 L464 24 H690 L700 24 L707 19 L714 29 L722 24 H900 L910 24 L917 23 L924 25 L932 24 H1200"/>
+    </svg>
+  </div>
+
+  <main id="article" class="layout">
+    <aside class="side">
+      <div class="side-label">In this article</div>
+      <a href="#healthy-diet">Healthy diet</a>
+      <a href="#carbs">Carbohydrates</a>
+      <a href="#protein">Protein</a>
+      <a href="#sugar-salt">Sugar &amp; salt</a>
+      <a href="#prevention">Disease prevention</a>
+      <a href="#miracle">Miracle diets</a>
+      <a href="#conversation">The conversation</a>
+    </aside>
+
+    <article class="article">
+      <p class="intro reveal">
+        National Nutrition Week is an opportunity to remind ourselves of one of the most fundamental principles of medicine:
+        <strong>good nutrition is the foundation of good health.</strong>
+      </p>
+
+      <p class="reveal">
+        We often associate nutrition with weight loss, dieting, or appearance. But nutrition goes far beyond body weight.
+        It influences immunity, muscle strength, brain function, hormonal health, cardiovascular risk, bone health,
+        recovery from illness, and even the ability of the body to heal.
+      </p>
+
+      <section class="section reveal" id="healthy-diet">
+        <div class="section-number">01 · THE BASICS</div>
+        <h2>🥗 What does a healthy diet actually mean?</h2>
+        <p>A healthy diet does not have to be complicated or expensive. The basic principle is <strong>balance, variety and moderation.</strong></p>
+        <p>A balanced plate should ideally include:</p>
+        <ul>
+          <li><strong>Protein:</strong> pulses, beans, eggs, fish, chicken, dairy or other protein sources</li>
+          <li><strong>Whole grains:</strong> rice, roti, oats, millets and other minimally processed grains</li>
+          <li><strong>Vegetables:</strong> preferably a variety of colours</li>
+          <li><strong>Fruits:</strong> whole fruits rather than juices</li>
+          <li><strong>Healthy fats:</strong> nuts, seeds and appropriate amounts of plant oils</li>
+          <li><strong>Adequate fluids:</strong> primarily water</li>
+        </ul>
+        <p>No single food can provide everything our body needs. <strong>Dietary diversity matters.</strong></p>
+      </section>
+
+      <section class="section reveal" id="carbs">
+        <div class="section-number">02 · ENERGY</div>
+        <h2>🍚 Carbohydrates are not the enemy</h2>
+        <p>Carbohydrates are an important source of energy. The goal is not necessarily to eliminate them, but to choose better sources and appropriate portions.</p>
+        <p>Whole grains, vegetables, fruits and legumes generally provide carbohydrates along with fibre and micronutrients.</p>
+        <div class="highlight">
+          <p>Similarly, fat is not automatically unhealthy. The type and quantity of fat matter.</p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="protein">
+        <div class="section-number">03 · MUSCLE &amp; REPAIR</div>
+        <h2>💪 Protein deserves more attention</h2>
+        <p>Protein is essential for maintaining muscle mass, producing enzymes and hormones, supporting immunity and repairing tissues.</p>
+        <p>Protein requirements become particularly important during childhood, pregnancy, ageing, recovery from surgery or infection, and in people at risk of muscle loss.</p>
+        <div class="highlight">
+          <p>A common mistake is to focus only on calories while ignoring protein and overall nutritional quality.</p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="sugar-salt">
+        <div class="section-number">04 · EVERYDAY CHOICES</div>
+        <h2>🧂 Sugar, salt and ultra-processed foods</h2>
+        <p>Excessive intake of added sugars and salt can contribute to long-term health problems.</p>
+        <p>Frequent consumption of highly processed foods can also make it easier to consume excess calories while getting relatively little fibre and micronutrients.</p>
+        <p>Reading food labels, controlling portions and choosing minimally processed foods more often can make a meaningful difference.</p>
+      </section>
+
+      <section class="section reveal" id="prevention">
+        <div class="section-number">05 · PREVENTIVE HEALTH</div>
+        <h2>🩺 Nutrition is part of disease prevention</h2>
+        <p>Healthy nutrition plays an important role in reducing the risk of several chronic conditions, including:</p>
+
+        <div class="conditions">
+          <div class="condition">Obesity</div>
+          <div class="condition">Type 2 diabetes</div>
+          <div class="condition">Hypertension</div>
+          <div class="condition">Cardiovascular disease</div>
+          <div class="condition">Fatty liver disease</div>
+          <div class="condition">Nutritional deficiencies</div>
+        </div>
+
+        <div class="caution">
+          <strong>Individualized care matters</strong>
+          <p>For people who already have a medical condition, however, dietary advice should be individualized. A diet appropriate for one person may not be appropriate for another—for example, nutritional requirements can differ significantly in kidney disease, liver disease, diabetes or pregnancy.</p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="miracle">
+        <div class="section-number">06 · BE SCEPTICAL</div>
+        <h2>🚫 Beware of “miracle diets”</h2>
+        <p>There is no universally perfect diet.</p>
+        <p>Detox drinks, extreme fasting, eliminating entire food groups without medical indication, or relying on supplements cannot substitute for a balanced dietary pattern.</p>
+        <div class="highlight">
+          <p>Supplements should supplement a diet — not replace it.</p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="conversation">
+        <div class="section-number">07 · A BETTER CONVERSATION</div>
+        <h2>🌱 This National Nutrition Week, let’s change the conversation</h2>
+        <p>Instead of asking:</p>
+        <div class="highlight"><p>“How quickly can I lose weight?”</p></div>
+        <p>let's also ask:</p>
+        <div class="highlight"><p>“Am I getting enough protein, fibre, vitamins, minerals and healthy foods to keep my body functioning well?”</p></div>
+        <p><strong>Good nutrition isn't a short-term diet.<br>It is a long-term investment in health.</strong></p>
+
+        <div class="mantra">
+          <p>
+            «Eat for nourishment.<br>
+            Move for health.<br>
+            Sleep for recovery.<br>
+            And make prevention a part of everyday life.»
+          </p>
+        </div>
+
+        <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-size:28px;color:#fff">
+          Happy National Nutrition Week. 🥗❤️
+        </p>
+      </section>
+
+      <p class="disclaimer">
+        This article is intended for general health education and does not replace individualized medical or dietary advice.
+      </p>
+    </article>
+  </main>
+
+  <div class="back">
+    <a href="index.html">← Back to Blog</a>
+  </div>
+
+  <footer>
+    © <span id="year"></span> <strong>Dr. Pratyush Ghosh</strong> · Medical Journal &amp; Health Education
+  </footer>
+
+  <button id="top" aria-label="Back to top">↑</button>
+
+  <script>
+    // Scroll progress + nav shrink
+    const progress = document.getElementById("progress-bar");
+    const nav = document.getElementById("main-nav");
+    const topBtn = document.getElementById("top");
+
+    function onScroll(){
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+      nav.classList.toggle("scrolled", window.scrollY > 40);
+      topBtn.style.display = window.scrollY > 600 ? "grid" : "none";
+    }
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
+
+    topBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+    // Mobile navigation
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+    hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+    // Particle background
+    const canvas = document.getElementById("bg-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    const mouse = {x:null,y:null};
+
+    function resizeCanvas(){
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = innerWidth * dpr;
+      canvas.height = innerHeight * dpr;
+      canvas.style.width = innerWidth + "px";
+      canvas.style.height = innerHeight + "px";
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    function initParticles(){
+      const count = Math.min(85, Math.max(35, Math.floor(innerWidth / 18)));
+      particles = Array.from({length:count}, () => ({
+        x:Math.random()*innerWidth,
+        y:Math.random()*innerHeight,
+        vx:(Math.random()-.5)*.22,
+        vy:(Math.random()-.5)*.22,
+        r:Math.random()*1.5+.45
+      }));
+    }
+
+    function drawParticles(){
+      ctx.clearRect(0,0,innerWidth,innerHeight);
+      for(const p of particles){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0||p.x>innerWidth)p.vx*=-1;
+        if(p.y<0||p.y>innerHeight)p.vy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle="rgba(31,184,168,.45)";
+        ctx.fill();
+      }
+
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          const a=particles[i],b=particles[j];
+          const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+          if(d<105){
+            ctx.beginPath();
+            ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+            ctx.strokeStyle="rgba(31,184,168,"+(0.09*(1-d/105))+")";
+            ctx.lineWidth=1;ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    initParticles();
+    drawParticles();
+    window.addEventListener("resize", () => { resizeCanvas(); initParticles(); });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.08});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
