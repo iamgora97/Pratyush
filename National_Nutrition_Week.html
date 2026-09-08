@@ -103,12 +103,9 @@
         class="hamburger"
         id="hamburger"
         aria-label="Open menu"
-        aria-expanded="false"
         type="button"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        ☰
       </button>
 
 
@@ -154,9 +151,7 @@
        HERO — START
   ====================================================== -->
 
-  <header class="article-hero">
-    <div class="article-hero-inner">
-
+  <header class="hero">
 
 
     <div class="eyebrow">
@@ -191,8 +186,6 @@
     </div>
 
 
-  
-    </div>
   </header>
 
   <!-- =====================================================
@@ -234,8 +227,10 @@
        ARTICLE — START
   ====================================================== -->
 
-  <main id="article-body">
-    <div class="layout">
+  <main
+    id="article"
+    class="layout"
+  >
 
 
     <!-- ===================================================
@@ -764,7 +759,12 @@
 
 
         <p
-          class="nutrition-closing"
+          style="
+            text-align:center;
+            font-family:'Cormorant Garamond',serif;
+            font-size:28px;
+            color:#fff;
+          "
         >
 
           Happy National Nutrition Week. 🥗❤️
@@ -788,7 +788,7 @@
 
 
     </article>
-    </div>
+
   </main>
 
   <!-- =====================================================
@@ -861,7 +861,7 @@
   ====================================================== -->
 
   <button
-    id="back-to-top"
+    id="top"
     aria-label="Back to top"
   >
     ↑
