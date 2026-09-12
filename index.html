@@ -1,37 +1,68 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
 
-  <!-- Responsive viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>Dr. Pratyush Ghosh — MBBS, DNB Medicine, MRCP Part 1</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <!-- Google Fonts -->
+  <meta
+    name="description"
+    content="Dr. Pratyush Ghosh — MBBS, DNB Medicine, MRCP Part 1. Internal Medicine and Critical Care professional."
+  >
+
+  <title>
+    Dr. Pratyush Ghosh — MBBS, DNB Medicine, MRCP Part 1
+  </title>
+
+
+  <!-- =====================================================
+       GOOGLE FONTS
+       ===================================================== -->
+
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet"
-  />
+  >
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Responsive improvements -->
+  <!-- =====================================================
+       MAIN STYLESHEET
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+
+  <!-- =====================================================
+       RESPONSIVE + BLOG STYLES
+       ===================================================== -->
+
   <style>
+
     /* =====================================================
-       RESPONSIVE / MOBILE FRIENDLY OVERRIDES
+       GLOBAL RESPONSIVE FIXES
        ===================================================== */
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
+
 
     html {
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
+
 
     body {
       margin: 0;
@@ -39,23 +70,33 @@
       overflow-x: hidden;
     }
 
+
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
 
-    /* -----------------------------
-       Navigation
-       ----------------------------- */
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
 
     #main-nav {
       width: 100%;
       max-width: 100%;
     }
 
+
     .nav-logo {
       white-space: nowrap;
     }
+
 
     .nav-links {
       display: flex;
@@ -66,19 +107,22 @@
       list-style: none;
     }
 
+
     .nav-links li {
       margin: 0;
       padding: 0;
     }
+
 
     .nav-links a {
       text-decoration: none;
       white-space: nowrap;
     }
 
-    /* -----------------------------
-       Main sections
-       ----------------------------- */
+
+    /* =====================================================
+       MAIN CONTENT
+       ===================================================== */
 
     .hero,
     .section-wrap,
@@ -89,10 +133,12 @@
       max-width: 100%;
     }
 
+
     .hero-inner {
       width: min(1200px, calc(100% - 40px));
       margin: 0 auto;
     }
+
 
     .section-wrap {
       width: min(1200px, calc(100% - 40px));
@@ -100,15 +146,163 @@
       margin-right: auto;
     }
 
+
     .skills-grid,
     .edu-grid,
     .timeline {
       width: 100%;
     }
 
-    /* -----------------------------
-       Tablet
-       ----------------------------- */
+
+    /* =====================================================
+       BLOG SECTION
+       ===================================================== */
+
+    .blogs-section {
+      position: relative;
+    }
+
+
+    .blogs-intro {
+      max-width: 680px;
+      margin: 18px 0 42px;
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.72;
+    }
+
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+
+    .blog-card {
+      position: relative;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.025);
+
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+    }
+
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(31,184,168,0.5);
+      background: rgba(31,184,168,0.04);
+    }
+
+
+    .blog-card-category {
+      margin-bottom: 10px;
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: #1fb8a8;
+    }
+
+
+    .blog-card-date {
+      margin-bottom: 20px;
+
+      font-size: 11px;
+      line-height: 1.5;
+
+      opacity: 0.55;
+    }
+
+
+    .blog-card h3 {
+      margin: 0 0 15px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 29px;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+
+    .blog-card p {
+      margin: 0 0 25px;
+
+      font-size: 14px;
+      line-height: 1.75;
+
+      opacity: 0.72;
+    }
+
+
+    .blog-read-more {
+      display: inline-block;
+
+      color: #1fb8a8;
+      text-decoration: none;
+
+      font-size: 12px;
+      letter-spacing: 0.5px;
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .blog-read-more:hover {
+      opacity: 0.7;
+      transform: translateX(3px);
+    }
+
+
+    .blogs-footer {
+      margin-top: 35px;
+    }
+
+
+    .blogs-loading,
+    .blogs-error {
+      grid-column: 1 / -1;
+
+      padding: 45px 25px;
+
+      text-align: center;
+
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+
+    .blogs-loading {
+      opacity: 0.65;
+    }
+
+
+    .blogs-error {
+      opacity: 0.7;
+    }
+
+
+    .blogs-error p {
+      margin: 0 0 15px;
+    }
+
+
+    .blogs-error a {
+      color: #1fb8a8;
+      text-decoration: none;
+    }
+
+
+    /* =====================================================
+       TABLET
+       ===================================================== */
 
     @media (max-width: 900px) {
 
@@ -117,251 +311,377 @@
         padding-right: 20px;
       }
 
+
       .nav-logo {
         font-size: 18px;
       }
+
 
       .nav-links {
         gap: 18px;
       }
 
+
       .nav-links a {
         font-size: 13px;
       }
 
+
       .hero-inner {
         grid-template-columns: 1fr;
         gap: 50px;
+
         padding-top: 70px;
         padding-bottom: 70px;
       }
 
+
       .hero-photo-wrap {
         order: -1;
+
         display: flex;
         justify-content: center;
       }
+
 
       .photo-card {
         width: min(420px, 90vw);
       }
 
+
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
+
       .edu-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+
+      .blogs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
     }
 
-    /* -----------------------------
-       Mobile
-       ----------------------------- */
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
 
     @media (max-width: 700px) {
 
-      /* Navigation */
+      /* -----------------------------
+         Navigation
+         ----------------------------- */
 
       #main-nav {
         min-height: 70px;
         padding: 15px 18px;
       }
 
+
       .nav-logo {
         font-size: 17px;
       }
 
+
       .nav-links {
         position: absolute;
+
         top: 70px;
         left: 0;
+
         width: 100%;
+
         display: none;
+
         flex-direction: column;
         align-items: stretch;
+
         gap: 0;
+
         padding: 10px 20px 20px;
+
         z-index: 9999;
       }
+
+
+      .nav-links.active,
+      .nav-links.open {
+        display: flex;
+      }
+
 
       .nav-links li {
         width: 100%;
       }
 
+
       .nav-links a {
         display: block;
+
         width: 100%;
+
         padding: 13px 5px;
       }
 
-      /* If your main.js adds an active/open class */
-      .nav-links.active,
-      .nav-links.open {
-        display: flex;
-      }
 
       .hamburger {
         display: flex;
         cursor: pointer;
       }
 
-      /* Hero */
+
+      /* -----------------------------
+         Hero
+         ----------------------------- */
 
       .hero-inner {
         width: calc(100% - 32px);
+
         padding-top: 55px;
         padding-bottom: 55px;
+
         gap: 40px;
       }
+
 
       .hero h1 {
         font-size: clamp(48px, 14vw, 72px);
         line-height: 0.95;
       }
 
+
       .hero-bio {
         font-size: 15px;
         line-height: 1.7;
       }
+
 
       .hero-credentials {
         font-size: 12px;
         line-height: 1.8;
       }
 
+
       .hero-cta {
         display: flex;
         flex-direction: column;
+
         width: 100%;
+
         gap: 12px;
       }
+
 
       .hero-cta .btn {
         width: 100%;
         justify-content: center;
       }
 
+
       .hero-stats {
         display: grid;
+
         grid-template-columns: repeat(3, 1fr);
+
         gap: 10px;
       }
+
 
       .stat {
         text-align: center;
       }
 
+
       .stat-num {
         font-size: 30px;
       }
+
 
       .stat-label {
         font-size: 10px;
         line-height: 1.4;
       }
 
-      /* Photo */
+
+      /* -----------------------------
+         Photo
+         ----------------------------- */
 
       .hero-photo-wrap {
         width: 100%;
       }
+
 
       .photo-card {
         width: min(360px, 90vw);
         margin: 0 auto;
       }
 
-      /* Sections */
+
+      /* -----------------------------
+         Sections
+         ----------------------------- */
 
       .section-wrap {
         width: calc(100% - 32px);
+
         padding-top: 60px;
         padding-bottom: 60px;
       }
+
 
       .section-title {
         font-size: clamp(36px, 10vw, 52px);
       }
 
+
       .section-eyebrow {
         font-size: 11px;
       }
 
-      /* Timeline */
+
+      /* -----------------------------
+         Timeline
+         ----------------------------- */
 
       .timeline {
         width: 100%;
       }
+
 
       .timeline-item {
         grid-template-columns: 1fr;
         gap: 15px;
       }
 
+
       .timeline-meta {
         padding-bottom: 5px;
       }
+
 
       .timeline-content {
         width: 100%;
       }
 
-      /* Skills */
+
+      /* -----------------------------
+         Skills
+         ----------------------------- */
 
       .skills-grid {
         grid-template-columns: 1fr;
         gap: 10px;
       }
 
+
       .skill-chip {
         width: 100%;
       }
 
-      /* Education */
+
+      /* -----------------------------
+         Education
+         ----------------------------- */
 
       .edu-grid {
         grid-template-columns: 1fr;
         gap: 15px;
       }
 
+
       .edu-card {
         width: 100%;
       }
 
-      /* Contact */
+
+      /* -----------------------------
+         BLOGS
+         ----------------------------- */
+
+      .blogs-intro {
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+
+      .blogs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+
+      .blog-card {
+        padding: 25px;
+      }
+
+
+      .blog-card h3 {
+        font-size: 26px;
+      }
+
+
+      .blog-card p {
+        font-size: 13px;
+      }
+
+
+      .blogs-footer {
+        margin-top: 25px;
+      }
+
+
+      /* -----------------------------
+         Contact
+         ----------------------------- */
 
       .contact-section {
         padding-left: 20px;
         padding-right: 20px;
       }
 
+
       .contact-section h2 {
         font-size: clamp(38px, 10vw, 55px);
       }
 
+
       .contact-items {
         width: 100%;
       }
+
 
       .contact-item {
         width: 100%;
         word-break: break-word;
       }
 
-      /* Footer */
+
+      /* -----------------------------
+         Footer
+         ----------------------------- */
 
       footer {
         padding: 25px 18px;
+
         text-align: center;
+
         line-height: 1.7;
+
         font-size: 11px;
       }
+
     }
 
-    /* -----------------------------
-       Small phones
-       ----------------------------- */
+
+    /* =====================================================
+       SMALL PHONES
+       ===================================================== */
 
     @media (max-width: 420px) {
 
@@ -370,50 +690,74 @@
         padding-right: 14px;
       }
 
+
       .nav-logo {
         font-size: 15px;
       }
+
 
       .hero-inner,
       .section-wrap {
         width: calc(100% - 24px);
       }
 
+
       .hero-stats {
         gap: 5px;
       }
+
 
       .stat-num {
         font-size: 25px;
       }
 
+
       .stat-label {
         font-size: 9px;
       }
+
 
       .photo-card {
         width: 94vw;
       }
 
+
       .section-wrap {
         padding-top: 50px;
         padding-bottom: 50px;
       }
+
+
+      .blog-card {
+        padding: 22px;
+      }
+
+
+      .blog-card h3 {
+        font-size: 24px;
+      }
+
     }
+
   </style>
+
 </head>
 
+
 <body>
+
 
   <!-- =====================================================
        SCROLL PROGRESS BAR
        ===================================================== -->
+
   <div id="progress-bar"></div>
 
 
   <!-- =====================================================
        PARTICLE CANVAS
        ===================================================== -->
+
   <canvas id="bg-canvas"></canvas>
 
 
@@ -427,36 +771,52 @@
       Dr. Pratyush Ghosh<sup>MRCP</sup>
     </div>
 
-    <ul class="nav-links" id="nav-links">
+
+    <ul
+      class="nav-links"
+      id="nav-links"
+    >
 
       <li>
-        <a href="#experience">Experience</a>
+        <a href="#experience">
+          Experience
+        </a>
       </li>
 
-      <li>
-        <a href="#skills">Skills</a>
-      </li>
 
       <li>
-        <a href="#education">Education</a>
+        <a href="#skills">
+          Skills
+        </a>
       </li>
+
+
+      <li>
+        <a href="#education">
+          Education
+        </a>
+      </li>
+
 
       <!-- BLOGS -->
+
       <li>
         <a
-          href="https://pratyushblogs.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#blogs"
         >
           Blogs
         </a>
       </li>
 
+
       <li>
-        <a href="#contact">Contact</a>
+        <a href="#contact">
+          Contact
+        </a>
       </li>
 
     </ul>
+
 
     <div
       class="hamburger"
@@ -466,9 +826,11 @@
       role="button"
       tabindex="0"
     >
+
       <span></span>
       <span></span>
       <span></span>
+
     </div>
 
   </nav>
@@ -480,78 +842,118 @@
 
   <div class="hero">
 
-    <!-- Ambient glow blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
+
     <div class="hero-inner">
 
-      <!-- LEFT: TEXT -->
+
+      <!-- LEFT -->
+
       <div>
 
         <div class="hero-tag">
+
           <span class="blink-dot"></span>
+
           Available for Opportunities
+
         </div>
 
+
         <h1>
-          Dr. <em>Pratyush</em><br>
+          Dr.
+          <em>Pratyush</em>
+          <br>
           Ghosh
         </h1>
 
+
         <p class="hero-credentials">
+
           MBBS &nbsp;·&nbsp;
           DNB Medicine &nbsp;·&nbsp;
           MRCP Part 1 &nbsp;·&nbsp;
           ACLS &amp; BLS Certified
+
         </p>
 
+
         <p class="hero-bio">
+
           A dedicated medical professional with expertise in Internal Medicine
           and critical care — committed to patient wellbeing through
           evidence-based practice and advanced clinical procedures.
+
         </p>
 
 
-        <!-- Stats -->
+        <!-- STATS -->
 
         <div class="hero-stats">
 
+
           <div class="stat">
-            <div class="stat-num" id="sn1">
+
+            <div
+              class="stat-num"
+              id="sn1"
+            >
               5<span class="suf">+</span>
             </div>
+
             <div class="stat-label">
               Years Experience
             </div>
+
           </div>
 
+
           <div class="stat">
-            <div class="stat-num" id="sn2">
+
+            <div
+              class="stat-num"
+              id="sn2"
+            >
               12<span class="suf">+</span>
             </div>
+
             <div class="stat-label">
               Clinical Procedures
             </div>
+
           </div>
 
+
           <div class="stat">
-            <div class="stat-num" id="sn3">
+
+            <div
+              class="stat-num"
+              id="sn3"
+            >
               5<span class="suf">+</span>
             </div>
+
             <div class="stat-label">
               Poster Presentations
             </div>
+
           </div>
+
 
         </div>
 
 
-        <!-- CTA Buttons -->
+        <!-- CTA -->
 
         <div class="hero-cta">
 
-          <a href="#contact" class="btn btn-primary">
+
+          <a
+            href="#contact"
+            class="btn btn-primary"
+          >
 
             <svg
               width="13"
@@ -561,8 +963,15 @@
               stroke="currentColor"
               stroke-width="2.2"
             >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
+
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+
+              <polyline
+                points="22,6 12,13 2,6"
+              />
+
             </svg>
 
             Get in Touch
@@ -570,7 +979,10 @@
           </a>
 
 
-          <a href="#experience" class="btn btn-outline">
+          <a
+            href="#experience"
+            class="btn btn-outline"
+          >
 
             <svg
               width="13"
@@ -580,13 +992,23 @@
               stroke="currentColor"
               stroke-width="2.2"
             >
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 8 12 12 14 14"/>
+
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+              />
+
+              <polyline
+                points="12 8 12 12 14 14"
+              />
+
             </svg>
 
             View Experience
 
           </a>
+
 
         </div>
 
@@ -597,15 +1019,20 @@
 
       <div class="hero-photo-wrap">
 
-        <div class="photo-card" id="photo3d">
+        <div
+          class="photo-card"
+          id="photo3d"
+        >
 
           <div class="photo-bg"></div>
+
 
           <img
             src="pratyush.jpg"
             alt="Dr. Pratyush Ghosh"
             class="photo-img"
-          />
+          >
+
 
           <div class="photo-badge">
 
@@ -623,10 +1050,11 @@
 
       </div>
 
+
     </div>
 
 
-    <!-- ECG HEARTBEAT STRIP -->
+    <!-- ECG -->
 
     <div class="ecg-wrap">
 
@@ -666,11 +1094,15 @@
        EXPERIENCE
        ===================================================== -->
 
-  <div class="section-wrap" id="experience">
+  <div
+    class="section-wrap"
+    id="experience"
+  >
 
     <div class="section-eyebrow">
       Career Journey
     </div>
+
 
     <div class="section-title">
       Clinical Experience
@@ -679,7 +1111,8 @@
 
     <div class="timeline">
 
-      <!-- DNB Residency -->
+
+      <!-- DNB -->
 
       <div class="timeline-item">
 
@@ -703,10 +1136,13 @@
             DNB Residency — Internal Medicine
           </h3>
 
+
           <p>
+
             Three-year postgraduate residency with comprehensive training
             in IPD and OPD patient management. Achieved 69.7% in DNB
             Final Practical examination.
+
           </p>
 
 
@@ -745,7 +1181,7 @@
       </div>
 
 
-      <!-- Housestaffship -->
+      <!-- HOUSESTAFFSHIP -->
 
       <div class="timeline-item">
 
@@ -768,10 +1204,13 @@
             Housestaffship — ENT Department
           </h3>
 
+
           <p>
+
             Served in the ENT department including the Mucormycosis ward
             during the critical post-COVID surge period. Proficient in OPD
             management and minor non-surgical ENT procedures.
+
           </p>
 
         </div>
@@ -779,7 +1218,7 @@
       </div>
 
 
-      <!-- Internship -->
+      <!-- INTERNSHIP -->
 
       <div class="timeline-item">
 
@@ -803,10 +1242,13 @@
             Medical Internship
           </h3>
 
+
           <p>
+
             Rotational internship including dedicated COVID ward duty.
             Gained strong foundational clinical competencies across all
             major departments.
+
           </p>
 
 
@@ -828,6 +1270,7 @@
 
       </div>
 
+
     </div>
 
   </div>
@@ -842,11 +1285,15 @@
 
   <div class="skills-bg">
 
-    <div class="section-wrap" id="skills">
+    <div
+      class="section-wrap"
+      id="skills"
+    >
 
       <div class="section-eyebrow">
         Clinical Competencies
       </div>
+
 
       <div class="section-title">
         Procedures &amp; Skills
@@ -855,65 +1302,78 @@
 
       <div class="skills-grid">
 
+
         <div class="skill-chip">
           <span class="skill-icon">❤️</span>
           ACLS &amp; BLS Management
         </div>
+
 
         <div class="skill-chip">
           <span class="skill-icon">🔬</span>
           Bone Marrow Biopsy
         </div>
 
+
         <div class="skill-chip">
           <span class="skill-icon">🫁</span>
           Thoracocentesis
         </div>
+
 
         <div class="skill-chip">
           <span class="skill-icon">🧠</span>
           Lumbar Puncture
         </div>
 
+
         <div class="skill-chip">
           <span class="skill-icon">💉</span>
           Ascitic Tapping
         </div>
+
 
         <div class="skill-chip">
           <span class="skill-icon">🦴</span>
           Intra-articular Steroid Injection
         </div>
 
+
         <div class="skill-chip">
           <span class="skill-icon">🌬️</span>
           Intubation
         </div>
+
 
         <div class="skill-chip">
           <span class="skill-icon">🫀</span>
           Chest Drain
         </div>
 
+
         <div class="skill-chip">
           <span class="skill-icon">🩺</span>
           Pericardiocentesis
         </div>
+
 
         <div class="skill-chip">
           <span class="skill-icon">⚡</span>
           Central Line Insertion
         </div>
 
+
         <div class="skill-chip">
           <span class="skill-icon">🍼</span>
           TPN (Total Parenteral Nutrition)
         </div>
 
+
         <div class="skill-chip">
           <span class="skill-icon">📈</span>
           TMT Interpretation
         </div>
+
 
       </div>
 
@@ -929,11 +1389,15 @@
        EDUCATION
        ===================================================== -->
 
-  <div class="section-wrap" id="education">
+  <div
+    class="section-wrap"
+    id="education"
+  >
 
     <div class="section-eyebrow">
       Academic Background
     </div>
+
 
     <div class="section-title">
       Education
@@ -941,6 +1405,7 @@
 
 
     <div class="edu-grid">
+
 
       <div class="edu-card">
 
@@ -1009,28 +1474,105 @@
 
       </div>
 
+
     </div>
 
   </div>
+
+
+  <div class="divider"></div>
+
+
+  <!-- =====================================================
+       BLOGS
+       ===================================================== -->
+
+  <section
+    class="section-wrap blogs-section"
+    id="blogs"
+  >
+
+    <div class="section-eyebrow">
+      Latest Writing
+    </div>
+
+
+    <div class="section-title">
+      From the Blog
+    </div>
+
+
+    <p class="blogs-intro">
+
+      Medical insights, health awareness and evidence-based perspectives
+      from Dr. Pratyush Ghosh.
+
+    </p>
+
+
+    <!--
+      BLOG POSTS WILL BE INSERTED HERE AUTOMATICALLY
+    -->
+
+    <div
+      class="blogs-grid"
+      id="blogs-grid"
+    >
+
+      <div class="blogs-loading">
+
+        Loading latest articles...
+
+      </div>
+
+    </div>
+
+
+    <div class="blogs-footer">
+
+      <a
+        href="https://pratyushblogs.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline"
+      >
+
+        View All Articles →
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <div class="divider"></div>
 
 
   <!-- =====================================================
        CONTACT
        ===================================================== -->
 
-  <div class="contact-section" id="contact">
+  <div
+    class="contact-section"
+    id="contact"
+  >
 
     <h2>
       Get in Touch
     </h2>
 
+
     <p>
+
       Open to positions in Internal Medicine (General Medicine)
       and Critical Care Medicine.
+
     </p>
 
 
     <div class="contact-items">
+
 
       <a
         href="mailto:Pratyushghosh24@gmail.com"
@@ -1058,6 +1600,7 @@
 
       </div>
 
+
     </div>
 
   </div>
@@ -1070,6 +1613,7 @@
   <footer>
 
     © 2025
+
     <span class="gold">
       Dr. Pratyush Ghosh
     </span>
@@ -1094,64 +1638,455 @@
 
 
   <!-- =====================================================
-       JAVASCRIPT
+       EXISTING JAVASCRIPT
        ===================================================== -->
 
-  <script src="main.js" defer></script>
+  <script
+    src="main.js"
+    defer
+  ></script>
 
 
-  <!-- Mobile navigation fallback -->
+  <!-- =====================================================
+       MOBILE NAVIGATION
+       ===================================================== -->
+
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
 
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.getElementById("nav-links");
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
 
-      if (!hamburger || !navLinks) return;
+        const hamburger =
+          document.getElementById("hamburger");
 
-      hamburger.addEventListener("click", function () {
+        const navLinks =
+          document.getElementById("nav-links");
 
-        navLinks.classList.toggle("active");
 
-        const isOpen = navLinks.classList.contains("active");
+        if (!hamburger || !navLinks) {
+          return;
+        }
 
-        hamburger.setAttribute(
-          "aria-expanded",
-          isOpen ? "true" : "false"
+
+        function toggleMenu() {
+
+          navLinks.classList.toggle("active");
+
+          const isOpen =
+            navLinks.classList.contains("active");
+
+          hamburger.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+          );
+
+        }
+
+
+        hamburger.addEventListener(
+          "click",
+          toggleMenu
         );
 
-      });
+
+        hamburger.addEventListener(
+          "keydown",
+          function (event) {
+
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+
+              event.preventDefault();
+
+              toggleMenu();
+
+            }
+
+          }
+        );
 
 
-      /* Close mobile menu after clicking a normal section link */
+        /*
+         * Close mobile menu when navigating
+         * to a section.
+         */
 
-      navLinks.querySelectorAll("a").forEach(function (link) {
+        navLinks
+          .querySelectorAll("a")
+          .forEach(function (link) {
 
-        link.addEventListener("click", function () {
+            link.addEventListener(
+              "click",
+              function () {
 
-          /*
-           * Don't force-close for the external Blogs link
-           * because it opens in a new tab.
-           */
+                if (
+                  link
+                    .getAttribute("href")
+                    .startsWith("#")
+                ) {
 
-          if (link.getAttribute("href").startsWith("#")) {
+                  navLinks.classList.remove(
+                    "active"
+                  );
 
-            navLinks.classList.remove("active");
+                  hamburger.setAttribute(
+                    "aria-expanded",
+                    "false"
+                  );
 
-            hamburger.setAttribute(
-              "aria-expanded",
-              "false"
+                }
+
+              }
+            );
+
+          });
+
+      }
+
+    );
+
+  </script>
+
+
+  <!-- =====================================================
+       DYNAMIC BLOG LOADER
+       ===================================================== -->
+
+  <script>
+
+    async function loadLatestBlogs() {
+
+      const blogsGrid =
+        document.getElementById("blogs-grid");
+
+
+      if (!blogsGrid) {
+        return;
+      }
+
+
+      try {
+
+        /*
+         * Blog feed
+         */
+
+        const response =
+          await fetch(
+            "https://pratyushblogs.netlify.app/posts.json",
+            {
+              cache: "no-cache"
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Blog feed could not be loaded."
+          );
+
+        }
+
+
+        const posts =
+          await response.json();
+
+
+        /*
+         * Make sure we received an array.
+         */
+
+        if (!Array.isArray(posts)) {
+
+          throw new Error(
+            "Invalid blog feed format."
+          );
+
+        }
+
+
+        /*
+         * Sort newest first.
+         */
+
+        posts.sort(
+          function (a, b) {
+
+            return (
+              new Date(b.date) -
+              new Date(a.date)
             );
 
           }
+        );
 
-        });
 
-      });
+        /*
+         * Display latest 3 articles.
+         */
 
-    });
+        const latestPosts =
+          posts.slice(0, 3);
+
+
+        /*
+         * Clear loading message.
+         */
+
+        blogsGrid.innerHTML = "";
+
+
+        /*
+         * No posts.
+         */
+
+        if (latestPosts.length === 0) {
+
+          blogsGrid.innerHTML = `
+
+            <div class="blogs-error">
+
+              <p>
+                No articles available yet.
+              </p>
+
+              <a
+                href="https://pratyushblogs.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit the Blog →
+              </a>
+
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        /*
+         * Create article cards.
+         */
+
+        latestPosts.forEach(
+          function (post) {
+
+
+            const card =
+              document.createElement("article");
+
+
+            card.className =
+              "blog-card";
+
+
+            /*
+             * Safely prepare content.
+             */
+
+            const title =
+              post.title ||
+              "Untitled Article";
+
+
+            const description =
+              post.description ||
+              "Read the latest article from Dr. Pratyush Ghosh.";
+
+
+            const category =
+              post.category ||
+              "Health & Awareness";
+
+
+            const url =
+              post.url ||
+              "https://pratyushblogs.netlify.app/";
+
+
+            const date =
+              formatBlogDate(post.date);
+
+
+            const readTime =
+              post.readTime
+                ? ` · ${post.readTime}`
+                : "";
+
+
+            /*
+             * Build card.
+             */
+
+            card.innerHTML = `
+
+              <div class="blog-card-category">
+                ${escapeHtml(category)}
+              </div>
+
+
+              <div class="blog-card-date">
+                ${escapeHtml(date)}
+                ${escapeHtml(readTime)}
+              </div>
+
+
+              <h3>
+                ${escapeHtml(title)}
+              </h3>
+
+
+              <p>
+                ${escapeHtml(description)}
+              </p>
+
+
+              <a
+                href="${escapeAttribute(url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="blog-read-more"
+              >
+                Read article →
+              </a>
+
+            `;
+
+
+            blogsGrid.appendChild(card);
+
+          }
+        );
+
+
+      } catch (error) {
+
+
+        console.error(
+          "Blog loading error:",
+          error
+        );
+
+
+        /*
+         * Fallback
+         */
+
+        blogsGrid.innerHTML = `
+
+          <div class="blogs-error">
+
+            <p>
+              Latest articles could not be loaded right now.
+            </p>
+
+            <a
+              href="https://pratyushblogs.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit the Blog →
+            </a>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       BLOG DATE FORMATTER
+       ===================================================== */
+
+    function formatBlogDate(date) {
+
+      if (!date) {
+        return "";
+      }
+
+
+      const parsedDate =
+        new Date(date);
+
+
+      if (
+        Number.isNaN(
+          parsedDate.getTime()
+        )
+      ) {
+
+        return "";
+
+      }
+
+
+      return parsedDate.toLocaleDateString(
+        "en-IN",
+        {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       HTML ESCAPING
+       ===================================================== */
+
+    function escapeHtml(value) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        String(value);
+
+      return div.innerHTML;
+
+    }
+
+
+    function escapeAttribute(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    }
+
+
+    /* =====================================================
+       LOAD BLOGS
+       ===================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        loadLatestBlogs();
+
+      }
+    );
+
   </script>
 
+
 </body>
+
 </html>
 ```
