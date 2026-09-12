@@ -1,50 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
-    content="Pratyush Blog — thoughtful articles, insights and stories."
+    content="Pratyush Blog — thoughtful articles, health insights and stories."
   >
 
   <title>Blog | Pratyush</title>
 
-  <!-- =====================================================
-       BLOG STYLESHEET
-  ====================================================== -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- =====================================================
-       BLOG JAVASCRIPT
-  ====================================================== -->
   <script src="main.js" defer></script>
-
 </head>
-
 
 <body>
 
-
-  <!-- =====================================================
-       BACKGROUND PARTICLES
-  ====================================================== -->
-
   <canvas id="bg-canvas"></canvas>
-
   <div id="progress-bar"></div>
 
-
-
   <!-- =====================================================
-       NAVIGATION — START
+       NAVIGATION
   ====================================================== -->
 
   <nav id="main-nav">
@@ -58,7 +35,6 @@
       <sup>BLOG</sup>
     </a>
 
-
     <button
       class="hamburger"
       id="hamburger"
@@ -66,27 +42,22 @@
       aria-expanded="false"
       type="button"
     >
-
       <span></span>
       <span></span>
       <span></span>
-
     </button>
 
+    <div class="nav-links" id="nav-links">
 
-    <div
-      class="nav-links"
-      id="nav-links"
-    >
-
-      <a
-        href="index.html"
-        class="active"
-      >
+      <a href="index.html" class="active">
         Blog
       </a>
 
-      <a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://drpratyushghosh.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Website
       </a>
 
@@ -94,73 +65,43 @@
 
   </nav>
 
-  <!-- =====================================================
-       NAVIGATION — END
-  ====================================================== -->
-
-
 
   <main>
 
-
     <!-- =====================================================
-         HERO — START
+         HERO
     ====================================================== -->
 
     <section class="blog-hero">
 
-
       <div class="blob blob-1"></div>
-
       <div class="blob blob-2"></div>
-
 
       <div class="blog-hero-inner">
 
-
         <div class="hero-tag">
-
           <span class="blink-dot"></span>
-
           PRATYUSH BLOG
-
         </div>
 
-
         <h1>
-
           Ideas worth
           <br>
-
           <em>reading.</em>
-
         </h1>
 
-
         <p class="hero-bio">
-
           Thoughtful articles, useful insights and stories about
           the things that matter.
-
         </p>
 
-
-        <a
-          href="#latest"
-          class="btn btn-primary"
-        >
-
+        <a href="#latest" class="btn btn-primary">
           Explore articles
-
           <span>↓</span>
-
         </a>
-
 
       </div>
 
-
-      <!-- ECG decoration -->
 
       <div class="ecg-wrap">
 
@@ -172,47 +113,14 @@
 
           <polyline
             points="
-              0,28
-              80,28
-              100,28
-              110,10
-              120,46
-              130,28
-              230,28
-              250,28
-              260,10
-              270,46
-              280,28
-              380,28
-              400,28
-              410,10
-              420,46
-              430,28
-              530,28
-              550,28
-              560,10
-              570,46
-              580,28
-              680,28
-              700,28
-              710,10
-              720,46
-              730,28
-              830,28
-              850,28
-              860,10
-              870,46
-              880,28
-              980,28
-              1000,28
-              1010,10
-              1020,46
-              1030,28
-              1130,28
-              1150,28
-              1160,10
-              1170,46
-              1180,28
+              0,28 80,28 100,28 110,10 120,46 130,28
+              230,28 250,28 260,10 270,46 280,28
+              380,28 400,28 410,10 420,46 430,28
+              530,28 550,28 560,10 570,46 580,28
+              680,28 700,28 710,10 720,46 730,28
+              830,28 850,28 860,10 870,46 880,28
+              980,28 1000,28 1010,10 1020,46 1030,28
+              1130,28 1150,28 1160,10 1170,46 1180,28
               1200,28
             "
             fill="none"
@@ -224,31 +132,19 @@
 
       </div>
 
-
     </section>
-
-    <!-- =====================================================
-         HERO — END
-    ====================================================== -->
-
 
 
     <div class="divider"></div>
 
 
-
     <!-- =====================================================
-         ARTICLES — START
+         ARTICLES
     ====================================================== -->
 
-    <section
-      class="section-wrap"
-      id="latest"
-    >
-
+    <section class="section-wrap" id="latest">
 
       <div class="articles-heading">
-
 
         <div>
 
@@ -256,47 +152,117 @@
             FROM THE BLOG
           </p>
 
-
           <h2 class="section-title">
             Latest articles
           </h2>
 
         </div>
 
-
         <p class="article-count">
 
           <span id="article-count">
-            2
+            3
           </span>
 
           articles
 
         </p>
 
-
       </div>
 
 
-
-      <!-- ===================================================
-           BLOG GRID — START
-      ==================================================== -->
-
       <div class="blog-grid">
 
+
         <!-- =================================================
-             BLOG 2 — START
-             NATIONAL NUTRITION WEEK
+             BLOG 3 — ASTHMA AWARENESS
+        ================================================== -->
+
+        <article
+          class="blog-card reveal"
+          data-category="Respiratory Health"
+        >
+
+          <a
+            class="blog-cover"
+            href="Asthma_Awareness_Breathe_Better_Live_Better.html"
+            aria-label="Read Asthma Awareness article"
+          >
+
+            <span class="cover-mark">
+              A
+            </span>
+
+            <span class="cover-number">
+              03
+            </span>
+
+            <span class="category">
+              Respiratory Health
+            </span>
+
+          </a>
+
+
+          <div class="blog-card-body">
+
+            <div class="blog-meta">
+
+              <span>
+                2026
+              </span>
+
+              <span class="meta-dot">
+                •
+              </span>
+
+              <span>
+                6 min read
+              </span>
+
+            </div>
+
+
+            <h3>
+
+              <a
+                href="Asthma_Awareness_Breathe_Better_Live_Better.html"
+              >
+                Asthma Awareness:
+                Breathe Better, Live Better
+              </a>
+
+            </h3>
+
+
+            <p>
+              Understanding asthma, common triggers, inhalers,
+              emergency warning signs and the importance of long-term
+              asthma control.
+            </p>
+
+
+            <a
+              class="read-link"
+              href="Asthma_Awareness_Breathe_Better_Live_Better.html"
+            >
+              Read article
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BLOG 2 — NATIONAL NUTRITION WEEK
         ================================================== -->
 
         <article
           class="blog-card reveal"
           data-category="Health & Awareness"
         >
-
-
-          <!-- Blog 2 Cover -->
 
           <a
             class="blog-cover"
@@ -319,10 +285,7 @@
           </a>
 
 
-          <!-- Blog 2 Body -->
-
           <div class="blog-card-body">
-
 
             <div class="blog-meta">
 
@@ -343,9 +306,7 @@
 
             <h3>
 
-              <a
-                href="National_Nutrition_Week.html"
-              >
+              <a href="National_Nutrition_Week.html">
 
                 National Nutrition Week —
                 Nutrition Is Not Just About Food,
@@ -357,10 +318,8 @@
 
 
             <p>
-
               A reminder that balanced nutrition is not simply about
               weight or appearance—it is a foundation for long-term health.
-
             </p>
 
 
@@ -368,37 +327,23 @@
               class="read-link"
               href="National_Nutrition_Week.html"
             >
-
               Read article
-
-              <span>
-                →
-              </span>
-
+              <span>→</span>
             </a>
-
 
           </div>
 
         </article>
 
-        <!-- =================================================
-             BLOG 2 — END
-        ================================================== -->
-
 
         <!-- =================================================
-             BLOG 1 — START
-             HEPATITIS WEEK 2026
+             BLOG 1 — HEPATITIS WEEK 2026
         ================================================== -->
 
         <article
           class="blog-card reveal"
           data-category="Health & Awareness"
         >
-
-
-          <!-- Blog 1 Cover -->
 
           <a
             class="blog-cover"
@@ -421,10 +366,7 @@
           </a>
 
 
-          <!-- Blog 1 Body -->
-
           <div class="blog-card-body">
-
 
             <div class="blog-meta">
 
@@ -458,10 +400,8 @@
 
 
             <p>
-
               Exploring why hepatitis remains a major global health
               concern and the key insights behind Hepatitis Week 2026.
-
             </p>
 
 
@@ -469,222 +409,94 @@
               class="read-link"
               href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
             >
-
               Read article
-
-              <span>
-                →
-              </span>
-
-            </a>
-
-
-          </div>
-
-        </article>
-
-        <!-- =================================================
-             BLOG 1 — END
-        ================================================== -->
-
-
-
-
-
-        <!-- =================================================
-             BLOG 3 — FUTURE TEMPLATE
-
-             Copy this entire article block when you add
-             your next blog.
-        ================================================== -->
-
-        <!--
-
-        <article
-          class="blog-card reveal"
-          data-category="Technology"
-        >
-
-          <a
-            class="blog-cover"
-            href="your-article.html"
-            aria-label="Read your article"
-          >
-
-            <span class="cover-mark">
-              T
-            </span>
-
-            <span class="cover-number">
-              03
-            </span>
-
-            <span class="category">
-              Technology
-            </span>
-
-          </a>
-
-
-          <div class="blog-card-body">
-
-            <div class="blog-meta">
-
-              <span>
-                2026
-              </span>
-
-              <span class="meta-dot">
-                •
-              </span>
-
-              <span>
-                5 min read
-              </span>
-
-            </div>
-
-
-            <h3>
-
-              <a href="your-article.html">
-
-                Your article title
-
-              </a>
-
-            </h3>
-
-
-            <p>
-
-              Your short article description.
-
-            </p>
-
-
-            <a
-              class="read-link"
-              href="your-article.html"
-            >
-
-              Read article
-
-              <span>
-                →
-              </span>
-
+              <span>→</span>
             </a>
 
           </div>
 
         </article>
-
-        -->
 
 
       </div>
 
-      <!-- ===================================================
-           BLOG GRID — END
-      ==================================================== -->
-
-
     </section>
 
-    <!-- =====================================================
-         ARTICLES — END
-    ====================================================== -->
-
-
 
     <!-- =====================================================
-         CTA — START
+         CTA
     ====================================================== -->
 
     <section class="blog-cta">
 
-
       <div class="cta-glow"></div>
 
-
       <div class="cta-content">
-
 
         <p class="section-eyebrow centered">
           KEEP EXPLORING
         </p>
 
-
         <h2>
-
           More ideas are
           <em>coming.</em>
-
         </h2>
 
-
         <p>
-
           Stay curious. Keep learning.
           Keep asking better questions.
-
         </p>
 
-
-        <a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">
-
+        <a
+          href="https://drpratyushghosh.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Visit main website
-
-          <span>
-            →
-          </span>
-
+          <span>→</span>
         </a>
-
 
       </div>
 
-
     </section>
-
-    <!-- =====================================================
-         CTA — END
-    ====================================================== -->
-
 
   </main>
 
 
-
   <!-- =====================================================
-       FOOTER — START
+       FOOTER
   ====================================================== -->
 
-<footer>
-  © 2026
-  <span class="gold">
-    <a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">
-      Dr. Pratyush Ghosh
+  <footer>
+
+    © 2026
+
+    <span class="gold">
+
+      <a
+        href="https://drpratyushghosh.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Dr. Pratyush Ghosh
+      </a>
+
+    </span>
+
+    · MBBS, DNB Medicine, MRCP Part 1
+    · West Bengal &nbsp;·&nbsp;
+    Made by
+
+    <a
+      href="https://instagram.com/Scorpio_gora97"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-insta"
+    >
+      @Scorpio_gora97
     </a>
-  </span>
-  · MBBS, DNB Medicine, MRCP Part 1
-  · West Bengal &nbsp;·&nbsp;
-  Made by
-  <a
-    href="https://instagram.com/Scorpio_gora97"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="footer-insta"
-  >
-    @Scorpio_gora97
-  </a>
-</footer>
 
-  <!-- =====================================================
-       FOOTER — END
-  ====================================================== -->
-
+  </footer>
 
 
   <!-- =====================================================
@@ -701,5 +513,4 @@
 
 
 </body>
-
 </html>
