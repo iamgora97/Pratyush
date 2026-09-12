@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hypertension Awareness: Know Your Numbers, Protect Your Health — an educational guide to blood pressure, cardiovascular risk, lifestyle, medicines and emergency warning signs.">
+<meta name="author" content="Dr. Pratyush Ghosh">
+<title>Hypertension Awareness: Know Your Numbers, Protect Your Health | Dr. Pratyush Ghosh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles_for_blog.css">
+<script src="main_for_blog.js" defer></script>
+
+<style>
+/* =====================================================
+   HYPERTENSION ARTICLE — INTERACTIVE LAYER
+   Uses the existing blog CSS + JS as its foundation.
+===================================================== */
+
+.number-card {
+  margin: 25px 0;
+  padding: 22px;
+  border: 1px solid rgba(31,184,168,.20);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(31,184,168,.07), rgba(201,168,76,.035));
+}
+
+.number-card h3 {
+  margin: 0 0 9px;
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+}
+
+.number-card p {
+  margin-bottom: 0;
+}
+
+.monitor-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.monitor-step {
+  padding: 15px;
+  border: 1px solid rgba(139,171,205,.12);
+  border-radius: 7px;
+  background: rgba(255,255,255,.025);
+  color: #cbd6e1;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.monitor-step strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--teal-l);
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 9px;
+  margin: 20px 0;
+}
+
+.risk-item {
+  padding: 12px 14px;
+  border-left: 3px solid var(--teal);
+  border-radius: 5px;
+  background: rgba(255,255,255,.025);
+  color: #cbd6e1;
+  font-size: 13px;
+}
+
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.lifestyle-card {
+  padding: 18px;
+  border: 1px solid rgba(31,184,168,.13);
+  border-radius: 8px;
+  background: rgba(31,184,168,.035);
+}
+
+.lifestyle-card .icon {
+  font-size: 23px;
+  margin-bottom: 6px;
+}
+
+.lifestyle-card h3 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.lifestyle-card p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.emergency-box {
+  margin: 23px 0;
+  padding: 20px;
+  border: 1px solid rgba(229,93,93,.30);
+  border-left: 4px solid #e55d5d;
+  border-radius: 7px;
+  background: rgba(229,93,93,.055);
+}
+
+.emergency-box strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #ff8d8d;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.emergency-box p {
+  margin-bottom: 10px;
+}
+
+.warning-list {
+  display: grid;
+  gap: 8px;
+  margin: 15px 0 0;
+}
+
+.warning-item {
+  padding: 10px 12px;
+  border-radius: 5px;
+  background: rgba(255,255,255,.035);
+  color: #d7e0e9;
+  font-size: 13px;
+}
+
+.warning-item::before {
+  content: "•";
+  margin-right: 8px;
+  color: #ff8d8d;
+}
+
+.medicine-note {
+  margin: 22px 0;
+  padding: 18px;
+  border: 1px solid rgba(201,168,76,.20);
+  border-radius: 7px;
+  background: rgba(201,168,76,.045);
+}
+
+.medicine-note strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold-l);
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.final-message {
+  margin-top: 30px;
+  padding: 26px 22px;
+  border: 1px solid rgba(31,184,168,.22);
+  border-left: 4px solid var(--teal-l);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(31,184,168,.075), rgba(201,168,76,.035));
+}
+
+.final-message p {
+  margin: 8px 0;
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.final-message p:last-child {
+  color: var(--teal-l);
+}
+
+@media (max-width:700px) {
+  .monitor-steps,
+  .risk-grid,
+  .lifestyle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress-bar"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<!-- =====================================================
+     HEADER / NAVIGATION
+====================================================== -->
+
+<header class="site-header">
+<nav id="main-nav">
+<div class="nav-inner">
+
+<a href="index.html" class="brand" aria-label="Medical Journal Blog home">
+<span class="brand-mark">P</span>
+<span class="brand-text">
+<strong>Dr. Pratyush Ghosh</strong>
+<span>Medical Journal · Blog</span>
+</span>
+</a>
+
+<div class="nav-links" id="nav-links">
+<a href="index.html">Blog Home</a>
+<a href="#" class="active">Article</a>
+<a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">Main Website ↗</a>
+</div>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" type="button">
+<span></span><span></span><span></span>
+</button>
+
+</div>
+</nav>
+</header>
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<header class="hero">
+
+<div class="article-hero-inner">
+
+<div class="eyebrow">
+Cardiovascular Health
+</div>
+
+<h1>
+❤️ Hypertension Awareness:<br>
+Know Your Numbers, Protect Your Health
+</h1>
+
+<p class="hero-sub">
+Hypertension may be silent — but its complications don't have to be inevitable.
+</p>
+
+<div class="meta">
+Hypertension Awareness
+<span>•</span>
+Preventive Health
+<span>•</span>
+Health Education
+</div>
+
+<div class="ecg" aria-hidden="true">
+<svg viewBox="0 0 1000 46" preserveAspectRatio="none">
+<path class="soft" d="M0 23 H170 L185 23 L194 10 L203 36 L212 23 H390 L405 23 L414 14 L423 32 L432 23 H620 L635 23 L644 8 L653 39 L662 23 H820 L835 23 L844 15 L853 31 L862 23 H1000"/>
+<path d="M0 23 H170 L185 23 L194 10 L203 36 L212 23 H390 L405 23 L414 14 L423 32 L432 23 H620 L635 23 L644 8 L653 39 L662 23 H820 L835 23 L844 15 L853 31 L862 23 H1000"/>
+</svg>
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     ARTICLE
+====================================================== -->
+
+<main id="article-body">
+
+<div class="layout">
+
+<aside class="side">
+<div class="side-label">In this article</div>
+<a href="#what-is">What is hypertension?</a>
+<a href="#danger">Why it matters</a>
+<a href="#symptoms">Symptoms</a>
+<a href="#numbers">Know your numbers</a>
+<a href="#lifestyle">Lifestyle</a>
+<a href="#medicines">Medicines</a>
+<a href="#emergency">Emergency</a>
+<a href="#message">The message</a>
+</aside>
+
+
+<article class="article">
+
+<p class="intro">
+High blood pressure, or hypertension, is one of the most common chronic medical conditions worldwide. What makes it particularly dangerous is that it often causes no obvious symptoms, while gradually damaging vital organs.
+<br><br>
+That is why hypertension is often called the <strong>“silent killer.”</strong>
+</p>
+
+
+<!-- 01 -->
+
+<section class="section" id="what-is">
+
+<div class="section-number">01</div>
+
+<h2>🩺 What is hypertension?</h2>
+
+<p>
+Blood pressure is the force exerted by circulating blood against the walls of our arteries.
+</p>
+
+<p>
+When blood pressure remains consistently elevated, it is diagnosed as hypertension based on repeated measurements and the criteria used by the treating healthcare professional.
+</p>
+
+<div class="number-card">
+<h3>One high reading is not the whole story.</h3>
+<p>
+A single high reading does not necessarily mean that a person has hypertension. Blood pressure should be measured correctly and, when appropriate, confirmed with repeated home or ambulatory readings.
+</p>
+</div>
+
+</section>
+
+
+<!-- 02 -->
+
+<section class="section" id="danger">
+
+<div class="section-number">02</div>
+
+<h2>⚠️ Why is high blood pressure dangerous?</h2>
+
+<p>
+Untreated or poorly controlled hypertension can progressively damage blood vessels and increase the risk of:
+</p>
+
+<div class="risk-grid">
+<div class="risk-item">❤️ Heart attack and heart failure</div>
+<div class="risk-item">🧠 Stroke</div>
+<div class="risk-item">🫘 Chronic kidney disease</div>
+<div class="risk-item">👁️ Hypertensive eye disease</div>
+<div class="risk-item">🩸 Peripheral arterial disease</div>
+<div class="risk-item">Cognitive decline and other vascular complications</div>
+</div>
+
+<p>
+The longer blood pressure remains uncontrolled, the greater the cumulative risk.
+</p>
+
+</section>
+
+
+<!-- 03 -->
+
+<section class="section" id="symptoms">
+
+<div class="section-number">03</div>
+
+<h2>🤔 Can hypertension have symptoms?</h2>
+
+<div class="highlight">
+<p><strong>Usually, no.</strong></p>
+<p>
+Many people with significantly elevated blood pressure feel completely well. Headache, dizziness or fatigue can occur, but these symptoms are not reliable indicators of hypertension.
+</p>
+</div>
+
+<p>
+The only dependable way to know your blood pressure is to measure it.
+</p>
+
+</section>
+
+
+<!-- 04 -->
+
+<section class="section" id="numbers">
+
+<div class="section-number">04</div>
+
+<h2>📏 Know your numbers</h2>
+
+<p>
+Regular blood pressure monitoring is particularly important if you:
+</p>
+
+<ul>
+<li>Have diabetes, kidney disease or cardiovascular disease</li>
+<li>Have a family history of hypertension</li>
+<li>Are overweight or physically inactive</li>
+<li>Smoke or consume tobacco</li>
+<li>Frequently consume high-salt foods</li>
+<li>Are older</li>
+<li>Have previously had elevated blood pressure readings</li>
+</ul>
+
+<div class="monitor-steps">
+
+<div class="monitor-step">
+<strong>01 · Prepare</strong>
+Sit quietly for several minutes before measuring.
+</div>
+
+<div class="monitor-step">
+<strong>02 · Position</strong>
+Keep your arm supported at heart level.
+</div>
+
+<div class="monitor-step">
+<strong>03 · Equipment</strong>
+Use a validated upper-arm blood pressure monitor.
+</div>
+
+<div class="monitor-step">
+<strong>04 · Follow-up</strong>
+Take readings as advised by your healthcare professional.
+</div>
+
+</div>
+
+<div class="caution">
+<strong>Remember</strong>
+<p>
+Home readings can be useful, but interpretation and treatment decisions should be discussed with your healthcare professional.
+</p>
+</div>
+
+</section>
+
+
+<!-- 05 -->
+
+<section class="section" id="lifestyle">
+
+<div class="section-number">05</div>
+
+<h2>🥗 Lifestyle: Your first line of defence</h2>
+
+<p>
+Healthy lifestyle habits can significantly improve blood pressure control.
+</p>
+
+<div class="lifestyle-grid">
+
+<div class="lifestyle-card">
+<div class="icon">🧂</div>
+<h3>Reduce excess salt</h3>
+<p>Limit highly salty and processed foods. Avoid adding unnecessary salt at the table.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">🥦</div>
+<h3>Eat a balanced diet</h3>
+<p>Choose plenty of vegetables, fruits, whole grains, pulses and appropriate protein sources. Limit foods high in saturated fat, added sugars and excessive calories.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">🏃</div>
+<h3>Stay physically active</h3>
+<p>Regular aerobic activity and resistance exercise, when medically appropriate, can help lower blood pressure and improve cardiovascular health.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">⚖️</div>
+<h3>Maintain a healthy weight</h3>
+<p>Even modest weight reduction in people who are overweight can improve blood pressure.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">🚭</div>
+<h3>Avoid tobacco</h3>
+<p>Smoking and tobacco use significantly increase cardiovascular risk.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">🍺</div>
+<h3>Limit alcohol</h3>
+<p>Excessive alcohol consumption can raise blood pressure and contribute to cardiovascular risk.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">😴</div>
+<h3>Prioritize sleep</h3>
+<p>Poor sleep can adversely affect cardiovascular health. Address persistent sleep problems with a healthcare professional.</p>
+</div>
+
+<div class="lifestyle-card">
+<div class="icon">🧘</div>
+<h3>Manage stress</h3>
+<p>Chronic stress can adversely affect cardiovascular health. Build healthy strategies for managing ongoing stress.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 06 -->
+
+<section class="section" id="medicines">
+
+<div class="section-number">06</div>
+
+<h2>💊 Do I need medicines?</h2>
+
+<p>
+Some people can achieve adequate blood pressure control through lifestyle changes, while others require medication.
+</p>
+
+<div class="medicine-note">
+<strong>Medication is not failure</strong>
+<p>
+Antihypertensive medicines are an important tool for reducing the risk of stroke, heart attack, heart failure and kidney disease when indicated.
+</p>
+</div>
+
+<p>
+Take prescribed medication regularly and do not stop it suddenly or change the dose without medical advice, even when you feel completely well.
+</p>
+
+</section>
+
+
+<!-- 07 -->
+
+<section class="section" id="emergency">
+
+<div class="section-number">07</div>
+
+<h2>🚨 When is high blood pressure an emergency?</h2>
+
+<p>
+A very high blood pressure reading accompanied by concerning symptoms requires urgent medical assessment.
+</p>
+
+<div class="emergency-box">
+
+<strong>Seek emergency care</strong>
+
+<p>
+Seek emergency care if markedly elevated blood pressure is accompanied by symptoms such as:
+</p>
+
+<div class="warning-list">
+<div class="warning-item">Severe chest pain</div>
+<div class="warning-item">Severe breathlessness</div>
+<div class="warning-item">New weakness or numbness, particularly on one side</div>
+<div class="warning-item">Difficulty speaking or understanding speech</div>
+<div class="warning-item">Sudden severe headache</div>
+<div class="warning-item">New confusion</div>
+<div class="warning-item">Loss or significant disturbance of vision</div>
+<div class="warning-item">Seizure or loss of consciousness</div>
+</div>
+
+</div>
+
+<p>
+These symptoms may indicate a serious cardiovascular or neurological emergency.
+</p>
+
+</section>
+
+
+<!-- 08 -->
+
+<section class="section" id="message">
+
+<div class="section-number">08</div>
+
+<h2>❤️ The most important message</h2>
+
+<p>
+You don't have to feel sick to have hypertension.
+</p>
+
+<p>
+Check your blood pressure regularly. Know your numbers. Make healthy lifestyle choices. If medication is prescribed, take it consistently and attend follow-up appointments.
+</p>
+
+<div class="final-message">
+<p>Measure it.</p>
+<p>Control it.</p>
+<p>Protect your heart, brain and kidneys.</p>
+</div>
+
+<p>
+Hypertension may be silent — but its complications don't have to be inevitable.
+</p>
+
+</section>
+
+
+<p class="disclaimer">
+This article is intended for general health education and does not replace individualized medical advice. Blood pressure targets and treatment decisions should be determined by a qualified healthcare professional based on your individual risk factors and medical conditions.
+</p>
+
+</article>
+
+</div>
+
+</main>
+
+
+<div class="back">
+<a href="index.html">← Back to Blog</a>
+</div>
+
+
+<footer>
+© 2026
+<span class="gold">
+<a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Dr. Pratyush Ghosh</a>
+</span>
+· MBBS, DNB Medicine, MRCP Part 1
+· West Bengal &nbsp;·&nbsp;
+Made by
+<a href="https://instagram.com/Scorpio_gora97" target="_blank" rel="noopener noreferrer" class="footer-insta">@Scorpio_gora97</a>
+</footer>
+
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+</body>
+</html>
