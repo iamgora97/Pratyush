@@ -1,1201 +1,479 @@
 ```javascript
-/* ════════════════════════════════════════
-   main.js — Dr. Pratyush Ghosh Website
-════════════════════════════════════════ */
+/* =========================================================
+   MAIN.JS
+   Dr. Pratyush Ghosh — Portfolio
+   ========================================================= */
 
-/* ══════════════════════════════
-   1. SCROLL PROGRESS BAR
-══════════════════════════════ */
+document.addEventListener("DOMContentLoaded", () => {
+  /* =========================================================
+     MOBILE NAVIGATION
+     ========================================================= */
 
-const bar = document.getElementById('progress-bar');
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".nav-links");
 
-function updateBar() {
-
-  if (!bar) return;
-
-  const scrolled = window.scrollY;
-
-  const maxScroll =
-    document.body.scrollHeight - window.innerHeight;
-
-  const pct =
-    maxScroll > 0
-      ? Math.min((scrolled / maxScroll) * 100, 100)
-      : 0;
-
-  bar.style.width = pct + '%';
-}
-
-window.addEventListener(
-  'scroll',
-  updateBar,
-  { passive: true }
-);
-
-updateBar();
-
-
-/* ══════════════════════════════
-   2. NAV SHRINK ON SCROLL
-══════════════════════════════ */
-
-const nav = document.getElementById('main-nav');
-
-if (nav) {
-
-  function updateNavigation() {
-
-    nav.classList.toggle(
-      'scrolled',
-      window.scrollY > 55
-    );
-
-  }
-
-  window.addEventListener(
-    'scroll',
-    updateNavigation,
-    { passive: true }
-  );
-
-  updateNavigation();
-
-}
-
-
-/* ══════════════════════════════
-   3. MOBILE HAMBURGER MENU
-══════════════════════════════ */
-
-const hbg =
-  document.getElementById('hamburger');
-
-const nLinks =
-  document.getElementById('nav-links');
-
-
-if (hbg && nLinks) {
-
-  function setMenuState(open) {
-
-    nLinks.classList.toggle(
-      'open',
-      open
-    );
-
-    nLinks.classList.toggle(
-      'active',
-      open
-    );
-
-    hbg.setAttribute(
-      'aria-expanded',
-      open ? 'true' : 'false'
-    );
-
-
-    const spans =
-      hbg.querySelectorAll('span');
-
-
-    const [a, b, c] = spans;
-
-
-    if (a) {
-      a.style.transform =
-        open
-          ? 'rotate(45deg) translate(4px, 4px)'
-          : '';
-    }
-
-
-    if (b) {
-      b.style.opacity =
-        open ? '0' : '1';
-    }
-
-
-    if (c) {
-      c.style.transform =
-        open
-          ? 'rotate(-45deg) translate(4px, -4px)'
-          : '';
-    }
-
-  }
-
-
-  function toggleMenu() {
-
-    const open =
-      !nLinks.classList.contains('open');
-
-    setMenuState(open);
-
-  }
-
-
-  hbg.addEventListener(
-    'click',
-    toggleMenu
-  );
-
-
-  /*
-   * Keyboard accessibility
-   */
-
-  hbg.addEventListener(
-    'keydown',
-    event => {
-
-      if (
-        event.key === 'Enter' ||
-        event.key === ' '
-      ) {
-
-        event.preventDefault();
-
-        toggleMenu();
-
-      }
-
-    }
-  );
-
-
-  /*
-   * Close mobile menu after clicking
-   * a navigation link.
-   */
-
-  nLinks
-    .querySelectorAll('a')
-    .forEach(link => {
-
-      link.addEventListener(
-        'click',
-        () => {
-
-          setMenuState(false);
-
-        }
-      );
-
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      hamburger.classList.toggle("active");
     });
 
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+    });
 
-  /*
-   * Close menu when clicking outside.
-   */
+    document.addEventListener("click", (event) => {
+      if (
+        nav &&
+        hamburger &&
+        !nav.contains(event.target) &&
+        !hamburger.contains(event.target)
+      ) {
+        nav.classList.remove("active");
+        hamburger.classList.remove("active");
+      }
+    });
+  }
 
-  document.addEventListener(
-    'click',
-    event => {
+  /* =========================================================
+     SMOOTH SCROLLING
+     ========================================================= */
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (event) {
+      const targetId = this.getAttribute("href");
+
+      if (!targetId || targetId === "#") return;
+
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        event.preventDefault();
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  });
+
+  /* =========================================================
+     ACTIVE NAVIGATION ON SCROLL
+     ========================================================= */
+
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  function updateActiveNav() {
+    let currentSection = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 150;
+      const sectionHeight = section.offsetHeight;
 
       if (
-        window.innerWidth <= 700 &&
-        !nav.contains(event.target)
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
       ) {
-
-        setMenuState(false);
-
+        currentSection = section.getAttribute("id");
       }
+    });
 
-    }
-  );
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
 
+      const href = link.getAttribute("href");
 
-  /*
-   * Reset menu when switching back
-   * to desktop.
-   */
-
-  window.addEventListener(
-    'resize',
-    () => {
-
-      if (window.innerWidth > 700) {
-
-        setMenuState(false);
-
+      if (href === `#${currentSection}`) {
+        link.classList.add("active");
       }
-
-    },
-    { passive: true }
-  );
-
-}
-
-
-/* ══════════════════════════════
-   4. PARTICLE CANVAS BACKGROUND
-══════════════════════════════ */
-
-(function initParticles() {
-
-  const canvas =
-    document.getElementById('bg-canvas');
-
-  if (!canvas) return;
-
-
-  const ctx =
-    canvas.getContext('2d');
-
-  if (!ctx) return;
-
-
-  let W;
-  let H;
-
-
-  function resize() {
-
-    W =
-      canvas.width =
-      window.innerWidth;
-
-    H =
-      canvas.height =
-      window.innerHeight;
-
+    });
   }
 
+  window.addEventListener("scroll", updateActiveNav);
+  updateActiveNav();
 
-  resize();
+  /* =========================================================
+     SCROLL REVEAL
+     ========================================================= */
 
-
-  window.addEventListener(
-    'resize',
-    resize,
-    { passive: true }
+  const revealElements = document.querySelectorAll(
+    ".reveal, .fade-in, .slide-up, .animate-on-scroll"
   );
 
-
-  /*
-   * Reduce particles on smaller screens
-   * to improve mobile performance.
-   */
-
-  const particleCount =
-    window.innerWidth <= 700
-      ? 35
-      : 60;
-
-
-  const pts =
-    Array.from(
-      { length: particleCount },
-      () => ({
-
-        x: Math.random() * W,
-
-        y: Math.random() * H,
-
-        vx:
-          (Math.random() - 0.5)
-          * 0.22,
-
-        vy:
-          (Math.random() - 0.5)
-          * 0.22,
-
-        r:
-          Math.random() * 1.5
-          + 0.4,
-
-        o:
-          Math.random() * 0.35
-          + 0.08
-
-      })
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+      }
     );
 
-
-  function frame() {
-
-    ctx.clearRect(
-      0,
-      0,
-      W,
-      H
-    );
-
-
-    /*
-     * Draw connecting lines.
-     */
-
-    for (
-      let i = 0;
-      i < pts.length;
-      i++
-    ) {
-
-      for (
-        let j = i + 1;
-        j < pts.length;
-        j++
-      ) {
-
-        const dx =
-          pts[i].x - pts[j].x;
-
-        const dy =
-          pts[i].y - pts[j].y;
-
-        const d =
-          Math.hypot(dx, dy);
-
-
-        if (d < 130) {
-
-          ctx.beginPath();
-
-          ctx.strokeStyle =
-            `rgba(
-              31,
-              184,
-              168,
-              ${0.13 * (1 - d / 130)}
-            )`;
-
-          ctx.lineWidth = 0.5;
-
-          ctx.moveTo(
-            pts[i].x,
-            pts[i].y
-          );
-
-          ctx.lineTo(
-            pts[j].x,
-            pts[j].y
-          );
-
-          ctx.stroke();
-
-        }
-
-      }
-
-    }
-
-
-    /*
-     * Draw and move particles.
-     */
-
-    for (const p of pts) {
-
-      ctx.beginPath();
-
-      ctx.arc(
-        p.x,
-        p.y,
-        p.r,
-        0,
-        Math.PI * 2
-      );
-
-      ctx.fillStyle =
-        `rgba(
-          31,
-          184,
-          168,
-          ${p.o}
-        )`;
-
-      ctx.fill();
-
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-
-      /*
-       * Wrap around edges.
-       */
-
-      if (p.x < 0) {
-        p.x = W;
-      }
-
-      if (p.x > W) {
-        p.x = 0;
-      }
-
-      if (p.y < 0) {
-        p.y = H;
-      }
-
-      if (p.y > H) {
-        p.y = 0;
-      }
-
-    }
-
-
-    requestAnimationFrame(frame);
-
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
+    });
   }
 
+  /* =========================================================
+     PARTICLES / BACKGROUND EFFECT
+     ========================================================= */
 
-  frame();
+  const particlesContainer = document.querySelector(".particles");
 
-})();
+  if (particlesContainer) {
+    const particleCount = window.innerWidth < 768 ? 20 : 40;
 
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement("span");
 
-/* ══════════════════════════════
-   5. 3D PHOTO CARD TILT
-══════════════════════════════ */
+      particle.className = "particle";
 
-const card3d =
-  document.getElementById('photo3d');
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particle.style.animationDuration = `${5 + Math.random() * 10}s`;
 
-
-/*
- * Disable mouse tilt on touch devices.
- */
-
-const isTouchDevice =
-  window.matchMedia(
-    '(hover: none)'
-  ).matches;
-
-
-if (
-  card3d &&
-  !isTouchDevice
-) {
-
-
-  card3d.addEventListener(
-    'mousemove',
-    event => {
-
-      const rect =
-        card3d.getBoundingClientRect();
-
-
-      const x =
-        (event.clientX - rect.left)
-        / rect.width
-        - 0.5;
-
-
-      const y =
-        (event.clientY - rect.top)
-        / rect.height
-        - 0.5;
-
-
-      card3d.style.transition =
-        'transform 0.08s ease, box-shadow 0.4s';
-
-
-      card3d.style.transform =
-        `perspective(900px)
-         rotateY(${x * 16}deg)
-         rotateX(${-y * 11}deg)
-         scale(1.04)`;
-
-
-      card3d.style.boxShadow =
-        `${-x * 20}px
-         ${-y * 15}px
-         50px
-         rgba(0, 0, 0, 0.5)`;
-
+      particlesContainer.appendChild(particle);
     }
+  }
+
+  /* =========================================================
+     PHOTO / CARD TILT EFFECT
+     ========================================================= */
+
+  const tiltElements = document.querySelectorAll(
+    ".tilt, .profile-image, .hero-image"
   );
 
+  tiltElements.forEach((element) => {
+    element.addEventListener("mousemove", (event) => {
+      if (window.innerWidth < 768) return;
 
-  card3d.addEventListener(
-    'mouseleave',
-    () => {
+      const rect = element.getBoundingClientRect();
 
-      card3d.style.transition =
-        'transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s';
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
 
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-      card3d.style.transform =
-        'perspective(900px) rotateY(0) rotateX(0) scale(1)';
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
 
+      element.style.transform = `
+        perspective(800px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+      `;
+    });
 
-      card3d.style.boxShadow = '';
+    element.addEventListener("mouseleave", () => {
+      element.style.transform = "";
+    });
+  });
 
-    }
-  );
+  /* =========================================================
+     COUNTER ANIMATION
+     ========================================================= */
 
-}
+  const counters = document.querySelectorAll("[data-count]");
 
+  function animateCounter(counter) {
+    const target = Number(counter.getAttribute("data-count"));
 
-/* ══════════════════════════════
-   6. SCROLL REVEAL
-══════════════════════════════ */
+    if (Number.isNaN(target)) return;
 
-const revealObserver =
-  new IntersectionObserver(
-    entries => {
+    const duration = 1500;
+    const startTime = performance.now();
 
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-          const delay =
-            parseInt(
-              entry.target.dataset.delay
-            ) || 0;
-
-
-          setTimeout(
-            () => {
-
-              entry.target.classList.add(
-                'visible'
-              );
-
-            },
-            delay
-          );
-
-
-          revealObserver.unobserve(
-            entry.target
-          );
-
-        }
-
-      });
-
-    },
-    {
-      threshold: 0.1
-    }
-  );
-
-
-/*
- * Timeline
- */
-
-document
-  .querySelectorAll('.timeline-item')
-  .forEach(
-    (el, i) => {
-
-      el.dataset.delay =
-        i * 130;
-
-      revealObserver.observe(el);
-
-    }
-  );
-
-
-/*
- * Skills
- */
-
-document
-  .querySelectorAll('.skill-chip')
-  .forEach(
-    (el, i) => {
-
-      el.dataset.delay =
-        i * 50;
-
-      revealObserver.observe(el);
-
-    }
-  );
-
-
-/*
- * Education
- */
-
-document
-  .querySelectorAll('.edu-card')
-  .forEach(
-    (el, i) => {
-
-      el.dataset.delay =
-        i * 90;
-
-      revealObserver.observe(el);
-
-    }
-  );
-
-
-/*
- * Blog cards
- *
- * These are added dynamically,
- * so they are observed after
- * the blog feed loads.
- */
-
-function observeBlogCards() {
-
-  document
-    .querySelectorAll('.blog-card')
-    .forEach(
-      (el, i) => {
-
-        if (
-          el.dataset.revealObserved
-        ) {
-          return;
-        }
-
-
-        el.dataset.delay =
-          i * 100;
-
-
-        el.dataset.revealObserved =
-          'true';
-
-
-        revealObserver.observe(el);
-
-      }
-    );
-
-}
-
-
-/* ══════════════════════════════
-   7. COUNTER ANIMATION
-══════════════════════════════ */
-
-function countUp(
-  el,
-  target,
-  suffix,
-  duration = 1200
-) {
-
-  if (!el) return;
-
-
-  const startTime =
-    performance.now();
-
-
-  function tick(now) {
-
-    const elapsed =
-      now - startTime;
-
-
-    const progress =
-      Math.min(
-        elapsed / duration,
+    function updateCounter(currentTime) {
+      const progress = Math.min(
+        (currentTime - startTime) / duration,
         1
       );
 
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-    /*
-     * Ease-out cubic
-     */
-
-    const eased =
-      1 -
-      Math.pow(
-        1 - progress,
-        3
+      counter.textContent = Math.floor(
+        easedProgress * target
       );
 
-
-    el.innerHTML =
-      Math.floor(
-        eased * target
-      ) +
-      '<span class="suf">' +
-      suffix +
-      '</span>';
-
-
-    if (progress < 1) {
-
-      requestAnimationFrame(
-        tick
-      );
-
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target;
+      }
     }
 
+    requestAnimationFrame(updateCounter);
   }
 
-
-  requestAnimationFrame(tick);
-
-}
-
-
-/*
- * Trigger counters when stats
- * row enters the viewport.
- */
-
-const statsObserver =
-  new IntersectionObserver(
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-          countUp(
-            document.getElementById('sn1'),
-            5,
-            '+'
-          );
-
-
-          countUp(
-            document.getElementById('sn2'),
-            12,
-            '+'
-          );
-
-
-          countUp(
-            document.getElementById('sn3'),
-            5,
-            '+'
-          );
-
-
-          statsObserver.disconnect();
-
-        }
-
-      });
-
-    },
-    {
-      threshold: 0.6
-    }
-  );
-
-
-const statsEl =
-  document.querySelector(
-    '.hero-stats'
-  );
-
-
-if (statsEl) {
-
-  statsObserver.observe(
-    statsEl
-  );
-
-}
-
-
-/* ══════════════════════════════
-   8. DYNAMIC BLOG POSTS
-══════════════════════════════ */
-
-/*
- * IMPORTANT:
- *
- * The blog website should expose:
- *
- * https://pratyushblogs.netlify.app/posts.json
- *
- * Example:
- *
- * [
- *   {
- *     "title": "Diabetes Awareness",
- *     "description": "Understanding diabetes...",
- *     "category": "Health Awareness",
- *     "date": "2026-09-12",
- *     "readTime": "7 min read",
- *     "url": "https://pratyushblogs.netlify.app/diabetes-awareness/"
- *   }
- * ]
- *
- */
-
-
-const BLOG_FEED_URL =
-  'https://pratyushblogs.netlify.app/posts.json';
-
-
-const BLOG_HOME_URL =
-  'https://pratyushblogs.netlify.app/';
-
-
-async function loadLatestBlogs() {
-
-  const blogsGrid =
-    document.getElementById(
-      'blogs-grid'
-    );
-
-
-  if (!blogsGrid) {
-    return;
-  }
-
-
-  try {
-
-    /*
-     * Request blog feed.
-     */
-
-    const response =
-      await fetch(
-        BLOG_FEED_URL,
-        {
-          method: 'GET',
-          cache: 'no-cache'
-        }
-      );
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        `Blog feed returned ${response.status}`
-      );
-
-    }
-
-
-    const posts =
-      await response.json();
-
-
-    /*
-     * Validate response.
-     */
-
-    if (!Array.isArray(posts)) {
-
-      throw new Error(
-        'Invalid blog feed format.'
-      );
-
-    }
-
-
-    /*
-     * Sort posts by newest date.
-     */
-
-    posts.sort(
-      (a, b) => {
-
-        return (
-          new Date(b.date) -
-          new Date(a.date)
-        );
-
+  if ("IntersectionObserver" in window && counters.length) {
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
       }
     );
 
+    counters.forEach((counter) => {
+      counterObserver.observe(counter);
+    });
+  }
 
-    /*
-     * Latest 3 posts.
-     */
+  /* =========================================================
+     CURRENT YEAR
+     ========================================================= */
 
-    const latestPosts =
-      posts.slice(0, 3);
+  const yearElements = document.querySelectorAll(
+    "#current-year, .current-year"
+  );
 
+  yearElements.forEach((element) => {
+    element.textContent = new Date().getFullYear();
+  });
 
-    /*
-     * Clear loading state.
-     */
+  /* =========================================================
+     BLOG LOADER
+     ========================================================= */
 
-    blogsGrid.innerHTML = '';
+  let blogsLoaded = false;
 
+  async function loadLatestBlogs() {
+    if (blogsLoaded) return;
 
-    /*
-     * No posts.
-     */
+    const blogGrid = document.getElementById("blogs-grid");
 
-    if (
-      latestPosts.length === 0
-    ) {
+    if (!blogGrid) return;
 
-      blogsGrid.innerHTML = `
+    blogsLoaded = true;
 
-        <div class="blogs-error">
+    const BLOG_HOME = "https://pratyushblogs.netlify.app/";
+    const POSTS_JSON =
+      "https://pratyushblogs.netlify.app/posts.json";
 
-          <p>
-            No articles available yet.
-          </p>
+    try {
+      const response = await fetch(POSTS_JSON, {
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-          <a
-            href="${BLOG_HOME_URL}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit the Blog →
-          </a>
+      if (!response.ok) {
+        throw new Error(
+          `Blog feed returned ${response.status}`
+        );
+      }
 
-        </div>
+      const posts = await response.json();
 
-      `;
+      if (!Array.isArray(posts) || posts.length === 0) {
+        throw new Error("No blog posts found.");
+      }
 
-      return;
+      /* Sort newest first */
+      posts.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
 
-    }
+        return dateB - dateA;
+      });
 
+      /* Show only the latest 3 posts */
+      const latestPosts = posts.slice(0, 3);
 
-    /*
-     * Create blog cards.
-     */
+      blogGrid.innerHTML = "";
 
-    latestPosts.forEach(
-      post => {
+      latestPosts.forEach((post) => {
+        const card = document.createElement("article");
 
-        const card =
-          document.createElement(
-            'article'
-          );
+        card.className = "blog-card";
 
+        const title = escapeHTML(
+          post.title || "Untitled Article"
+        );
 
-        card.className =
-          'blog-card';
+        const category = escapeHTML(
+          post.category || "Health & Awareness"
+        );
 
-
-        /*
-         * Data.
-         */
-
-        const title =
-          post.title ||
-          'Untitled Article';
-
-
-        const description =
+        const description = escapeHTML(
           post.description ||
-          'Read the latest article from Dr. Pratyush Ghosh.';
+            "Read the latest article on the blog."
+        );
 
+        const readTime = escapeHTML(
+          post.readTime || ""
+        );
 
-        const category =
-          post.category ||
-          'Health & Awareness';
+        const formattedDate = formatBlogDate(post.date);
 
-
-        const url =
-          post.url ||
-          BLOG_HOME_URL;
-
-
-        const date =
-          formatBlogDate(
-            post.date
-          );
-
-
-        const readTime =
-          post.readTime ||
-          '';
-
-
-        /*
-         * Build card HTML.
-         */
+        const url = isSafeURL(post.url)
+          ? post.url
+          : BLOG_HOME;
 
         card.innerHTML = `
+          <div class="blog-card-content">
+            <div class="blog-card-category">
+              ${category}
+            </div>
 
-          <div class="blog-card-category">
-            ${escapeHtml(category)}
+            <h3 class="blog-card-title">
+              ${title}
+            </h3>
+
+            <p class="blog-card-description">
+              ${description}
+            </p>
+
+            <div class="blog-card-meta">
+              <span class="blog-card-date">
+                ${formattedDate}
+              </span>
+
+              ${
+                readTime
+                  ? `<span class="blog-card-read-time">
+                      ${readTime}
+                    </span>`
+                  : ""
+              }
+            </div>
+
+            <a
+              class="blog-read-more"
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read Article
+              <span aria-hidden="true">→</span>
+            </a>
           </div>
+        `;
 
+        blogGrid.appendChild(card);
+      });
 
-          <div class="blog-card-date">
+      /* Add "View All Blogs" button if it exists */
+      const viewAllButton = document.querySelector(
+        ".view-all-blogs"
+      );
 
-            ${escapeHtml(date)}
+      if (viewAllButton) {
+        viewAllButton.href = BLOG_HOME;
+      }
+    } catch (error) {
+      console.error("Unable to load blog posts:", error);
 
-            ${
-              readTime
-                ? ' · ' +
-                  escapeHtml(readTime)
-                : ''
-            }
+      /*
+       * Fallback:
+       * If posts.json is unavailable, show a simple
+       * link to the main blog instead of leaving
+       * the section completely blank.
+       */
 
-          </div>
-
-
-          <h3>
-            ${escapeHtml(title)}
-          </h3>
-
-
+      blogGrid.innerHTML = `
+        <div class="blog-fallback">
           <p>
-            ${escapeHtml(description)}
+            Explore the latest articles and health
+            awareness posts on my blog.
           </p>
 
-
           <a
-            href="${escapeAttribute(url)}"
+            href="${BLOG_HOME}"
             target="_blank"
             rel="noopener noreferrer"
             class="blog-read-more"
           >
-            Read article →
+            Visit My Blog
+            <span aria-hidden="true">→</span>
           </a>
-
-        `;
-
-
-        blogsGrid.appendChild(
-          card
-        );
-
-      }
-    );
-
-
-    /*
-     * Activate scroll reveal
-     * for newly created cards.
-     */
-
-    observeBlogCards();
-
-
-  } catch (error) {
-
-    console.error(
-      'Blog loading error:',
-      error
-    );
-
-
-    /*
-     * Friendly fallback.
-     */
-
-    blogsGrid.innerHTML = `
-
-      <div class="blogs-error">
-
-        <p>
-          Latest articles could not be loaded right now.
-        </p>
-
-        <a
-          href="${BLOG_HOME_URL}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit the Blog →
-        </a>
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-/* ══════════════════════════════
-   9. BLOG DATE FORMATTER
-══════════════════════════════ */
-
-function formatBlogDate(date) {
-
-  if (!date) {
-    return '';
-  }
-
-
-  const parsedDate =
-    new Date(date);
-
-
-  if (
-    Number.isNaN(
-      parsedDate.getTime()
-    )
-  ) {
-
-    return '';
-
-  }
-
-
-  return parsedDate.toLocaleDateString(
-    'en-IN',
-    {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
+        </div>
+      `;
     }
-  );
-
-}
-
-
-/* ══════════════════════════════
-   10. HTML SECURITY HELPERS
-══════════════════════════════ */
-
-function escapeHtml(value) {
-
-  const div =
-    document.createElement(
-      'div'
-    );
-
-
-  div.textContent =
-    String(value);
-
-
-  return div.innerHTML;
-
-}
-
-
-function escapeAttribute(value) {
-
-  return String(value)
-    .replace(
-      /&/g,
-      '&amp;'
-    )
-    .replace(
-      /"/g,
-      '&quot;'
-    )
-    .replace(
-      /</g,
-      '&lt;'
-    )
-    .replace(
-      />/g,
-      '&gt;'
-    );
-
-}
-
-
-/* ══════════════════════════════
-   11. INITIALIZE BLOGS
-══════════════════════════════ */
-
-document.addEventListener(
-  'DOMContentLoaded',
-  () => {
-
-    loadLatestBlogs();
-
   }
-);
+
+  /* =========================================================
+     BLOG DATE FORMATTER
+     ========================================================= */
+
+  function formatBlogDate(dateString) {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+
+    if (Number.isNaN(date.getTime())) {
+      return escapeHTML(String(dateString));
+    }
+
+    return date.toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
+  /* =========================================================
+     HTML ESCAPING
+     ========================================================= */
+
+  function escapeHTML(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  /* =========================================================
+     SAFE URL CHECK
+     ========================================================= */
+
+  function isSafeURL(url) {
+    if (!url || typeof url !== "string") {
+      return false;
+    }
+
+    try {
+      const parsedURL = new URL(url, window.location.href);
+
+      return (
+        parsedURL.protocol === "https:" ||
+        parsedURL.protocol === "http:"
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  /* =========================================================
+     BLOG INITIALIZATION
+     ========================================================= */
+
+  loadLatestBlogs();
+});
 ```
