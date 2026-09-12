@@ -1,479 +1,1149 @@
-```javascript
-/* =========================================================
-   MAIN.JS
-   Dr. Pratyush Ghosh — Portfolio
-   ========================================================= */
+/* ════════════════════════════════════════
+   main.js — Dr. Pratyush Ghosh Website
+════════════════════════════════════════ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* =========================================================
-     MOBILE NAVIGATION
-     ========================================================= */
+/* ══════════════════════════════
+   1. SCROLL PROGRESS BAR
+══════════════════════════════ */
 
-  const hamburger = document.querySelector(".hamburger");
-  const nav = document.querySelector(".nav-links");
+const bar = document.getElementById('progress-bar');
 
-  if (hamburger && nav) {
-    hamburger.addEventListener("click", () => {
-      nav.classList.toggle("active");
-      hamburger.classList.toggle("active");
-    });
+function updateBar() {
+  if (!bar) return;
 
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("active");
-        hamburger.classList.remove("active");
-      });
-    });
+  const scrolled = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
 
-    document.addEventListener("click", (event) => {
-      if (
-        nav &&
-        hamburger &&
-        !nav.contains(event.target) &&
-        !hamburger.contains(event.target)
-      ) {
-        nav.classList.remove("active");
-        hamburger.classList.remove("active");
-      }
-    });
+  const pct =
+    maxScroll > 0
+      ? Math.min((scrolled / maxScroll) * 100, 100)
+      : 0;
+
+  bar.style.width = pct + '%';
+}
+
+window.addEventListener('scroll', updateBar, { passive: true });
+updateBar();
+
+
+/* ══════════════════════════════
+   2. NAV SHRINK ON SCROLL
+══════════════════════════════ */
+
+const nav = document.getElementById('main-nav');
+
+if (nav) {
+  function updateNavigation() {
+    nav.classList.toggle('scrolled', window.scrollY > 55);
   }
 
-  /* =========================================================
-     SMOOTH SCROLLING
-     ========================================================= */
-
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (event) {
-      const targetId = this.getAttribute("href");
-
-      if (!targetId || targetId === "#") return;
-
-      const target = document.querySelector(targetId);
-
-      if (target) {
-        event.preventDefault();
-
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
+  window.addEventListener('scroll', updateNavigation, {
+    passive: true
   });
 
-  /* =========================================================
-     ACTIVE NAVIGATION ON SCROLL
-     ========================================================= */
+  updateNavigation();
+}
 
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
-  function updateActiveNav() {
-    let currentSection = "";
+/* ══════════════════════════════
+   3. MOBILE HAMBURGER MENU
+══════════════════════════════ */
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 150;
-      const sectionHeight = section.offsetHeight;
+const hbg = document.getElementById('hamburger');
+const nLinks = document.getElementById('nav-links');
 
-      if (
-        window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight
-      ) {
-        currentSection = section.getAttribute("id");
-      }
-    });
+if (hbg && nLinks) {
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
+  function setMenuState(open) {
 
-      const href = link.getAttribute("href");
+    nLinks.classList.toggle('open', open);
+    nLinks.classList.toggle('active', open);
 
-      if (href === `#${currentSection}`) {
-        link.classList.add("active");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", updateActiveNav);
-  updateActiveNav();
-
-  /* =========================================================
-     SCROLL REVEAL
-     ========================================================= */
-
-  const revealElements = document.querySelectorAll(
-    ".reveal, .fade-in, .slide-up, .animate-on-scroll"
-  );
-
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-      }
+    hbg.setAttribute(
+      'aria-expanded',
+      open ? 'true' : 'false'
     );
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
-  }
+    const spans = hbg.querySelectorAll('span');
+    const [a, b, c] = spans;
 
-  /* =========================================================
-     PARTICLES / BACKGROUND EFFECT
-     ========================================================= */
+    if (a) {
+      a.style.transform = open
+        ? 'rotate(45deg) translate(4px, 4px)'
+        : '';
+    }
 
-  const particlesContainer = document.querySelector(".particles");
+    if (b) {
+      b.style.opacity = open ? '0' : '1';
+    }
 
-  if (particlesContainer) {
-    const particleCount = window.innerWidth < 768 ? 20 : 40;
-
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement("span");
-
-      particle.className = "particle";
-
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.animationDelay = `${Math.random() * 5}s`;
-      particle.style.animationDuration = `${5 + Math.random() * 10}s`;
-
-      particlesContainer.appendChild(particle);
+    if (c) {
+      c.style.transform = open
+        ? 'rotate(-45deg) translate(4px, -4px)'
+        : '';
     }
   }
 
-  /* =========================================================
-     PHOTO / CARD TILT EFFECT
-     ========================================================= */
 
-  const tiltElements = document.querySelectorAll(
-    ".tilt, .profile-image, .hero-image"
-  );
+  function toggleMenu() {
+    const open = !nLinks.classList.contains('open');
+    setMenuState(open);
+  }
 
-  tiltElements.forEach((element) => {
-    element.addEventListener("mousemove", (event) => {
-      if (window.innerWidth < 768) return;
 
-      const rect = element.getBoundingClientRect();
+  hbg.addEventListener('click', toggleMenu);
 
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+  hbg.addEventListener('keydown', event => {
 
-      const rotateX = ((y - centerY) / centerY) * -4;
-      const rotateY = ((x - centerX) / centerX) * 4;
+    if (
+      event.key === 'Enter' ||
+      event.key === ' '
+    ) {
+      event.preventDefault();
+      toggleMenu();
+    }
 
-      element.style.transform = `
-        perspective(800px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-      `;
-    });
-
-    element.addEventListener("mouseleave", () => {
-      element.style.transform = "";
-    });
   });
 
-  /* =========================================================
-     COUNTER ANIMATION
-     ========================================================= */
 
-  const counters = document.querySelectorAll("[data-count]");
+  nLinks.querySelectorAll('a').forEach(link => {
 
-  function animateCounter(counter) {
-    const target = Number(counter.getAttribute("data-count"));
+    link.addEventListener('click', () => {
+      setMenuState(false);
+    });
 
-    if (Number.isNaN(target)) return;
+  });
 
-    const duration = 1500;
-    const startTime = performance.now();
 
-    function updateCounter(currentTime) {
-      const progress = Math.min(
-        (currentTime - startTime) / duration,
+  document.addEventListener('click', event => {
+
+    if (
+      window.innerWidth <= 700 &&
+      nav &&
+      !nav.contains(event.target)
+    ) {
+      setMenuState(false);
+    }
+
+  });
+
+
+  window.addEventListener('resize', () => {
+
+    if (window.innerWidth > 700) {
+      setMenuState(false);
+    }
+
+  }, { passive: true });
+
+}
+
+
+/* ══════════════════════════════
+   4. PARTICLE CANVAS BACKGROUND
+══════════════════════════════ */
+
+(function initParticles() {
+
+  const canvas = document.getElementById('bg-canvas');
+
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+
+  if (!ctx) return;
+
+  let W;
+  let H;
+
+
+  function resize() {
+
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+
+  }
+
+
+  resize();
+
+
+  window.addEventListener('resize', resize, {
+    passive: true
+  });
+
+
+  const particleCount =
+    window.innerWidth <= 700 ? 35 : 60;
+
+
+  const pts = Array.from(
+    { length: particleCount },
+    () => ({
+
+      x: Math.random() * W,
+
+      y: Math.random() * H,
+
+      vx:
+        (Math.random() - 0.5) * 0.22,
+
+      vy:
+        (Math.random() - 0.5) * 0.22,
+
+      r:
+        Math.random() * 1.5 + 0.4,
+
+      o:
+        Math.random() * 0.35 + 0.08
+
+    })
+  );
+
+
+  function frame() {
+
+    ctx.clearRect(
+      0,
+      0,
+      W,
+      H
+    );
+
+
+    /* Draw connecting lines */
+
+    for (
+      let i = 0;
+      i < pts.length;
+      i++
+    ) {
+
+      for (
+        let j = i + 1;
+        j < pts.length;
+        j++
+      ) {
+
+        const dx =
+          pts[i].x - pts[j].x;
+
+        const dy =
+          pts[i].y - pts[j].y;
+
+        const d =
+          Math.hypot(dx, dy);
+
+
+        if (d < 130) {
+
+          ctx.beginPath();
+
+          ctx.strokeStyle =
+            `rgba(
+              31,
+              184,
+              168,
+              ${0.13 * (1 - d / 130)}
+            )`;
+
+          ctx.lineWidth = 0.5;
+
+          ctx.moveTo(
+            pts[i].x,
+            pts[i].y
+          );
+
+          ctx.lineTo(
+            pts[j].x,
+            pts[j].y
+          );
+
+          ctx.stroke();
+
+        }
+
+      }
+
+    }
+
+
+    /* Draw and move particles */
+
+    for (const p of pts) {
+
+      ctx.beginPath();
+
+      ctx.arc(
+        p.x,
+        p.y,
+        p.r,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        `rgba(
+          31,
+          184,
+          168,
+          ${p.o}
+        )`;
+
+      ctx.fill();
+
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+
+      /* Wrap around edges */
+
+      if (p.x < 0) {
+        p.x = W;
+      }
+
+      if (p.x > W) {
+        p.x = 0;
+      }
+
+      if (p.y < 0) {
+        p.y = H;
+      }
+
+      if (p.y > H) {
+        p.y = 0;
+      }
+
+    }
+
+
+    requestAnimationFrame(frame);
+
+  }
+
+
+  frame();
+
+})();
+
+
+/* ══════════════════════════════
+   5. 3D PHOTO CARD TILT
+══════════════════════════════ */
+
+const card3d =
+  document.getElementById('photo3d');
+
+
+const isTouchDevice =
+  window.matchMedia('(hover: none)').matches;
+
+
+if (
+  card3d &&
+  !isTouchDevice
+) {
+
+  card3d.addEventListener(
+    'mousemove',
+    event => {
+
+      const rect =
+        card3d.getBoundingClientRect();
+
+
+      const x =
+        (event.clientX - rect.left)
+        / rect.width
+        - 0.5;
+
+
+      const y =
+        (event.clientY - rect.top)
+        / rect.height
+        - 0.5;
+
+
+      card3d.style.transition =
+        'transform 0.08s ease, box-shadow 0.4s';
+
+
+      card3d.style.transform =
+        `perspective(900px)
+         rotateY(${x * 16}deg)
+         rotateX(${-y * 11}deg)
+         scale(1.04)`;
+
+
+      card3d.style.boxShadow =
+        `${-x * 20}px
+         ${-y * 15}px
+         50px
+         rgba(0, 0, 0, 0.5)`;
+
+    }
+  );
+
+
+  card3d.addEventListener(
+    'mouseleave',
+    () => {
+
+      card3d.style.transition =
+        'transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s';
+
+
+      card3d.style.transform =
+        'perspective(900px) rotateY(0) rotateX(0) scale(1)';
+
+
+      card3d.style.boxShadow = '';
+
+    }
+  );
+
+}
+
+
+/* ══════════════════════════════
+   6. SCROLL REVEAL
+══════════════════════════════ */
+
+/*
+   IMPORTANT FIX:
+   Clinical Experience, Skills and Education
+   cards are initially hidden by CSS.
+
+   This section makes them visible when they
+   enter the viewport.
+*/
+
+let revealObserver = null;
+
+
+if ('IntersectionObserver' in window) {
+
+  revealObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            const delay =
+              parseInt(
+                entry.target.dataset.delay,
+                10
+              ) || 0;
+
+
+            setTimeout(() => {
+
+              entry.target.classList.add(
+                'visible'
+              );
+
+            }, delay);
+
+
+            revealObserver.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+}
+
+
+/*
+   FALLBACK / SAFETY REVEAL
+
+   If an element is still hidden for any
+   reason, make sure the page does not
+   remain blank.
+*/
+
+function revealElement(el) {
+
+  if (!el) return;
+
+  el.classList.add('visible');
+
+}
+
+
+/*
+   Timeline / Clinical Experience
+*/
+
+document
+  .querySelectorAll('.timeline-item')
+  .forEach((el, i) => {
+
+    el.dataset.delay = i * 130;
+
+    if (revealObserver) {
+
+      revealObserver.observe(el);
+
+    } else {
+
+      revealElement(el);
+
+    }
+
+  });
+
+
+/*
+   Skills / Procedures
+*/
+
+document
+  .querySelectorAll('.skill-chip')
+  .forEach((el, i) => {
+
+    el.dataset.delay = i * 50;
+
+    if (revealObserver) {
+
+      revealObserver.observe(el);
+
+    } else {
+
+      revealElement(el);
+
+    }
+
+  });
+
+
+/*
+   Education
+*/
+
+document
+  .querySelectorAll('.edu-card')
+  .forEach((el, i) => {
+
+    el.dataset.delay = i * 90;
+
+    if (revealObserver) {
+
+      revealObserver.observe(el);
+
+    } else {
+
+      revealElement(el);
+
+    }
+
+  });
+
+
+/*
+   Extra safety check.
+
+   If cards remain hidden because of
+   another CSS/observer issue, reveal
+   them after a short delay.
+*/
+
+setTimeout(() => {
+
+  document
+    .querySelectorAll(
+      '.timeline-item, .skill-chip, .edu-card'
+    )
+    .forEach(el => {
+
+      const rect =
+        el.getBoundingClientRect();
+
+      const visibleOnScreen =
+        rect.top < window.innerHeight &&
+        rect.bottom > 0;
+
+
+      if (visibleOnScreen) {
+
+        el.classList.add('visible');
+
+      }
+
+    });
+
+}, 1500);
+
+
+/*
+   Blog cards are created dynamically,
+   so they must be observed after loading.
+*/
+
+function observeBlogCards() {
+
+  document
+    .querySelectorAll('.blog-card')
+    .forEach((el, i) => {
+
+      if (
+        el.dataset.revealObserved
+      ) {
+        return;
+      }
+
+
+      el.dataset.delay =
+        i * 100;
+
+
+      el.dataset.revealObserved =
+        'true';
+
+
+      if (revealObserver) {
+
+        revealObserver.observe(el);
+
+      } else {
+
+        el.classList.add('visible');
+
+      }
+
+    });
+
+}
+
+
+/* ══════════════════════════════
+   7. COUNTER ANIMATION
+══════════════════════════════ */
+
+function countUp(
+  el,
+  target,
+  suffix,
+  duration = 1200
+) {
+
+  if (!el) return;
+
+
+  const startTime =
+    performance.now();
+
+
+  function tick(now) {
+
+    const elapsed =
+      now - startTime;
+
+
+    const progress =
+      Math.min(
+        elapsed / duration,
         1
       );
 
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-      counter.textContent = Math.floor(
-        easedProgress * target
+    const eased =
+      1 -
+      Math.pow(
+        1 - progress,
+        3
       );
 
-      if (progress < 1) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = target;
-      }
+
+    el.innerHTML =
+      Math.floor(
+        eased * target
+      ) +
+      '<span class="suf">' +
+      suffix +
+      '</span>';
+
+
+    if (progress < 1) {
+
+      requestAnimationFrame(
+        tick
+      );
+
     }
 
-    requestAnimationFrame(updateCounter);
   }
 
-  if ("IntersectionObserver" in window && counters.length) {
-    const counterObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
+
+  requestAnimationFrame(tick);
+
+}
+
+
+/*
+   Trigger counters when stats row
+   enters the viewport.
+*/
+
+if ('IntersectionObserver' in window) {
+
+  const statsObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
           if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            observer.unobserve(entry.target);
+
+            countUp(
+              document.getElementById('sn1'),
+              5,
+              '+'
+            );
+
+
+            countUp(
+              document.getElementById('sn2'),
+              12,
+              '+'
+            );
+
+
+            countUp(
+              document.getElementById('sn3'),
+              5,
+              '+'
+            );
+
+
+            statsObserver.disconnect();
+
           }
+
         });
+
       },
       {
-        threshold: 0.5,
+        threshold: 0.6
       }
     );
 
-    counters.forEach((counter) => {
-      counterObserver.observe(counter);
-    });
+
+  const statsEl =
+    document.querySelector(
+      '.hero-stats'
+    );
+
+
+  if (statsEl) {
+
+    statsObserver.observe(
+      statsEl
+    );
+
   }
 
-  /* =========================================================
-     CURRENT YEAR
-     ========================================================= */
+}
 
-  const yearElements = document.querySelectorAll(
-    "#current-year, .current-year"
-  );
 
-  yearElements.forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
+/* ══════════════════════════════
+   8. DYNAMIC BLOG POSTS
+══════════════════════════════ */
 
-  /* =========================================================
-     BLOG LOADER
-     ========================================================= */
+/*
+   The blog website should expose:
 
-  let blogsLoaded = false;
+   https://pratyushblogs.netlify.app/posts.json
 
-  async function loadLatestBlogs() {
-    if (blogsLoaded) return;
+   Example:
 
-    const blogGrid = document.getElementById("blogs-grid");
+   [
+     {
+       "title": "Diabetes Awareness",
+       "description": "Understanding diabetes...",
+       "category": "Health Awareness",
+       "date": "2026-09-12",
+       "readTime": "7 min read",
+       "url": "https://pratyushblogs.netlify.app/diabetes-awareness/"
+     }
+   ]
+*/
 
-    if (!blogGrid) return;
 
-    blogsLoaded = true;
+const BLOG_FEED_URL =
+  'https://pratyushblogs.netlify.app/posts.json';
 
-    const BLOG_HOME = "https://pratyushblogs.netlify.app/";
-    const POSTS_JSON =
-      "https://pratyushblogs.netlify.app/posts.json";
 
-    try {
-      const response = await fetch(POSTS_JSON, {
-        headers: {
-          Accept: "application/json",
-        },
-      });
+const BLOG_HOME_URL =
+  'https://pratyushblogs.netlify.app/';
 
-      if (!response.ok) {
-        throw new Error(
-          `Blog feed returned ${response.status}`
-        );
-      }
 
-      const posts = await response.json();
+let blogsLoaded = false;
 
-      if (!Array.isArray(posts) || posts.length === 0) {
-        throw new Error("No blog posts found.");
-      }
 
-      /* Sort newest first */
-      posts.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
+async function loadLatestBlogs() {
 
-        return dateB - dateA;
-      });
+  /*
+     Prevent duplicate blog loading.
+  */
 
-      /* Show only the latest 3 posts */
-      const latestPosts = posts.slice(0, 3);
+  if (blogsLoaded) {
+    return;
+  }
 
-      blogGrid.innerHTML = "";
 
-      latestPosts.forEach((post) => {
-        const card = document.createElement("article");
+  const blogsGrid =
+    document.getElementById(
+      'blogs-grid'
+    );
 
-        card.className = "blog-card";
 
-        const title = escapeHTML(
-          post.title || "Untitled Article"
-        );
+  if (!blogsGrid) {
+    return;
+  }
 
-        const category = escapeHTML(
-          post.category || "Health & Awareness"
-        );
 
-        const description = escapeHTML(
-          post.description ||
-            "Read the latest article on the blog."
-        );
+  blogsLoaded = true;
 
-        const readTime = escapeHTML(
-          post.readTime || ""
-        );
 
-        const formattedDate = formatBlogDate(post.date);
+  try {
 
-        const url = isSafeURL(post.url)
-          ? post.url
-          : BLOG_HOME;
-
-        card.innerHTML = `
-          <div class="blog-card-content">
-            <div class="blog-card-category">
-              ${category}
-            </div>
-
-            <h3 class="blog-card-title">
-              ${title}
-            </h3>
-
-            <p class="blog-card-description">
-              ${description}
-            </p>
-
-            <div class="blog-card-meta">
-              <span class="blog-card-date">
-                ${formattedDate}
-              </span>
-
-              ${
-                readTime
-                  ? `<span class="blog-card-read-time">
-                      ${readTime}
-                    </span>`
-                  : ""
-              }
-            </div>
-
-            <a
-              class="blog-read-more"
-              href="${url}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read Article
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        `;
-
-        blogGrid.appendChild(card);
-      });
-
-      /* Add "View All Blogs" button if it exists */
-      const viewAllButton = document.querySelector(
-        ".view-all-blogs"
+    const response =
+      await fetch(
+        BLOG_FEED_URL,
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        }
       );
 
-      if (viewAllButton) {
-        viewAllButton.href = BLOG_HOME;
+
+    if (!response.ok) {
+
+      throw new Error(
+        `Blog feed returned ${response.status}`
+      );
+
+    }
+
+
+    const posts =
+      await response.json();
+
+
+    if (!Array.isArray(posts)) {
+
+      throw new Error(
+        'Invalid blog feed format.'
+      );
+
+    }
+
+
+    /*
+       Sort newest first.
+    */
+
+    posts.sort(
+      (a, b) => {
+
+        return (
+          new Date(b.date) -
+          new Date(a.date)
+        );
+
       }
-    } catch (error) {
-      console.error("Unable to load blog posts:", error);
+    );
 
-      /*
-       * Fallback:
-       * If posts.json is unavailable, show a simple
-       * link to the main blog instead of leaving
-       * the section completely blank.
-       */
 
-      blogGrid.innerHTML = `
-        <div class="blog-fallback">
+    /*
+       Take only latest 3.
+    */
+
+    const latestPosts =
+      posts.slice(0, 3);
+
+
+    blogsGrid.innerHTML = '';
+
+
+    /*
+       No posts available.
+    */
+
+    if (
+      latestPosts.length === 0
+    ) {
+
+      blogsGrid.innerHTML = `
+
+        <div class="blogs-error">
+
           <p>
-            Explore the latest articles and health
-            awareness posts on my blog.
+            No articles available yet.
           </p>
 
           <a
-            href="${BLOG_HOME}"
+            href="${BLOG_HOME_URL}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit the Blog →
+          </a>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    /*
+       Create blog cards.
+    */
+
+    latestPosts.forEach(
+      post => {
+
+        const card =
+          document.createElement(
+            'article'
+          );
+
+
+        card.className =
+          'blog-card';
+
+
+        const title =
+          post.title ||
+          'Untitled Article';
+
+
+        const description =
+          post.description ||
+          'Read the latest article from Dr. Pratyush Ghosh.';
+
+
+        const category =
+          post.category ||
+          'Health & Awareness';
+
+
+        const url =
+          post.url ||
+          BLOG_HOME_URL;
+
+
+        const date =
+          formatBlogDate(
+            post.date
+          );
+
+
+        const readTime =
+          post.readTime ||
+          '';
+
+
+        card.innerHTML = `
+
+          <div class="blog-card-category">
+            ${escapeHtml(category)}
+          </div>
+
+
+          <div class="blog-card-date">
+
+            ${escapeHtml(date)}
+
+            ${
+              readTime
+                ? ' · ' +
+                  escapeHtml(readTime)
+                : ''
+            }
+
+          </div>
+
+
+          <h3>
+            ${escapeHtml(title)}
+          </h3>
+
+
+          <p>
+            ${escapeHtml(description)}
+          </p>
+
+
+          <a
+            href="${escapeAttribute(url)}"
             target="_blank"
             rel="noopener noreferrer"
             class="blog-read-more"
           >
-            Visit My Blog
-            <span aria-hidden="true">→</span>
+            Read article →
           </a>
-        </div>
-      `;
-    }
+
+        `;
+
+
+        blogsGrid.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+    /*
+       Activate scroll reveal
+       for dynamically-created
+       blog cards.
+    */
+
+    observeBlogCards();
+
+
+  } catch (error) {
+
+    console.error(
+      'Blog loading error:',
+      error
+    );
+
+
+    /*
+       Friendly fallback.
+    */
+
+    blogsGrid.innerHTML = `
+
+      <div class="blogs-error">
+
+        <p>
+          Latest articles could not be loaded right now.
+        </p>
+
+        <a
+          href="${BLOG_HOME_URL}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit the Blog →
+        </a>
+
+      </div>
+
+    `;
+
   }
 
-  /* =========================================================
-     BLOG DATE FORMATTER
-     ========================================================= */
+}
 
-  function formatBlogDate(dateString) {
-    if (!dateString) return "";
 
-    const date = new Date(dateString);
+/* ══════════════════════════════
+   9. BLOG DATE FORMATTER
+══════════════════════════════ */
 
-    if (Number.isNaN(date.getTime())) {
-      return escapeHTML(String(dateString));
-    }
+function formatBlogDate(date) {
 
-    return date.toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
+  if (!date) {
+    return '';
   }
 
-  /* =========================================================
-     HTML ESCAPING
-     ========================================================= */
 
-  function escapeHTML(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+  const parsedDate =
+    new Date(date);
+
+
+  if (
+    Number.isNaN(
+      parsedDate.getTime()
+    )
+  ) {
+
+    return '';
+
   }
 
-  /* =========================================================
-     SAFE URL CHECK
-     ========================================================= */
 
-  function isSafeURL(url) {
-    if (!url || typeof url !== "string") {
-      return false;
+  return parsedDate.toLocaleDateString(
+    'en-IN',
+    {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
     }
+  );
 
-    try {
-      const parsedURL = new URL(url, window.location.href);
+}
 
-      return (
-        parsedURL.protocol === "https:" ||
-        parsedURL.protocol === "http:"
-      );
-    } catch {
-      return false;
-    }
-  }
 
-  /* =========================================================
-     BLOG INITIALIZATION
-     ========================================================= */
+/* ══════════════════════════════
+   10. HTML SECURITY HELPERS
+══════════════════════════════ */
 
-  loadLatestBlogs();
-});
-```
+function escapeHtml(value) {
+
+  const div =
+    document.createElement(
+      'div'
+    );
+
+
+  div.textContent =
+    String(value);
+
+
+  return div.innerHTML;
+
+}
+
+
+function escapeAttribute(value) {
+
+  return String(value)
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+    .replace(
+      /</g,
+      '&lt;'
+    )
+    .replace(
+      />/g,
+      '&gt;'
+    );
+
+}
+
+
+/* ══════════════════════════════
+   11. INITIALIZE BLOGS
+══════════════════════════════ */
+
+loadLatestBlogs();
