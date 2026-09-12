@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Asthma Awareness: Breathe Better, Live Better — symptoms, triggers, inhalers, emergency action plans and long-term asthma control.">
+<meta name="author" content="Dr. Pratyush Ghosh">
+<title>Asthma Awareness: Breathe Better, Live Better | Dr. Pratyush Ghosh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles_for_blog.css">
+<script src="main_for_blog.js" defer></script>
+
+<style>
+/* ASTHMA PAGE — small page-specific layer over the shared blog CSS */
+.article .section { scroll-margin-top: 110px; }
+
+.trigger-grid { display:flex; flex-wrap:wrap; gap:9px; margin:20px 0; }
+.trigger-chip { padding:8px 13px; border:1px solid rgba(31,184,168,.22); border-radius:999px; background:rgba(31,184,168,.05); color:#cbd7e2; font-size:13px; transition:.25s; }
+.trigger-chip:hover { transform:translateY(-2px); border-color:var(--teal-l); color:#fff; }
+
+.myth-fact { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:22px 0; }
+.myth,.fact { padding:18px; border-radius:7px; }
+.myth { border:1px solid rgba(229,93,93,.2); background:rgba(229,93,93,.035); }
+.fact { border:1px solid rgba(31,184,168,.2); background:rgba(31,184,168,.045); }
+.myth strong,.fact strong { display:block; margin-bottom:7px; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
+.myth strong { color:#ff8d8d; } .fact strong { color:var(--teal-l); }
+.myth p,.fact p { margin:0; }
+
+.emergency-plan { display:grid; gap:12px; margin:24px 0; }
+.emergency-step { border:1px solid rgba(139,171,205,.14); border-radius:8px; background:rgba(255,255,255,.025); overflow:hidden; }
+.emergency-step summary { display:flex; align-items:center; gap:11px; padding:17px; cursor:pointer; list-style:none; color:#fff; font-weight:600; font-size:14px; }
+.emergency-step summary::-webkit-details-marker { display:none; }
+.emergency-step summary::after { content:"+"; margin-left:auto; color:var(--teal-l); font-size:20px; }
+.emergency-step[open] summary::after { content:"−"; }
+.step-dot { width:12px; height:12px; flex:0 0 12px; border-radius:50%; }
+.step-green { background:#55c97a; } .step-yellow { background:#e5c44f; } .step-red { background:#e55d5d; }
+.step-content { padding:0 18px 18px 40px; }
+.step-content ul { margin-top:12px; }
+
+.emergency-banner { margin:20px 0 5px; padding:18px 19px; border:1px solid rgba(229,93,93,.3); border-left:4px solid #e55d5d; border-radius:7px; background:rgba(229,93,93,.055); }
+.emergency-banner strong { display:block; margin-bottom:6px; color:#ff8d8d; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
+.emergency-banner p { margin:0; }
+
+.checklist { display:grid; gap:9px; margin:20px 0; }
+.check-item { display:flex; gap:10px; padding:12px 14px; border:1px solid rgba(139,171,205,.09); border-radius:6px; background:rgba(255,255,255,.025); color:#c6d2df; font-size:14px; }
+.check-item::before { content:"✓"; color:var(--teal-l); font-weight:700; }
+
+.closing-message { margin-top:30px; padding:26px 22px; border:1px solid rgba(31,184,168,.22); border-left:4px solid var(--teal-l); border-radius:8px; background:linear-gradient(135deg,rgba(31,184,168,.075),rgba(201,168,76,.035)); }
+.closing-message .final-line { margin:8px 0; color:#fff; font-family:"Cormorant Garamond",serif; font-size:27px; line-height:1.25; }
+.closing-message .accent { color:var(--teal-l); }
+
+@media(max-width:700px) {
+  .myth-fact { grid-template-columns:1fr; }
+  .step-content { padding-left:38px; }
+}
+</style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<header class="site-header">
+<nav id="main-nav">
+<div class="nav-inner">
+<a href="index.html" class="brand" aria-label="Medical Journal Blog home">
+<span class="brand-mark">P</span>
+<span class="brand-text"><strong>Dr. Pratyush Ghosh</strong><span>Medical Journal · Blog</span></span>
+</a>
+<div class="nav-links" id="nav-links">
+<a href="index.html">Blog Home</a>
+<a href="#" class="active">Article</a>
+<a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">Main Website ↗</a>
+</div>
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+</header>
+
+<header class="hero">
+<div class="article-hero-inner">
+<div class="eyebrow">Respiratory Health</div>
+<h1>🌬️ Asthma Awareness:<br>Breathe Better, Live Better</h1>
+<p class="hero-sub">Asthma can be controlled. Asthma should not control your life.</p>
+<div class="meta">Asthma Awareness <span>•</span> Preventive Health <span>•</span> Health Education</div>
+<div class="ecg" aria-hidden="true">
+<svg viewBox="0 0 1000 46" preserveAspectRatio="none">
+<path class="soft" d="M0 23 H170 L185 23 L194 10 L203 36 L212 23 H390 L405 23 L414 14 L423 32 L432 23 H620 L635 23 L644 8 L653 39 L662 23 H820 L835 23 L844 15 L853 31 L862 23 H1000"/>
+<path d="M0 23 H170 L185 23 L194 10 L203 36 L212 23 H390 L405 23 L414 14 L423 32 L432 23 H620 L635 23 L644 8 L653 39 L662 23 H820 L835 23 L844 15 L853 31 L862 23 H1000"/>
+</svg>
+</div>
+</div>
+</header>
+
+<main id="article-body">
+<div class="layout">
+<aside class="side">
+<div class="side-label">In this article</div>
+<a href="#what-happens">What happens</a>
+<a href="#triggers">Common triggers</a>
+<a href="#inhalers">Inhalers</a>
+<a href="#emergency">Emergency plan</a>
+<a href="#prevention">Prevention</a>
+<a href="#active-life">Active life</a>
+<a href="#message">The message</a>
+</aside>
+
+<article class="article">
+
+<p class="intro">
+Asthma is more than just occasional breathlessness. It is a chronic respiratory condition in which the airways become inflamed and overly sensitive, causing episodes of coughing, wheezing, chest tightness and difficulty breathing.
+<br><br>
+The good news is that asthma can usually be effectively controlled with appropriate treatment, allowing most people to lead active and fulfilling lives.
+</p>
+
+<section class="section" id="what-happens">
+<div class="section-number">01</div>
+<h2>What happens in asthma?</h2>
+<p>In asthma, the airways can become inflamed and narrowed. They may also produce excess mucus and become more sensitive to certain triggers.</p>
+<p>Common symptoms include:</p>
+<ul>
+<li>Cough, particularly at night or early morning</li>
+<li>Wheezing or a whistling sound while breathing</li>
+<li>Shortness of breath</li>
+<li>Chest tightness</li>
+<li>Symptoms that worsen with exercise, cold air, allergens or respiratory infections</li>
+</ul>
+<p>Symptoms can vary from person to person and may come and go.</p>
+</section>
+
+<section class="section" id="triggers">
+<div class="section-number">02</div>
+<h2>🌿 Common asthma triggers</h2>
+<p>Asthma triggers differ between individuals. Common triggers include:</p>
+<div class="trigger-grid">
+<span class="trigger-chip">Dust mites</span><span class="trigger-chip">Pollen</span><span class="trigger-chip">Pet dander</span><span class="trigger-chip">Tobacco smoke</span><span class="trigger-chip">Air pollution</span><span class="trigger-chip">Strong perfumes or chemicals</span><span class="trigger-chip">Cold air</span><span class="trigger-chip">Exercise</span><span class="trigger-chip">Viral respiratory infections</span><span class="trigger-chip">Workplace exposures</span>
+</div>
+<div class="highlight"><p>Identifying personal triggers can help reduce the frequency of symptoms.</p></div>
+</section>
+
+<section class="section" id="inhalers">
+<div class="section-number">03</div>
+<h2>💊 Inhalers are not addictive</h2>
+<div class="myth-fact">
+<div class="myth"><strong>Common misconception</strong><p>Using an inhaler means asthma is severe or that a person will become dependent on it.</p></div>
+<div class="fact"><strong>The message</strong><p>This is not true. Inhaled medicines deliver medication directly to the airways and are an important part of asthma treatment.</p></div>
+</div>
+<p>Controller medicines, particularly those containing inhaled corticosteroids (ICS), help reduce airway inflammation and the risk of asthma attacks in people who need them.</p>
+<p>Reliever medicines may provide rapid symptom relief, but frequent use of a reliever should prompt medical review.</p>
+</section>
+
+<section class="section" id="emergency">
+<div class="section-number">04</div>
+<h2>🚨 Asthma Emergency Action Plan</h2>
+<p>An asthma attack can become serious quickly. Know what to do before an emergency happens.</p>
+
+<div class="emergency-plan">
+
+<details class="emergency-step" open>
+<summary><span class="step-dot step-green"></span>🟢 Step 1 — Mild symptoms</summary>
+<div class="step-content">
+<p>If you notice increasing cough, wheezing, chest tightness or breathlessness:</p>
+<ul>
+<li>Stop the activity and sit upright.</li>
+<li>Stay calm and move away from any known trigger.</li>
+<li>Use your prescribed reliever inhaler according to your personal asthma action plan.</li>
+<li>Use a spacer if one has been prescribed or recommended.</li>
+<li>Monitor your symptoms closely.</li>
+</ul>
+</div>
+</details>
+
+<details class="emergency-step">
+<summary><span class="step-dot step-yellow"></span>🟡 Step 2 — Symptoms are not improving</summary>
+<div class="step-content">
+<p>If symptoms continue, worsen, or keep returning despite your prescribed reliever:</p>
+<ul>
+<li>Follow your written asthma action plan for additional doses and next steps.</li>
+<li>Contact your doctor or seek urgent medical assessment.</li>
+<li>Do not simply continue taking repeated doses without medical guidance.</li>
+</ul>
+<p>If you have been prescribed an emergency course of oral corticosteroids, take it only according to the instructions given by your healthcare professional.</p>
+</div>
+</details>
+
+<details class="emergency-step">
+<summary><span class="step-dot step-red"></span>🔴 Step 3 — Severe asthma attack: GET EMERGENCY HELP</summary>
+<div class="step-content">
+<p>Call your local emergency medical service immediately if:</p>
+<ul>
+<li>Breathing is severely difficult or rapidly worsening</li>
+<li>You cannot speak in full sentences because of breathlessness</li>
+<li>Your reliever is not providing adequate relief</li>
+<li>You become very weak, drowsy, confused or exhausted</li>
+<li>Your lips or face appear bluish or grey</li>
+<li>You have a peak-flow reading in the red zone according to your personal asthma action plan</li>
+<li>You feel that this is a life-threatening emergency</li>
+</ul>
+<div class="emergency-banner"><strong>Emergency</strong><p>Do not drive yourself to the hospital. While waiting for emergency help, remain upright and continue your prescribed emergency treatment according to your asthma action plan.</p></div>
+</div>
+</details>
+
+</div>
+
+<div class="caution"><strong>Important</strong><p>Asthma treatment plans are individualized. The exact inhaler, dose and number of doses during an attack can differ between patients. Follow the written plan provided by your doctor rather than relying on a generic dosing schedule.</p></div>
+</section>
+
+<section class="section" id="prevention">
+<div class="section-number">05</div>
+<h2>🩺 Preventing asthma emergencies</h2>
+<p>The best emergency plan is good asthma control.</p>
+<div class="checklist">
+<div class="check-item">Take your prescribed controller medication regularly.</div>
+<div class="check-item">Learn and regularly check your inhaler technique.</div>
+<div class="check-item">Know your personal asthma triggers.</div>
+<div class="check-item">Keep your reliever inhaler available as advised.</div>
+<div class="check-item">Have a written asthma action plan.</div>
+<div class="check-item">Attend regular medical reviews.</div>
+<div class="check-item">Discuss vaccinations and other preventive measures with your healthcare professional.</div>
+<div class="check-item">Make sure family members, caregivers and school/workplace contacts know what to do during an asthma emergency.</div>
+</div>
+</section>
+
+<section class="section" id="active-life">
+<div class="section-number">06</div>
+<h2>🏃 Asthma should not stop you from living</h2>
+<p>With good asthma control, many people can exercise, travel, work and participate in sports normally.</p>
+<div class="highlight"><p>The goal isn't simply to treat symptoms when they occur. Good asthma management aims to maintain long-term control, reduce the risk of severe attacks and support a healthy, active life.</p></div>
+</section>
+
+<section class="section" id="message">
+<div class="section-number">07</div>
+<h2>❤️ The message this Asthma Awareness period</h2>
+<p>Don't ignore recurrent breathlessness.<br>Don't fear prescribed inhalers.<br>Don't wait for severe symptoms before seeking help.</p>
+<p>If you or your child frequently coughs at night, wheezes, becomes breathless during exercise, or repeatedly experiences breathing problems, consult a healthcare professional for proper assessment.</p>
+
+<div class="closing-message">
+<p class="final-line accent">Breathe easier. Know your triggers. Know your action plan.</p>
+<p class="final-line">Asthma can be controlled.</p>
+<p class="final-line accent">Asthma should not control your life.</p>
+</div>
+</section>
+
+<p class="disclaimer">This article is for general health education and does not replace an individualized asthma action plan or medical advice from a qualified healthcare professional.</p>
+
+</article>
+</div>
+</main>
+
+<div class="back"><a href="index.html">← Back to Blog</a></div>
+
+<footer>
+© 2025
+<span class="gold"><a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Dr. Pratyush Ghosh</a></span>
+· MBBS, DNB Medicine, MRCP Part 1 · West Bengal &nbsp;·&nbsp; Made by
+<a href="https://instagram.com/Scorpio_gora97" target="_blank" rel="noopener noreferrer" class="footer-insta">@Scorpio_gora97</a>
+</footer>
+
+</body>
+</html>
