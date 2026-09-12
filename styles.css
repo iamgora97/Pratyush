@@ -1322,3 +1322,699 @@ body.nav-open {
   }
 }
 
+
+
+/* ════════════════════════════════════════
+   PORTFOLIO LAYOUT OVERRIDES
+════════════════════════════════════════ */
+/* =====================================================
+       GLOBAL RESPONSIVE FIXES
+       ===================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+
+    body {
+      margin: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
+
+    #main-nav {
+      width: 100%;
+      max-width: 100%;
+    }
+
+
+    .nav-logo {
+      white-space: nowrap;
+    }
+
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+
+    .nav-links li {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+       ===================================================== */
+
+    .hero,
+    .section-wrap,
+    .skills-bg,
+    .contact-section,
+    footer {
+      width: 100%;
+      max-width: 100%;
+    }
+
+
+    .hero-inner {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+
+    .section-wrap {
+      width: min(1200px, calc(100% - 40px));
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .skills-grid,
+    .edu-grid,
+    .timeline {
+      width: 100%;
+    }
+
+
+    /* =====================================================
+       BLOG SECTION
+       ===================================================== */
+
+    .blogs-section {
+      position: relative;
+    }
+
+
+    .blogs-intro {
+      max-width: 680px;
+      margin: 18px 0 42px;
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.72;
+    }
+
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+
+    .blog-card {
+      position: relative;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.025);
+
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+    }
+
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(31,184,168,0.5);
+      background: rgba(31,184,168,0.04);
+    }
+
+
+    .blog-card-category {
+      margin-bottom: 10px;
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      color: #1fb8a8;
+    }
+
+
+    .blog-card-date {
+      margin-bottom: 20px;
+
+      font-size: 11px;
+      line-height: 1.5;
+
+      opacity: 0.55;
+    }
+
+
+    .blog-card h3 {
+      margin: 0 0 15px;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 29px;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+
+    .blog-card p {
+      margin: 0 0 25px;
+
+      font-size: 14px;
+      line-height: 1.75;
+
+      opacity: 0.72;
+    }
+
+
+    .blog-read-more {
+      display: inline-block;
+
+      color: #1fb8a8;
+      text-decoration: none;
+
+      font-size: 12px;
+      letter-spacing: 0.5px;
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+
+
+    .blog-read-more:hover {
+      opacity: 0.7;
+      transform: translateX(3px);
+    }
+
+
+    .blogs-footer {
+      margin-top: 35px;
+    }
+
+
+    .blogs-loading,
+    .blogs-error {
+      grid-column: 1 / -1;
+
+      padding: 45px 25px;
+
+      text-align: center;
+
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+
+    .blogs-loading {
+      opacity: 0.65;
+    }
+
+
+    .blogs-error {
+      opacity: 0.7;
+    }
+
+
+    .blogs-error p {
+      margin: 0 0 15px;
+    }
+
+
+    .blogs-error a {
+      color: #1fb8a8;
+      text-decoration: none;
+    }
+
+
+    /* =====================================================
+       TABLET
+       ===================================================== */
+
+    @media (max-width: 900px) {
+
+      #main-nav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+
+      .nav-logo {
+        font-size: 18px;
+      }
+
+
+      .nav-links {
+        gap: 18px;
+      }
+
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+
+      .hero-photo-wrap {
+        order: -1;
+
+        display: flex;
+        justify-content: center;
+      }
+
+
+      .photo-card {
+        width: min(420px, 90vw);
+      }
+
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+
+      .edu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+
+      .blogs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 700px) {
+
+      /* -----------------------------
+         Navigation
+         ----------------------------- */
+
+      #main-nav {
+        min-height: 70px;
+        padding: 15px 18px;
+      }
+
+
+      .nav-logo {
+        font-size: 17px;
+      }
+
+
+      .nav-links {
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px 20px 20px;
+
+        z-index: 9999;
+      }
+
+
+      .nav-links.active,
+      .nav-links.open {
+        display: flex;
+      }
+
+
+      .nav-links li {
+        width: 100%;
+      }
+
+
+      .nav-links a {
+        display: block;
+
+        width: 100%;
+
+        padding: 13px 5px;
+      }
+
+
+      .hamburger {
+        display: flex;
+        cursor: pointer;
+      }
+
+
+      /* -----------------------------
+         Hero
+         ----------------------------- */
+
+      .hero-inner {
+        width: calc(100% - 32px);
+
+        padding-top: 55px;
+        padding-bottom: 55px;
+
+        gap: 40px;
+      }
+
+
+      .hero h1 {
+        font-size: clamp(48px, 14vw, 72px);
+        line-height: 0.95;
+      }
+
+
+      .hero-bio {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+
+      .hero-credentials {
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+
+      .hero-cta {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 12px;
+      }
+
+
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+
+      .hero-stats {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 10px;
+      }
+
+
+      .stat {
+        text-align: center;
+      }
+
+
+      .stat-num {
+        font-size: 30px;
+      }
+
+
+      .stat-label {
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+
+      /* -----------------------------
+         Photo
+         ----------------------------- */
+
+      .hero-photo-wrap {
+        width: 100%;
+      }
+
+
+      .photo-card {
+        width: min(360px, 90vw);
+        margin: 0 auto;
+      }
+
+
+      /* -----------------------------
+         Sections
+         ----------------------------- */
+
+      .section-wrap {
+        width: calc(100% - 32px);
+
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+
+      .section-title {
+        font-size: clamp(36px, 10vw, 52px);
+      }
+
+
+      .section-eyebrow {
+        font-size: 11px;
+      }
+
+
+      /* -----------------------------
+         Timeline
+         ----------------------------- */
+
+      .timeline {
+        width: 100%;
+      }
+
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+
+      .timeline-meta {
+        padding-bottom: 5px;
+      }
+
+
+      .timeline-content {
+        width: 100%;
+      }
+
+
+      /* -----------------------------
+         Skills
+         ----------------------------- */
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+
+      .skill-chip {
+        width: 100%;
+      }
+
+
+      /* -----------------------------
+         Education
+         ----------------------------- */
+
+      .edu-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+
+      .edu-card {
+        width: 100%;
+      }
+
+
+      /* -----------------------------
+         BLOGS
+         ----------------------------- */
+
+      .blogs-intro {
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+
+      .blogs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+
+      .blog-card {
+        padding: 25px;
+      }
+
+
+      .blog-card h3 {
+        font-size: 26px;
+      }
+
+
+      .blog-card p {
+        font-size: 13px;
+      }
+
+
+      .blogs-footer {
+        margin-top: 25px;
+      }
+
+
+      /* -----------------------------
+         Contact
+         ----------------------------- */
+
+      .contact-section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+
+      .contact-section h2 {
+        font-size: clamp(38px, 10vw, 55px);
+      }
+
+
+      .contact-items {
+        width: 100%;
+      }
+
+
+      .contact-item {
+        width: 100%;
+        word-break: break-word;
+      }
+
+
+      /* -----------------------------
+         Footer
+         ----------------------------- */
+
+      footer {
+        padding: 25px 18px;
+
+        text-align: center;
+
+        line-height: 1.7;
+
+        font-size: 11px;
+      }
+
+    }
+
+
+    /* =====================================================
+       SMALL PHONES
+       ===================================================== */
+
+    @media (max-width: 420px) {
+
+      #main-nav {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+
+      .nav-logo {
+        font-size: 15px;
+      }
+
+
+      .hero-inner,
+      .section-wrap {
+        width: calc(100% - 24px);
+      }
+
+
+      .hero-stats {
+        gap: 5px;
+      }
+
+
+      .stat-num {
+        font-size: 25px;
+      }
+
+
+      .stat-label {
+        font-size: 9px;
+      }
+
+
+      .photo-card {
+        width: 94vw;
+      }
+
+
+      .section-wrap {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+
+      .blog-card {
+        padding: 22px;
+      }
+
+
+      .blog-card h3 {
+        font-size: 24px;
+      }
+
+    }
