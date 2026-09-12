@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Diabetes Awareness: Know Your Sugar, Protect Your Future — understanding diabetes, warning signs, screening, prevention and hypoglycemia action.">
+<meta name="author" content="Dr. Pratyush Ghosh">
+<title>Diabetes Awareness: Know Your Sugar, Protect Your Future | Dr. Pratyush Ghosh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles_for_blog.css">
+<script src="main_for_blog.js" defer></script>
+
+<style>
+/* DIABETES PAGE-SPECIFIC INTERACTIVE LAYER */
+.type-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px}
+.type-tab{padding:9px 13px;border:1px solid rgba(139,171,205,.15);border-radius:999px;background:rgba(255,255,255,.025);color:#c7d3de;font-size:12px;font-weight:600;cursor:pointer}
+.type-tab:hover,.type-tab.active{border-color:var(--teal-l);background:rgba(31,184,168,.08);color:#fff}
+.type-panel{display:none;padding:17px 18px;border-left:3px solid var(--teal-l);border-radius:6px;background:rgba(31,184,168,.045)}
+.type-panel.active{display:block}.type-panel strong{color:#fff}
+.risk-grid,.lifestyle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.risk-card,.lifestyle-card{padding:17px;border:1px solid rgba(31,184,168,.14);border-radius:8px;background:rgba(255,255,255,.025);transition:.25s ease}
+.risk-card:hover,.lifestyle-card:hover{transform:translateY(-2px);border-color:rgba(31,184,168,.35)}
+.risk-card strong{display:block;margin-bottom:6px;color:var(--teal-l)}.risk-card p,.lifestyle-card p{margin:0;font-size:13px}
+.lifestyle-card .icon{font-size:23px;margin-bottom:6px}.lifestyle-card h3{margin:0 0 6px;color:#fff;font-family:"Cormorant Garamond",serif;font-size:22px}
+.number-card{margin:24px 0;padding:21px;border:1px solid rgba(31,184,168,.2);border-radius:8px;background:linear-gradient(135deg,rgba(31,184,168,.07),rgba(201,168,76,.035))}
+.number-card h3{margin:0 0 7px;color:#fff;font-family:"Cormorant Garamond",serif;font-size:27px}.number-card p{margin:0}
+.hypo-flow{display:grid;gap:10px;margin:23px 0}.hypo-step{display:flex;gap:13px;padding:15px 16px;border:1px solid rgba(201,168,76,.16);border-radius:7px;background:rgba(201,168,76,.035)}
+.hypo-step-number{width:29px;height:29px;flex:0 0 29px;display:grid;place-items:center;border-radius:50%;background:rgba(201,168,76,.13);color:var(--gold-l);font-weight:700;font-size:12px}
+.hypo-step strong{display:block;margin-bottom:4px;color:#fff}.hypo-step p{margin:0;font-size:13px}
+.fast-carb{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 4px}.fast-carb span{padding:8px 11px;border-radius:999px;background:rgba(31,184,168,.07);border:1px solid rgba(31,184,168,.18);color:#cbd8e2;font-size:12px}
+.emergency-box{margin:23px 0;padding:20px;border:1px solid rgba(229,93,93,.3);border-left:4px solid #e55d5d;border-radius:7px;background:rgba(229,93,93,.055)}
+.emergency-box strong{display:block;margin-bottom:7px;color:#ff8d8d;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.emergency-list{display:grid;gap:8px;margin-top:15px}.emergency-list div{padding:10px 12px;border-radius:5px;background:rgba(255,255,255,.035);color:#d7e0e9;font-size:13px}
+.emergency-list div::before{content:"•";margin-right:8px;color:#ff8d8d}
+.future-box{margin-top:30px;padding:26px 22px;border:1px solid rgba(31,184,168,.22);border-left:4px solid var(--teal-l);border-radius:8px;background:linear-gradient(135deg,rgba(31,184,168,.075),rgba(201,168,76,.035))}
+.future-box p{margin:7px 0;color:#fff;font-family:"Cormorant Garamond",serif;font-size:27px;line-height:1.22}.future-box p:last-child{color:var(--teal-l)}
+@media(max-width:700px){.risk-grid,.lifestyle-grid{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+<div id="progress-bar"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<header class="site-header">
+<nav id="main-nav"><div class="nav-inner">
+<a href="index.html" class="brand" aria-label="Medical Journal Blog home"><span class="brand-mark">P</span><span class="brand-text"><strong>Dr. Pratyush Ghosh</strong><span>Medical Journal · Blog</span></span></a>
+<div class="nav-links" id="nav-links"><a href="index.html">Blog Home</a><a href="#" class="active">Article</a><a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">Main Website ↗</a></div>
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+</div></nav>
+</header>
+
+<header class="hero">
+<div class="article-hero-inner">
+<div class="eyebrow">Metabolic Health</div>
+<h1>Diabetes Awareness:<br>Know Your Sugar, Protect Your Future</h1>
+<p class="hero-sub">Detect early. Act early. Treat lows promptly. Protect your future.</p>
+<div class="meta">Diabetes Awareness <span>•</span> Preventive Health <span>•</span> Health Education</div>
+<div class="ecg" aria-hidden="true"><svg viewBox="0 0 1000 46" preserveAspectRatio="none"><path class="soft" d="M0 23 H170 L185 23 L194 10 L203 36 L212 23 H390 L405 23 L414 14 L423 32 L432 23 H620 L635 23 L644 8 L653 39 L662 23 H820 L835 23 L844 15 L853 31 L862 23 H1000"/><path d="M0 23 H170 L185 23 L194 10 L203 36 L212 23 H390 L405 23 L414 14 L423 32 L432 23 H620 L635 23 L644 8 L653 39 L662 23 H820 L835 23 L844 15 L853 31 L862 23 H1000"/></svg></div>
+</div>
+</header>
+
+<main id="article-body"><div class="layout">
+<aside class="side">
+<div class="side-label">In this article</div>
+<a href="#what-is">What is diabetes?</a><a href="#danger">Why it matters</a><a href="#warning-signs">Warning signs</a><a href="#screening">Screening</a><a href="#prevention">Prevention</a><a href="#hypoglycemia">Hypoglycemia</a><a href="#emergency">Severe hypo</a><a href="#message">Get screened</a>
+</aside>
+
+<article class="article">
+
+<p class="intro">Diabetes is a chronic condition that affects how the body regulates blood glucose (blood sugar). It is increasingly common worldwide and can affect people of all ages.<br><br>The challenge is that diabetes can develop silently. A person may have high blood sugar for months or even years before noticeable symptoms appear.<br><br>Early detection and good control can significantly reduce the risk of complications.</p>
+
+<section class="section" id="what-is"><div class="section-number">01</div><h2>🩺 What is diabetes?</h2>
+<p>Glucose is an important source of energy for our body. Insulin, a hormone produced by the pancreas, helps glucose move from the bloodstream into cells.</p>
+<p>In diabetes, the body either does not produce enough insulin, does not use insulin effectively, or both. As a result, blood glucose levels become persistently elevated.</p>
+<p>The major types include:</p>
+<div class="type-tabs" role="tablist">
+<button class="type-tab active" type="button" data-type="type1">Type 1</button><button class="type-tab" type="button" data-type="type2">Type 2</button><button class="type-tab" type="button" data-type="gestational">Gestational</button>
+</div>
+<div class="type-panel active" id="type1"><strong>Type 1 diabetes</strong><p>An autoimmune condition in which the body destroys insulin-producing cells.</p></div>
+<div class="type-panel" id="type2"><strong>Type 2 diabetes</strong><p>The most common form, often associated with insulin resistance and progressive loss of insulin production.</p></div>
+<div class="type-panel" id="gestational"><strong>Gestational diabetes</strong><p>Diabetes first diagnosed during pregnancy.</p></div>
+</section>
+
+<section class="section" id="danger"><div class="section-number">02</div><h2>⚠️ Why is diabetes dangerous?</h2>
+<p>Uncontrolled diabetes can gradually damage blood vessels and nerves and increase the risk of:</p>
+<div class="risk-grid">
+<div class="risk-card"><strong>❤️ Heart</strong><p>Heart attack and cardiovascular disease</p></div><div class="risk-card"><strong>🧠 Brain</strong><p>Stroke</p></div><div class="risk-card"><strong>👁️ Eyes</strong><p>Diabetic retinopathy and vision loss</p></div><div class="risk-card"><strong>🫘 Kidneys</strong><p>Chronic kidney disease</p></div><div class="risk-card"><strong>🦶 Feet</strong><p>Foot ulcers and infections</p></div><div class="risk-card"><strong>Peripheral nerves</strong><p>Nerve damage (neuropathy)</p></div>
+</div>
+<p>Many complications can be prevented or delayed through early diagnosis and good long-term glucose control.</p>
+</section>
+
+<section class="section" id="warning-signs"><div class="section-number">03</div><h2>🤔 What are the warning signs?</h2>
+<div class="highlight"><p><strong>Some people have no symptoms at all.</strong></p></div>
+<p>Possible symptoms include:</p>
+<ul><li>Excessive thirst</li><li>Frequent urination</li><li>Increased hunger</li><li>Unexplained weight loss</li><li>Fatigue</li><li>Blurred vision</li><li>Slow-healing wounds</li><li>Recurrent infections</li></ul>
+<p>Don't wait for symptoms to appear before getting tested.</p>
+</section>
+
+<section class="section" id="screening"><div class="section-number">04</div><h2>🔍 Who should consider screening?</h2>
+<p>Screening is particularly important for people with risk factors such as:</p>
+<ul><li>Overweight or obesity</li><li>Family history of diabetes</li><li>High blood pressure</li><li>Abnormal cholesterol or triglycerides</li><li>Previous gestational diabetes</li><li>Polycystic ovary syndrome</li><li>Physical inactivity</li><li>Previous prediabetes</li><li>Increasing age</li></ul>
+<div class="number-card"><h3>Screening is an opportunity to act early.</h3><p>Your healthcare professional can advise which test and screening interval are appropriate for you.</p></div>
+</section>
+
+<section class="section" id="prevention"><div class="section-number">05</div><h2>🥗 Diabetes prevention starts today</h2>
+<p>For many people at increased risk of type 2 diabetes, lifestyle changes can substantially reduce the risk of developing the disease.</p>
+<div class="lifestyle-grid">
+<div class="lifestyle-card"><div class="icon">🥦</div><h3>Eat smart</h3><p>Choose vegetables, whole grains, pulses, nuts and appropriate protein sources more often. Limit sugary drinks, excessive refined carbohydrates and highly processed foods.</p></div>
+<div class="lifestyle-card"><div class="icon">🏃</div><h3>Move regularly</h3><p>Regular physical activity improves insulin sensitivity and supports a healthy weight.</p></div>
+<div class="lifestyle-card"><div class="icon">⚖️</div><h3>Maintain a healthy weight</h3><p>If you are overweight, even modest, sustained weight loss can improve metabolic health.</p></div>
+<div class="lifestyle-card"><div class="icon">🚭</div><h3>Avoid tobacco</h3><p>Smoking increases cardiovascular risk and adds to the health risks associated with diabetes.</p></div>
+<div class="lifestyle-card"><div class="icon">😴</div><h3>Sleep well</h3><p>Adequate, regular sleep is an important part of overall metabolic health.</p></div>
+</div>
+</section>
+
+<section class="section" id="hypoglycemia"><div class="section-number">06</div><h2>🚨 Hypoglycemia: Know What to Do</h2>
+<p>Hypoglycemia means blood glucose is too low. It is most commonly a concern in people using insulin or certain diabetes medicines.</p>
+<div class="number-card"><h3>Below 70 mg/dL</h3><p>A glucose level below 70 mg/dL (3.9 mmol/L) is commonly used as the threshold for hypoglycemia.</p></div>
+<h3>⚠️ Recognize the symptoms</h3><p>Watch for:</p>
+<ul><li>Shaking or trembling</li><li>Sweating</li><li>Hunger</li><li>Fast heartbeat</li><li>Dizziness</li><li>Headache</li><li>Irritability or confusion</li><li>Difficulty concentrating</li><li>Weakness</li></ul>
+<p>Severe hypoglycemia can cause seizures, loss of consciousness or inability to treat oneself.</p>
+<h3>🍬 The 15–15 Rule</h3>
+<div class="hypo-flow">
+<div class="hypo-step"><div class="hypo-step-number">1</div><div><strong>Take about 15 g of fast-acting carbohydrate.</strong><p>If you are awake, able to swallow safely, and your blood glucose is below 70 mg/dL.</p><div class="fast-carb"><span>Glucose tablets / gel</span><span>≈120 mL (4 oz) regular fruit juice</span><span>≈120 mL regular non-diet soft drink</span></div></div></div>
+<div class="hypo-step"><div class="hypo-step-number">2</div><div><strong>Wait 15 minutes.</strong><p>Give the fast-acting carbohydrate time to work.</p></div></div>
+<div class="hypo-step"><div class="hypo-step-number">3</div><div><strong>Recheck your blood glucose.</strong><p>Check again after 15 minutes.</p></div></div>
+<div class="hypo-step"><div class="hypo-step-number">4</div><div><strong>Repeat if necessary.</strong><p>If it remains below 70 mg/dL, repeat the treatment.</p></div></div>
+</div>
+<p>Once your glucose has recovered, follow your usual meal/snack plan. If your next meal is not soon, a longer-acting carbohydrate-containing snack may be appropriate.</p>
+<div class="caution"><strong>Important</strong><p>Avoid chocolate or other high-fat foods as the first treatment because fat can slow glucose absorption.</p></div>
+</section>
+
+<section class="section" id="emergency"><div class="section-number">07</div><h2>🚑 Severe Hypoglycemia: Emergency Action</h2>
+<p>If the person is confused, having a seizure, unconscious, or unable to swallow safely:</p>
+<div class="emergency-box"><strong>Act immediately</strong><div class="emergency-list"><div>Do NOT give food, drink or anything by mouth.</div><div>Place the person on their side if unconscious and breathing.</div><div>Give glucagon if it has been prescribed/available and someone is trained to use it.</div><div>Call emergency medical services immediately.</div><div>Stay with the person until help arrives.</div></div></div>
+<p>After a severe hypoglycemic episode, medical review is important, particularly to identify the cause and prevent another episode.</p>
+<h3>📝 Prevent future episodes</h3>
+<ul><li>Review insulin or medication doses with your healthcare professional.</li><li>Avoid skipping or delaying meals when this could cause low glucose.</li><li>Check glucose as recommended.</li><li>Carry a source of fast-acting carbohydrate.</li><li>Consider carrying a medical ID indicating that you have diabetes.</li><li>Make sure family members and close contacts know how to recognize and treat severe hypoglycemia.</li></ul>
+<div class="medicine-note"><strong>Do not change treatment on your own</strong><p>Never independently reduce or stop insulin or diabetes medication because of a low reading without medical advice.</p></div>
+</section>
+
+<section class="section" id="message"><div class="section-number">08</div><h2>📢 Don't Wait — Get Screened Today</h2>
+<p>You may feel perfectly healthy and still have diabetes or prediabetes.</p>
+<div class="future-box"><p>🩸 Make today the day you know your numbers.</p></div>
+<p>Visit a healthcare facility today and ask whether you should have your blood glucose checked.</p>
+<p>A simple blood test can help identify diabetes or prediabetes and provide an opportunity to act early.</p>
+<p>If you already have diabetes, use today as a reminder to review your treatment, glucose monitoring and follow-up plan.</p>
+<div class="highlight"><p><strong>Detect early. Act early. Treat lows promptly. Protect your heart, kidneys, eyes and nerves.</strong></p></div>
+<div class="future-box"><p>❤️ CHECK YOUR SUGAR.</p><p>KNOW YOUR RISK.</p><p>KNOW WHAT TO DO.</p></div>
+<p>Prevention starts before the diagnosis.<br>Control starts with awareness.</p>
+</section>
+
+<p class="disclaimer">This article is intended for general health education and does not replace individualized medical advice. Blood glucose targets and treatment plans vary between individuals. Follow the hypoglycemia instructions provided by your healthcare professional.</p>
+
+</article></div></main>
+
+<div class="back"><a href="index.html">← Back to Blog</a></div>
+
+<footer>© 2026 <span class="gold"><a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Dr. Pratyush Ghosh</a></span> · MBBS, DNB Medicine, MRCP Part 1 · West Bengal &nbsp;·&nbsp; Made by <a href="https://instagram.com/Scorpio_gora97" target="_blank" rel="noopener noreferrer" class="footer-insta">@Scorpio_gora97</a></footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+<script>
+document.querySelectorAll(".type-tab").forEach(function(tab){
+  tab.addEventListener("click",function(){
+    document.querySelectorAll(".type-tab").forEach(function(x){x.classList.remove("active")});
+    document.querySelectorAll(".type-panel").forEach(function(x){x.classList.remove("active")});
+    tab.classList.add("active");
+    var panel=document.getElementById(tab.dataset.type);
+    if(panel) panel.classList.add("active");
+  });
+});
+</script>
+
+</body>
+</html>
