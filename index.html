@@ -1,516 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="description"
-    content="Pratyush Blog — thoughtful articles, health insights and stories."
-  >
-
-  <title>Blog | Pratyush</title>
-
-  <link rel="stylesheet" href="styles.css">
-  <script src="main.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pratyush Blog — thoughtful articles, health insights and stories.">
+<title>Blog | Pratyush</title>
+<link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
 </head>
-
 <body>
-
-  <canvas id="bg-canvas"></canvas>
-  <div id="progress-bar"></div>
-
-  <!-- =====================================================
-       NAVIGATION
-  ====================================================== -->
-
-  <nav id="main-nav">
-
-    <a
-      class="nav-logo"
-      href="index.html"
-      aria-label="Pratyush Blog home"
-    >
-      Pratyush.
-      <sup>BLOG</sup>
-    </a>
-
-    <button
-      class="hamburger"
-      id="hamburger"
-      aria-label="Open navigation"
-      aria-expanded="false"
-      type="button"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="nav-links" id="nav-links">
-
-      <a href="index.html" class="active">
-        Blog
-      </a>
-
-      <a
-        href="https://drpratyushghosh.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Website
-      </a>
-
-    </div>
-
-  </nav>
-
-
-  <main>
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section class="blog-hero">
-
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-
-      <div class="blog-hero-inner">
-
-        <div class="hero-tag">
-          <span class="blink-dot"></span>
-          PRATYUSH BLOG
-        </div>
-
-        <h1>
-          Ideas worth
-          <br>
-          <em>reading.</em>
-        </h1>
-
-        <p class="hero-bio">
-          Thoughtful articles, useful insights and stories about
-          the things that matter.
-        </p>
-
-        <a href="#latest" class="btn btn-primary">
-          Explore articles
-          <span>↓</span>
-        </a>
-
-      </div>
-
-
-      <div class="ecg-wrap">
-
-        <svg
-          viewBox="0 0 1200 56"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-
-          <polyline
-            points="
-              0,28 80,28 100,28 110,10 120,46 130,28
-              230,28 250,28 260,10 270,46 280,28
-              380,28 400,28 410,10 420,46 430,28
-              530,28 550,28 560,10 570,46 580,28
-              680,28 700,28 710,10 720,46 730,28
-              830,28 850,28 860,10 870,46 880,28
-              980,28 1000,28 1010,10 1020,46 1030,28
-              1130,28 1150,28 1160,10 1170,46 1180,28
-              1200,28
-            "
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1"
-          />
-
-        </svg>
-
-      </div>
-
-    </section>
-
-
-    <div class="divider"></div>
-
-
-    <!-- =====================================================
-         ARTICLES
-    ====================================================== -->
-
-    <section class="section-wrap" id="latest">
-
-      <div class="articles-heading">
-
-        <div>
-
-          <p class="section-eyebrow">
-            FROM THE BLOG
-          </p>
-
-          <h2 class="section-title">
-            Latest articles
-          </h2>
-
-        </div>
-
-        <p class="article-count">
-
-          <span id="article-count">
-            3
-          </span>
-
-          articles
-
-        </p>
-
-      </div>
-
-
-      <div class="blog-grid">
-
-
-        <!-- =================================================
-             BLOG 3 — ASTHMA AWARENESS
-        ================================================== -->
-
-        <article
-          class="blog-card reveal"
-          data-category="Respiratory Health"
-        >
-
-          <a
-            class="blog-cover"
-            href="Asthma_Awareness_Breathe_Better_Live_Better.html"
-            aria-label="Read Asthma Awareness article"
-          >
-
-            <span class="cover-mark">
-              A
-            </span>
-
-            <span class="cover-number">
-              03
-            </span>
-
-            <span class="category">
-              Respiratory Health
-            </span>
-
-          </a>
-
-
-          <div class="blog-card-body">
-
-            <div class="blog-meta">
-
-              <span>
-                2026
-              </span>
-
-              <span class="meta-dot">
-                •
-              </span>
-
-              <span>
-                6 min read
-              </span>
-
-            </div>
-
-
-            <h3>
-
-              <a
-                href="Asthma_Awareness_Breathe_Better_Live_Better.html"
-              >
-                Asthma Awareness:
-                Breathe Better, Live Better
-              </a>
-
-            </h3>
-
-
-            <p>
-              Understanding asthma, common triggers, inhalers,
-              emergency warning signs and the importance of long-term
-              asthma control.
-            </p>
-
-
-            <a
-              class="read-link"
-              href="Asthma_Awareness_Breathe_Better_Live_Better.html"
-            >
-              Read article
-              <span>→</span>
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             BLOG 2 — NATIONAL NUTRITION WEEK
-        ================================================== -->
-
-        <article
-          class="blog-card reveal"
-          data-category="Health & Awareness"
-        >
-
-          <a
-            class="blog-cover"
-            href="National_Nutrition_Week.html"
-            aria-label="Read National Nutrition Week article"
-          >
-
-            <span class="cover-mark">
-              N
-            </span>
-
-            <span class="cover-number">
-              02
-            </span>
-
-            <span class="category">
-              Health &amp; Awareness
-            </span>
-
-          </a>
-
-
-          <div class="blog-card-body">
-
-            <div class="blog-meta">
-
-              <span>
-                2026
-              </span>
-
-              <span class="meta-dot">
-                •
-              </span>
-
-              <span>
-                5 min read
-              </span>
-
-            </div>
-
-
-            <h3>
-
-              <a href="National_Nutrition_Week.html">
-
-                National Nutrition Week —
-                Nutrition Is Not Just About Food,
-                It Is About Health
-
-              </a>
-
-            </h3>
-
-
-            <p>
-              A reminder that balanced nutrition is not simply about
-              weight or appearance—it is a foundation for long-term health.
-            </p>
-
-
-            <a
-              class="read-link"
-              href="National_Nutrition_Week.html"
-            >
-              Read article
-              <span>→</span>
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             BLOG 1 — HEPATITIS WEEK 2026
-        ================================================== -->
-
-        <article
-          class="blog-card reveal"
-          data-category="Health & Awareness"
-        >
-
-          <a
-            class="blog-cover"
-            href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
-            aria-label="Read Hepatitis Week article"
-          >
-
-            <span class="cover-mark">
-              H
-            </span>
-
-            <span class="cover-number">
-              01
-            </span>
-
-            <span class="category">
-              Health &amp; Awareness
-            </span>
-
-          </a>
-
-
-          <div class="blog-card-body">
-
-            <div class="blog-meta">
-
-              <span>
-                2026
-              </span>
-
-              <span class="meta-dot">
-                •
-              </span>
-
-              <span>
-                5 min read
-              </span>
-
-            </div>
-
-
-            <h3>
-
-              <a
-                href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
-              >
-
-                Breaking Down the Silence:
-                5 Critical Insights from Hepatitis Week 2026
-
-              </a>
-
-            </h3>
-
-
-            <p>
-              Exploring why hepatitis remains a major global health
-              concern and the key insights behind Hepatitis Week 2026.
-            </p>
-
-
-            <a
-              class="read-link"
-              href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html"
-            >
-              Read article
-              <span>→</span>
-            </a>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CTA
-    ====================================================== -->
-
-    <section class="blog-cta">
-
-      <div class="cta-glow"></div>
-
-      <div class="cta-content">
-
-        <p class="section-eyebrow centered">
-          KEEP EXPLORING
-        </p>
-
-        <h2>
-          More ideas are
-          <em>coming.</em>
-        </h2>
-
-        <p>
-          Stay curious. Keep learning.
-          Keep asking better questions.
-        </p>
-
-        <a
-          href="https://drpratyushghosh.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit main website
-          <span>→</span>
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
-  <footer>
-
-    © 2026
-
-    <span class="gold">
-
-      <a
-        href="https://drpratyushghosh.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Dr. Pratyush Ghosh
-      </a>
-
-    </span>
-
-    · MBBS, DNB Medicine, MRCP Part 1
-    · West Bengal &nbsp;·&nbsp;
-    Made by
-
-    <a
-      href="https://instagram.com/Scorpio_gora97"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="footer-insta"
-    >
-      @Scorpio_gora97
-    </a>
-
-  </footer>
-
-
-  <!-- =====================================================
-       BACK TO TOP
-  ====================================================== -->
-
-  <button
-    class="back-to-top"
-    id="back-to-top"
-    aria-label="Back to top"
-  >
-    ↑
-  </button>
-
-
+<canvas id="bg-canvas"></canvas><div id="progress-bar"></div>
+
+<nav id="main-nav">
+<a class="nav-logo" href="index.html" aria-label="Pratyush Blog home">Pratyush.<sup>BLOG</sup></a>
+<button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+<div class="nav-links" id="nav-links"><a href="index.html" class="active">Blog</a><a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Website</a></div>
+</nav>
+
+<main>
+<section class="blog-hero">
+<div class="blob blob-1"></div><div class="blob blob-2"></div>
+<div class="blog-hero-inner">
+<div class="hero-tag"><span class="blink-dot"></span>PRATYUSH BLOG</div>
+<h1>Ideas worth<br><em>reading.</em></h1>
+<p class="hero-bio">Thoughtful articles, useful insights and stories about the things that matter.</p>
+<a href="#latest" class="btn btn-primary">Explore articles <span>↓</span></a>
+</div>
+<div class="ecg-wrap"><svg viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,28 80,28 100,28 110,10 120,46 130,28 230,28 250,28 260,10 270,46 280,28 380,28 400,28 410,10 420,46 430,28 530,28 550,28 560,10 570,46 580,28 680,28 700,28 710,10 720,46 730,28 830,28 850,28 860,10 870,46 880,28 980,28 1000,28 1010,10 1020,46 1030,28 1130,28 1150,28 1160,10 1170,46 1180,28 1200,28" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section-wrap" id="latest">
+<div class="articles-heading"><div><p class="section-eyebrow">FROM THE BLOG</p><h2 class="section-title">Latest articles</h2></div><p class="article-count"><span id="article-count">5</span> articles</p></div>
+
+<div class="blog-grid">
+
+<article class="blog-card reveal" data-category="Metabolic Health">
+<a class="blog-cover" href="Diabetes_Awareness_Know_Your_Sugar_Protect_Your_Future.html" aria-label="Read Diabetes Awareness article"><span class="cover-mark">D</span><span class="cover-number">05</span><span class="category">Metabolic Health</span></a>
+<div class="blog-card-body"><div class="blog-meta"><span>2026</span><span class="meta-dot">•</span><span>7 min read</span></div>
+<h3><a href="Diabetes_Awareness_Know_Your_Sugar_Protect_Your_Future.html">Diabetes Awareness: Know Your Sugar, Protect Your Future</a></h3>
+<p>Understanding diabetes, warning signs, screening, prevention and what to do when blood glucose becomes dangerously low.</p>
+<a class="read-link" href="Diabetes_Awareness_Know_Your_Sugar_Protect_Your_Future.html">Read article <span>→</span></a></div>
+</article>
+
+<article class="blog-card reveal" data-category="Cardiovascular Health">
+<a class="blog-cover" href="Hypertension_Awareness_Know_Your_Numbers_Protect_Your_Health.html" aria-label="Read Hypertension Awareness article"><span class="cover-mark">B</span><span class="cover-number">04</span><span class="category">Cardiovascular Health</span></a>
+<div class="blog-card-body"><div class="blog-meta"><span>2026</span><span class="meta-dot">•</span><span>6 min read</span></div>
+<h3><a href="Hypertension_Awareness_Know_Your_Numbers_Protect_Your_Health.html">Hypertension Awareness: Know Your Numbers, Protect Your Health</a></h3>
+<p>Why high blood pressure is often silent, how to monitor your numbers, and the everyday steps that can help protect your heart, brain and kidneys.</p>
+<a class="read-link" href="Hypertension_Awareness_Know_Your_Numbers_Protect_Your_Health.html">Read article <span>→</span></a></div>
+</article>
+
+<article class="blog-card reveal" data-category="Respiratory Health">
+<a class="blog-cover" href="Asthma_Awareness_Breathe_Better_Live_Better.html" aria-label="Read Asthma Awareness article"><span class="cover-mark">A</span><span class="cover-number">03</span><span class="category">Respiratory Health</span></a>
+<div class="blog-card-body"><div class="blog-meta"><span>2026</span><span class="meta-dot">•</span><span>6 min read</span></div>
+<h3><a href="Asthma_Awareness_Breathe_Better_Live_Better.html">Asthma Awareness: Breathe Better, Live Better</a></h3>
+<p>Understanding asthma, common triggers, inhalers, emergency warning signs and the importance of long-term asthma control.</p>
+<a class="read-link" href="Asthma_Awareness_Breathe_Better_Live_Better.html">Read article <span>→</span></a></div>
+</article>
+
+<article class="blog-card reveal" data-category="Health & Awareness">
+<a class="blog-cover" href="National_Nutrition_Week.html" aria-label="Read National Nutrition Week article"><span class="cover-mark">N</span><span class="cover-number">02</span><span class="category">Health &amp; Awareness</span></a>
+<div class="blog-card-body"><div class="blog-meta"><span>2026</span><span class="meta-dot">•</span><span>5 min read</span></div>
+<h3><a href="National_Nutrition_Week.html">National Nutrition Week — Nutrition Is Not Just About Food, It Is About Health</a></h3>
+<p>A reminder that balanced nutrition is not simply about weight or appearance—it is a foundation for long-term health.</p>
+<a class="read-link" href="National_Nutrition_Week.html">Read article <span>→</span></a></div>
+</article>
+
+<article class="blog-card reveal" data-category="Health & Awareness">
+<a class="blog-cover" href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html" aria-label="Read Hepatitis Week article"><span class="cover-mark">H</span><span class="cover-number">01</span><span class="category">Health &amp; Awareness</span></a>
+<div class="blog-card-body"><div class="blog-meta"><span>2026</span><span class="meta-dot">•</span><span>5 min read</span></div>
+<h3><a href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">Breaking Down the Silence: 5 Critical Insights from Hepatitis Week 2026</a></h3>
+<p>Exploring why hepatitis remains a major global health concern and the key insights behind Hepatitis Week 2026.</p>
+<a class="read-link" href="Breaking_Down_the_Silence_Hepatitis_Week_2026.html">Read article <span>→</span></a></div>
+</article>
+
+</div>
+</section>
+
+<section class="blog-cta"><div class="cta-glow"></div><div class="cta-content">
+<p class="section-eyebrow centered">KEEP EXPLORING</p><h2>More ideas are <em>coming.</em></h2>
+<p>Stay curious. Keep learning. Keep asking better questions.</p>
+<a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Visit main website <span>→</span></a>
+</div></section>
+</main>
+
+<footer>© 2026 <span class="gold"><a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Dr. Pratyush Ghosh</a></span> · MBBS, DNB Medicine, MRCP Part 1 · West Bengal &nbsp;·&nbsp; Made by <a href="https://instagram.com/Scorpio_gora97" target="_blank" rel="noopener noreferrer" class="footer-insta">@Scorpio_gora97</a></footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 </body>
 </html>
