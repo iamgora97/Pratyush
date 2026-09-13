@@ -11,56 +11,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles_for_blog.css">
-<script src="main_for_blog.js" defer></script>
-
-<style>
-/* ASTHMA PAGE — small page-specific layer over the shared blog CSS */
-.article .section { scroll-margin-top: 110px; }
-
-.trigger-grid { display:flex; flex-wrap:wrap; gap:9px; margin:20px 0; }
-.trigger-chip { padding:8px 13px; border:1px solid rgba(31,184,168,.22); border-radius:999px; background:rgba(31,184,168,.05); color:#cbd7e2; font-size:13px; transition:.25s; }
-.trigger-chip:hover { transform:translateY(-2px); border-color:var(--teal-l); color:#fff; }
-
-.myth-fact { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:22px 0; }
-.myth,.fact { padding:18px; border-radius:7px; }
-.myth { border:1px solid rgba(229,93,93,.2); background:rgba(229,93,93,.035); }
-.fact { border:1px solid rgba(31,184,168,.2); background:rgba(31,184,168,.045); }
-.myth strong,.fact strong { display:block; margin-bottom:7px; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
-.myth strong { color:#ff8d8d; } .fact strong { color:var(--teal-l); }
-.myth p,.fact p { margin:0; }
-
-.emergency-plan { display:grid; gap:12px; margin:24px 0; }
-.emergency-step { border:1px solid rgba(139,171,205,.14); border-radius:8px; background:rgba(255,255,255,.025); overflow:hidden; }
-.emergency-step summary { display:flex; align-items:center; gap:11px; padding:17px; cursor:pointer; list-style:none; color:#fff; font-weight:600; font-size:14px; }
-.emergency-step summary::-webkit-details-marker { display:none; }
-.emergency-step summary::after { content:"+"; margin-left:auto; color:var(--teal-l); font-size:20px; }
-.emergency-step[open] summary::after { content:"−"; }
-.step-dot { width:12px; height:12px; flex:0 0 12px; border-radius:50%; }
-.step-green { background:#55c97a; } .step-yellow { background:#e5c44f; } .step-red { background:#e55d5d; }
-.step-content { padding:0 18px 18px 40px; }
-.step-content ul { margin-top:12px; }
-
-.emergency-banner { margin:20px 0 5px; padding:18px 19px; border:1px solid rgba(229,93,93,.3); border-left:4px solid #e55d5d; border-radius:7px; background:rgba(229,93,93,.055); }
-.emergency-banner strong { display:block; margin-bottom:6px; color:#ff8d8d; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
-.emergency-banner p { margin:0; }
-
-.checklist { display:grid; gap:9px; margin:20px 0; }
-.check-item { display:flex; gap:10px; padding:12px 14px; border:1px solid rgba(139,171,205,.09); border-radius:6px; background:rgba(255,255,255,.025); color:#c6d2df; font-size:14px; }
-.check-item::before { content:"✓"; color:var(--teal-l); font-weight:700; }
-
-.closing-message { margin-top:30px; padding:26px 22px; border:1px solid rgba(31,184,168,.22); border-left:4px solid var(--teal-l); border-radius:8px; background:linear-gradient(135deg,rgba(31,184,168,.075),rgba(201,168,76,.035)); }
-.closing-message .final-line { margin:8px 0; color:#fff; font-family:"Cormorant Garamond",serif; font-size:27px; line-height:1.25; }
-.closing-message .accent { color:var(--teal-l); }
-
-@media(max-width:700px) {
-  .myth-fact { grid-template-columns:1fr; }
-  .step-content { padding-left:38px; }
-}
-</style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
 </head>
 
-<body>
+<body class="article-page">
 <div id="progress-bar"></div>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
