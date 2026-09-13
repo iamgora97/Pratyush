@@ -1,0 +1,4 @@
+/posts.json
+  Access-Control-Allow-Origin: https://drpratyushghosh.netlify.app
+  Access-Control-Allow-Methods: GET
+  Access-Control-Allow-Headers: Content-Type
