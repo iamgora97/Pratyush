@@ -1898,3 +1898,300 @@ footer {
     grid-template-columns:1fr!important;
   }
 }
+
+
+/* =========================================================
+   FINAL ARTICLE HEADER — MATCH NATIONAL NUTRITION WEEK
+   Applies to every page using <body class="article-page">.
+   CSS-only update; main.js does not need to change.
+   ========================================================= */
+
+/* Keep the fixed header full-width and consistently aligned */
+.article-page nav#main-nav {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.article-page nav#main-nav .nav-inner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Match the Nutrition Week desktop/tablet header proportions */
+@media (min-width: 801px) {
+  .article-page nav#main-nav {
+    padding: 18px 5%;
+  }
+
+  .article-page nav#main-nav.scrolled {
+    padding: 11px 5%;
+  }
+
+  .article-page .brand-mark {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .article-page .brand-text strong {
+    font-size: 21px;
+  }
+
+  .article-page .brand-text span {
+    font-size: 10px;
+  }
+
+  .article-page .hero,
+  .article-page .article-hero {
+    width: min(1050px, 100%);
+    padding: 170px 5% 70px;
+    box-sizing: border-box;
+  }
+
+  .article-page .hero h1,
+  .article-page .article-hero h1 {
+    font-size: clamp(48px, 7vw, 86px);
+    line-height: .95;
+  }
+}
+
+/* Mobile header: same proportions/alignment as National Nutrition Week */
+@media (max-width: 800px) {
+  .article-page nav#main-nav,
+  .article-page nav#main-nav.scrolled {
+    height: 72px;
+    min-height: 72px;
+    padding: 0 15px;
+  }
+
+  .article-page nav#main-nav .nav-inner {
+    height: 72px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .article-page .brand {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: calc(100% - 54px);
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .article-page .brand-mark {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    font-size: 22px;
+  }
+
+  .article-page .brand-text {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .article-page .brand-text strong {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .article-page .brand-text span {
+    display: block;
+    margin-top: 5px;
+    font-size: 8px;
+    line-height: 1.2;
+    letter-spacing: 1.6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .article-page .hamburger {
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: .4rem;
+    z-index: 501;
+  }
+
+  .article-page .hamburger span {
+    width: 22px;
+    height: 1.5px;
+  }
+
+  /* Menu opens exactly below the header */
+  .article-page .nav-links {
+    position: fixed;
+    top: 72px;
+    right: -100%;
+    left: auto;
+    width: 100%;
+    height: calc(100dvh - 72px);
+    box-sizing: border-box;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    overflow-y: auto;
+    background: rgba(8, 15, 30, .985);
+    border: 0;
+    border-top: 1px solid var(--article-line);
+    transition: right .4s cubic-bezier(.77,0,.175,1);
+    z-index: 500;
+  }
+
+  .article-page .nav-links.open {
+    right: 0;
+  }
+
+  .article-page .nav-links a {
+    padding: 8px 5px;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: .18em;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Hero spacing follows the Nutrition Week mobile composition */
+  .article-page .hero,
+  .article-page .article-hero {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 124px 20px 54px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .article-page .eyebrow,
+  .article-page .hero-tag {
+    gap: 8px;
+    margin-bottom: 18px;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .article-page .eyebrow::before,
+  .article-page .eyebrow::after,
+  .article-page .hero-tag::before,
+  .article-page .hero-tag::after {
+    width: 22px;
+    flex-basis: 22px;
+  }
+
+  .article-page .hero h1,
+  .article-page .article-hero h1 {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 18px;
+    font-size: clamp(42px, 11.5vw, 58px);
+    line-height: .98;
+    letter-spacing: -.5px;
+  }
+
+  .article-page .hero-sub,
+  .article-page .article-hero .lead {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    font-size: clamp(22px, 6.2vw, 30px);
+    line-height: 1.18;
+  }
+
+  .article-page .meta,
+  .article-page .article-hero .meta {
+    width: 100%;
+    max-width: 390px;
+    margin: 20px auto 0;
+    font-size: 9px;
+    line-height: 1.9;
+    letter-spacing: .8px;
+  }
+
+  .article-page .ecg,
+  .article-page .article-hero .ecg-wrap {
+    width: 100%;
+    height: 42px;
+    margin: 0 0 42px;
+  }
+}
+
+/* Small phones: preserve the Nutrition Week look without clipping */
+@media (max-width: 400px) {
+  .article-page nav#main-nav,
+  .article-page nav#main-nav.scrolled {
+    height: 68px;
+    min-height: 68px;
+    padding: 0 12px;
+  }
+
+  .article-page nav#main-nav .nav-inner {
+    height: 68px;
+  }
+
+  .article-page .brand {
+    gap: 10px;
+    max-width: calc(100% - 48px);
+  }
+
+  .article-page .brand-mark {
+    width: 35px;
+    height: 35px;
+    flex-basis: 35px;
+    font-size: 19px;
+  }
+
+  .article-page .brand-text strong {
+    font-size: 16px;
+  }
+
+  .article-page .brand-text span {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
+  .article-page .hamburger {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .article-page .nav-links {
+    top: 68px;
+    height: calc(100dvh - 68px);
+  }
+
+  .article-page .hero,
+  .article-page .article-hero {
+    padding: 116px 15px 48px;
+  }
+
+  .article-page .hero h1,
+  .article-page .article-hero h1 {
+    font-size: 42px;
+  }
+
+  .article-page .hero-sub,
+  .article-page .article-hero .lead {
+    font-size: 22px;
+  }
+}
