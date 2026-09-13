@@ -2018,3 +2018,554 @@ body.nav-open {
       }
 
     }
+/* =========================================================
+   MOBILE LAYOUT FIX
+   Dr. Pratyush Ghosh Portfolio
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  /* -------------------------------------------------------
+     HEADER / NAVIGATION
+     ------------------------------------------------------- */
+
+  #main-nav,
+  .navbar,
+  header {
+    position: relative;
+    z-index: 1000;
+  }
+
+  /* Keep logo completely above the mobile menu */
+  .nav-brand,
+  .logo,
+  .brand {
+    position: relative;
+    z-index: 1100;
+  }
+
+  /* Mobile navigation panel */
+  #nav-links,
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    display: none;
+
+    flex-direction: column;
+
+    padding: 18px 0 24px;
+
+    margin: 0;
+
+    background: rgba(5, 17, 35, 0.98);
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+      0 18px 40px rgba(0,0,0,0.35);
+
+    z-index: 1050;
+  }
+
+  #nav-links.open,
+  #nav-links.active,
+  .nav-links.open,
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Individual mobile links */
+  #nav-links a,
+  .nav-links a {
+    display: block;
+
+    width: 100%;
+
+    padding: 15px 28px;
+
+    margin: 0;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+  }
+
+  /* Remove desktop spacing */
+  .nav-links li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* -------------------------------------------------------
+     HAMBURGER
+     ------------------------------------------------------- */
+
+  #hamburger,
+  .hamburger {
+    position: relative;
+
+    z-index: 1200;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 8px;
+
+    cursor: pointer;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO SECTION
+     ------------------------------------------------------- */
+
+  .hero,
+  #hero {
+    min-height: auto;
+
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+
+  /*
+     IMPORTANT:
+     On mobile the photo card should NOT sit beside
+     the text. Stack everything vertically.
+  */
+
+  .hero-grid,
+  .hero-inner,
+  .hero-content-wrapper {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 100%;
+  }
+
+
+  /* -------------------------------------------------------
+     PHOTO CARD
+     ------------------------------------------------------- */
+
+  #photo3d,
+  .photo-card,
+  .hero-photo,
+  .hero-image,
+  .profile-card {
+
+    position: relative;
+
+    order: -1;
+
+    width: min(78vw, 390px);
+
+    max-width: 390px;
+
+    height: auto;
+
+    min-height: 390px;
+
+    margin: 10px auto 55px;
+
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+
+    transform: none;
+  }
+
+
+  /*
+     Make sure the photo itself doesn't escape
+     the card on small screens.
+  */
+
+  #photo3d img,
+  .photo-card img,
+  .hero-photo img,
+  .hero-image img,
+  .profile-card img {
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: cover;
+
+    display: block;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO TEXT
+     ------------------------------------------------------- */
+
+  .hero-text,
+  .hero-content {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    text-align: center;
+
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+
+  /*
+     Available-for-opportunities badge
+  */
+
+  .availability,
+  .available-badge,
+  .hero-badge {
+
+    max-width: calc(100% - 40px);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+    white-space: normal;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO NAME
+     ------------------------------------------------------- */
+
+  .hero h1,
+  #hero h1 {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    font-size: clamp(
+      48px,
+      14vw,
+      72px
+    );
+
+    line-height: 0.98;
+
+    text-align: center;
+
+    word-break: normal;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO SUBTITLE
+     ------------------------------------------------------- */
+
+  .hero-subtitle,
+  .hero .subtitle {
+
+    width: 100%;
+
+    padding: 0 15px;
+
+    text-align: center;
+
+    line-height: 1.8;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO DESCRIPTION
+     ------------------------------------------------------- */
+
+  .hero-description,
+  .hero p {
+
+    max-width: 520px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+    line-height: 1.8;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO STATS
+     ------------------------------------------------------- */
+
+  .hero-stats {
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 35px auto 0;
+
+    gap: 10px;
+
+    text-align: center;
+  }
+
+
+  .hero-stat {
+
+    min-width: 0;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO BUTTONS
+     ------------------------------------------------------- */
+
+  .hero-actions,
+  .hero-buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 100%;
+
+    gap: 12px;
+
+    margin-top: 30px;
+  }
+
+
+  .hero-actions a,
+  .hero-buttons a {
+
+    width: min(
+      100%,
+      320px
+    );
+
+    text-align: center;
+  }
+
+
+  /* -------------------------------------------------------
+     SECTION HEADINGS
+     ------------------------------------------------------- */
+
+  section {
+
+    overflow: hidden;
+  }
+
+
+  .section-inner,
+  .container {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+
+  .section-heading,
+  section h2 {
+
+    max-width: 100%;
+
+    font-size: clamp(
+      38px,
+      10vw,
+      52px
+    );
+
+    line-height: 1.05;
+  }
+
+
+  /* -------------------------------------------------------
+     TIMELINE / EXPERIENCE
+     ------------------------------------------------------- */
+
+  .timeline {
+
+    width: 100%;
+  }
+
+
+  .timeline-item {
+
+    width: 100%;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+
+
+  .timeline-item.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+
+  /* -------------------------------------------------------
+     SKILLS
+     ------------------------------------------------------- */
+
+  .skills-grid {
+
+    width: 100%;
+
+    grid-template-columns:
+      repeat(1, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+
+  .skill-chip {
+
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+
+  /* -------------------------------------------------------
+     EDUCATION
+     ------------------------------------------------------- */
+
+  .education-grid,
+  .edu-grid {
+
+    width: 100%;
+
+    grid-template-columns:
+      1fr;
+
+    gap: 18px;
+  }
+
+
+  .edu-card {
+
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+
+  /* -------------------------------------------------------
+     BLOG
+     ------------------------------------------------------- */
+
+  #blogs-grid {
+
+    grid-template-columns:
+      1fr;
+
+    width: 100%;
+
+    gap: 18px;
+  }
+
+
+  .blog-card {
+
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  #photo3d,
+  .photo-card,
+  .hero-photo,
+  .hero-image,
+  .profile-card {
+
+    width: 82vw;
+
+    min-height: 330px;
+
+    margin-bottom: 45px;
+  }
+
+
+  .hero h1,
+  #hero h1 {
+
+    font-size: 48px;
+  }
+
+
+  .hero-stats {
+
+    gap: 4px;
+  }
+
+
+  .hero-stat {
+
+    font-size: 11px;
+  }
+
+
+  #nav-links a,
+  .nav-links a {
+
+    padding-left: 22px;
+  }
+
+}
