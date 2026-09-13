@@ -3184,3 +3184,156 @@ body.nav-open {
     font-size: 13px;
   }
 }
+
+/* =========================================================
+   MOBILE NAV — HEADER FIRST, MENU BELOW
+   The doctor's name stays inside the header. The five menu
+   links begin only after the header and remain vertically centered.
+   ========================================================= */
+@media (max-width: 700px) {
+  #main-nav {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 78px;
+    min-height: 78px;
+    padding: 0 28px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5, 17, 35, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 5000;
+    box-sizing: border-box;
+  }
+
+  /* Name stays clearly inside the header */
+  #main-nav .nav-logo {
+    position: relative !important;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index: 5100;
+    flex: 0 1 auto;
+    max-width: calc(100% - 75px);
+    white-space: nowrap;
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  #main-nav .nav-logo sup {
+    font-size: 0.48rem;
+    margin-left: 0.35rem;
+  }
+
+  /* Close / hamburger button stays in the header */
+  #main-nav .hamburger {
+    position: relative !important;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    z-index: 5200;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Menu starts BELOW the header — never over the name */
+  #nav-links,
+  .nav-links {
+    position: fixed !important;
+    top: 78px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: calc(100dvh - 78px) !important;
+    min-height: calc(100vh - 78px);
+    margin: 0 !important;
+    padding: 35px 20px 45px !important;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+    text-align: center;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: rgba(5, 17, 35, 0.985);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.4);
+    z-index: 4900;
+  }
+
+  #nav-links.open,
+  #nav-links.active,
+  .nav-links.open,
+  .nav-links.active {
+    display: flex !important;
+  }
+
+  #nav-links li,
+  .nav-links li {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  #nav-links a,
+  .nav-links a {
+    width: auto !important;
+    min-width: 190px;
+    padding: 17px 20px !important;
+    margin: 0 !important;
+    display: block;
+    text-align: center !important;
+    font-size: 14px !important;
+    letter-spacing: 2.5px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 400px) {
+  #main-nav {
+    height: 74px;
+    min-height: 74px;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  #main-nav .nav-logo {
+    font-size: 0.98rem;
+  }
+
+  #nav-links,
+  .nav-links {
+    top: 74px !important;
+    height: calc(100dvh - 74px) !important;
+    min-height: calc(100vh - 74px);
+    padding: 30px 15px 38px !important;
+    gap: 0;
+  }
+
+  #nav-links a,
+  .nav-links a {
+    min-width: 165px;
+    padding: 15px 16px !important;
+    font-size: 13px !important;
+  }
+}
