@@ -2042,3 +2042,207 @@ footer {
     width: 100%;
   }
 }
+
+
+/* =========================================================
+   FINAL BLOG HOME HEADER
+   DESKTOP:
+     Dr. Pratyush Ghosh / Pratyush. BLOG  -> LEFT
+     Blog + Website                        -> RIGHT
+
+   MOBILE:
+     Brand                                 -> CENTER
+     Hamburger                             -> RIGHT
+     Blog + Website                        -> DROPDOWN BELOW HEADER
+   ========================================================= */
+
+/* ---------- DESKTOP ---------- */
+@media (min-width: 901px) {
+  body.blog-home nav#main-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  body.blog-home nav#main-nav.scrolled {
+    padding: .85rem 4rem;
+  }
+
+  body.blog-home .nav-logo {
+    position: static;
+    margin: 0;
+    text-align: left;
+  }
+
+  body.blog-home .nav-links {
+    position: static;
+    margin: 0 0 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2.5rem;
+    width: auto;
+    height: auto;
+    transform: none;
+    visibility: visible;
+    pointer-events: auto;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body.blog-home .hamburger {
+    display: none;
+  }
+}
+
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 900px) {
+  body.blog-home nav#main-nav,
+  body.blog-home nav#main-nav.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    min-height: 72px;
+    padding: 0 18px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Brand is genuinely centered in the viewport */
+  body.blog-home .nav-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    text-align: center;
+    z-index: 502;
+  }
+
+  /* Hamburger stays at the right edge */
+  body.blog-home .hamburger {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: .4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 503;
+  }
+
+  body.blog-home .hamburger span {
+    width: 24px;
+  }
+
+  /* Dropdown starts EXACTLY below the header */
+  body.blog-home .nav-links,
+  body.blog-home .nav-links.open {
+    top: 72px;
+    bottom: auto;
+    left: 0;
+    right: auto;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: calc(100dvh - 72px);
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 18px 24px 28px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+
+    background: rgba(14, 32, 64, .985);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    box-shadow: 0 18px 35px rgba(0,0,0,.32);
+
+    overflow-y: auto;
+
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      transform .4s cubic-bezier(.77,0,.175,1),
+      visibility 0s linear .4s;
+  }
+
+  body.blog-home .nav-links.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+      transform .4s cubic-bezier(.77,0,.175,1),
+      visibility 0s linear 0s;
+  }
+
+  body.blog-home .nav-links a {
+    width: min(320px, 100%);
+    box-sizing: border-box;
+    padding: 17px 10px;
+
+    text-align: center;
+    font-size: .95rem;
+    line-height: 1.4;
+    letter-spacing: .16em;
+  }
+}
+
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 600px) {
+  body.blog-home nav#main-nav,
+  body.blog-home nav#main-nav.scrolled {
+    height: 68px;
+    min-height: 68px;
+    padding: 0 13px;
+  }
+
+  body.blog-home .nav-logo {
+    font-size: 1.08rem;
+  }
+
+  body.blog-home .hamburger {
+    right: 10px;
+  }
+
+  body.blog-home .nav-links,
+  body.blog-home .nav-links.open {
+    top: 68px;
+    max-height: calc(100dvh - 68px);
+    padding-top: 16px;
+  }
+
+  body.blog-home .nav-links a {
+    padding: 16px 10px;
+    font-size: .9rem;
+  }
+}
