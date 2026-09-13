@@ -412,7 +412,7 @@ footer {
 
   .nav-links {
     top: 76px;
-    right: 0;
+    right: -100%;
     bottom: 0;
     width: 100%;
     height: calc(100vh - 76px);
@@ -684,6 +684,7 @@ footer {
 
   .nav-links {
     top: 72px;
+    right: -100%;
     height: calc(100vh - 72px);
     gap: 21px;
   }
