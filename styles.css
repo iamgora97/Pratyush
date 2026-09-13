@@ -2246,3 +2246,192 @@ footer {
     font-size: .9rem;
   }
 }
+
+
+/* =========================================================
+   ARTICLE PAGES — FINAL HEADER POSITIONING
+   Desktop: brand LEFT, all blog/site links RIGHT
+   Mobile: brand CENTER, hamburger RIGHT, links DROPDOWN
+   ========================================================= */
+
+/* ---------- ARTICLE DESKTOP ---------- */
+@media (min-width: 801px) {
+  .article-page nav#main-nav {
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+  }
+
+  .article-page nav#main-nav .nav-inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .article-page nav#main-nav .brand {
+    margin: 0;
+    flex: 0 0 auto;
+  }
+
+  .article-page nav#main-nav .nav-links {
+    margin-left: auto;
+    margin-right: 0;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+
+  .article-page nav#main-nav.scrolled {
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+  }
+}
+
+
+/* ---------- ARTICLE MOBILE ---------- */
+@media (max-width: 800px) {
+  .article-page nav#main-nav,
+  .article-page nav#main-nav.scrolled {
+    height: 72px;
+    min-height: 72px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .article-page nav#main-nav .nav-inner {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Brand centered against the viewport */
+  .article-page nav#main-nav .brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: max-content;
+    max-width: calc(100% - 75px);
+    margin: 0;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .article-page nav#main-nav .brand-text {
+    min-width: 0;
+    text-align: left;
+  }
+
+  /* Hamburger stays on the right */
+  .article-page nav#main-nav .hamburger {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 903;
+
+    width: 44px;
+    height: 44px;
+    margin: 0;
+  }
+
+  /* Mobile links are hidden until hamburger is clicked */
+  .article-page nav#main-nav .nav-links,
+  .article-page nav#main-nav .nav-links.open {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: auto;
+
+    width: 100%;
+    height: auto;
+    max-height: calc(100dvh - 72px);
+    margin: 0;
+    padding: 20px 20px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+
+    background: rgba(8, 15, 30, .985);
+    border-top: 1px solid var(--article-line);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    box-shadow: 0 20px 40px rgba(0,0,0,.35);
+
+    overflow-y: auto;
+
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      transform .4s cubic-bezier(.77,0,.175,1),
+      visibility 0s linear .4s;
+  }
+
+  .article-page nav#main-nav .nav-links.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+      transform .4s cubic-bezier(.77,0,.175,1),
+      visibility 0s linear 0s;
+  }
+
+  .article-page nav#main-nav .nav-links a {
+    width: min(330px, 100%);
+    padding: 17px 10px;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: .16em;
+  }
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+@media (max-width: 400px) {
+  .article-page nav#main-nav,
+  .article-page nav#main-nav.scrolled {
+    height: 68px;
+    min-height: 68px;
+  }
+
+  .article-page nav#main-nav .nav-links,
+  .article-page nav#main-nav .nav-links.open {
+    top: 68px;
+    max-height: calc(100dvh - 68px);
+  }
+
+  .article-page nav#main-nav .brand {
+    max-width: calc(100% - 65px);
+  }
+
+  .article-page nav#main-nav .brand-mark {
+    width: 35px;
+    height: 35px;
+    flex-basis: 35px;
+  }
+
+  .article-page nav#main-nav .brand-text strong {
+    font-size: 16px;
+  }
+
+  .article-page nav#main-nav .brand-text span {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+}
