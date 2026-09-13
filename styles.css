@@ -378,3 +378,391 @@ footer {
   *,*::before,*::after { animation:none!important; transition:none!important; }
   .reveal { opacity:1; transform:none; }
 }
+
+
+/* =========================================================
+   FINAL MOBILE POLISH — BLOG PAGE
+   Matches the Dr. Pratyush Ghosh portfolio mobile feel
+   Desktop layout remains unchanged.
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  /* ---------- Mobile navigation ---------- */
+  nav {
+    min-height: 76px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+  }
+
+  nav.scrolled {
+    padding: 0 18px;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+    line-height: 1.1;
+  }
+
+  .nav-logo sup {
+    font-size: .45rem;
+    margin-left: .25rem;
+  }
+
+  .nav-links {
+    top: 76px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - 76px);
+    padding: 0 24px;
+    background: rgba(8,15,30,.97);
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(22px);
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    box-shadow: none;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: .86rem;
+    letter-spacing: .20em;
+    padding: 8px 4px;
+    text-align: center;
+  }
+
+  .hamburger {
+    padding: 9px;
+  }
+
+  /* ---------- Hero ---------- */
+  .blog-hero {
+    min-height: auto;
+    padding: 126px 20px 72px;
+    display: flex;
+    align-items: center;
+  }
+
+  .blog-hero-inner {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .hero-tag {
+    max-width: 100%;
+    padding: 7px 13px;
+    gap: 7px;
+    font-size: 8px;
+    letter-spacing: .16em;
+    white-space: normal;
+    justify-content: center;
+    line-height: 1.5;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: .98;
+    letter-spacing: -.02em;
+  }
+
+  .hero-bio {
+    max-width: 360px;
+    margin: 18px auto 24px;
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+
+  .blog-hero .btn {
+    min-height: 46px;
+    padding: 11px 18px;
+    font-size: 9px;
+    letter-spacing: .11em;
+  }
+
+  /* ---------- Articles section ---------- */
+  .section-wrap {
+    width: calc(100% - 30px);
+    max-width: 560px;
+    padding: 64px 0;
+  }
+
+  .section-eyebrow {
+    justify-content: flex-start;
+    gap: 9px;
+    margin-bottom: 10px;
+    font-size: 9px;
+    letter-spacing: .20em;
+  }
+
+  .section-eyebrow::before {
+    width: 22px;
+  }
+
+  .articles-heading {
+    display: block;
+  }
+
+  .section-title {
+    margin-bottom: 10px;
+    font-size: clamp(38px, 11vw, 50px);
+    line-height: 1;
+  }
+
+  .article-count {
+    margin: 0 0 28px;
+    font-size: 9px;
+    letter-spacing: .12em;
+  }
+
+  /* ---------- Blog cards ---------- */
+  .blog-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .blog-card {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.018)
+    );
+    border: 1px solid rgba(255,255,255,.075);
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    transition:
+      transform .35s ease,
+      border-color .3s ease,
+      box-shadow .35s ease;
+  }
+
+  .blog-card:active {
+    transform: translateY(-2px);
+    border-color: rgba(31,184,168,.35);
+    box-shadow: 0 14px 35px rgba(0,0,0,.24);
+  }
+
+  /* Smaller, cleaner article visual on phones */
+  .blog-cover {
+    min-height: 150px;
+    height: 150px;
+    padding: 15px;
+  }
+
+  .cover-mark {
+    font-size: 6.5rem;
+  }
+
+  .cover-number {
+    top: 12px;
+    right: 14px;
+    font-size: 1.15rem;
+  }
+
+  .category {
+    left: 14px;
+    bottom: 12px;
+    font-size: 8px;
+    letter-spacing: .14em;
+  }
+
+  .blog-card-body {
+    padding: 18px 17px 20px;
+  }
+
+  .blog-meta {
+    gap: 6px;
+    font-size: 8px;
+    line-height: 1.5;
+    letter-spacing: .07em;
+    flex-wrap: wrap;
+  }
+
+  .blog-card h3 {
+    margin: 9px 0 9px;
+    font-size: 23px;
+    line-height: 1.16;
+    letter-spacing: -.01em;
+  }
+
+  .blog-card h3 a {
+    display: block;
+  }
+
+  .blog-card p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.75;
+    color: #8195b0;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .read-link {
+    margin-top: 15px;
+    padding: 5px 0;
+    font-size: 9px;
+    letter-spacing: .12em;
+  }
+
+  .read-link span {
+    font-size: 13px;
+  }
+
+  /* ---------- CTA ---------- */
+  .blog-cta {
+    padding: 66px 20px;
+  }
+
+  .cta-glow {
+    width: 360px;
+    height: 300px;
+  }
+
+  .blog-cta h2 {
+    max-width: 350px;
+    margin: 0 auto;
+    font-size: clamp(38px, 10vw, 50px);
+    line-height: 1;
+  }
+
+  .blog-cta p {
+    max-width: 320px;
+    margin: 14px auto 24px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .blog-cta .btn {
+    width: 100%;
+    max-width: 270px;
+    min-height: 46px;
+    justify-content: center;
+    padding: 11px 16px;
+    font-size: 9px;
+  }
+
+  /* ---------- Back to top ---------- */
+  .back-to-top {
+    right: 14px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  footer {
+    padding: 22px 16px;
+    font-size: 9px;
+    line-height: 1.8;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 400px) {
+
+  nav {
+    min-height: 72px;
+    padding: 0 15px;
+  }
+
+  nav.scrolled {
+    padding: 0 15px;
+  }
+
+  .nav-links {
+    top: 72px;
+    height: calc(100vh - 72px);
+    gap: 21px;
+  }
+
+  .nav-links a {
+    font-size: .8rem;
+    letter-spacing: .17em;
+  }
+
+  .blog-hero {
+    padding: 116px 15px 60px;
+  }
+
+  .blog-hero h1 {
+    font-size: 42px;
+  }
+
+  .hero-bio {
+    font-size: 11.5px;
+  }
+
+  .section-wrap {
+    width: calc(100% - 30px);
+    padding: 56px 0;
+  }
+
+  .section-title {
+    font-size: 38px;
+  }
+
+  .blog-cover {
+    min-height: 135px;
+    height: 135px;
+  }
+
+  .cover-mark {
+    font-size: 5.5rem;
+  }
+
+  .blog-card-body {
+    padding: 16px 15px 18px;
+  }
+
+  .blog-card h3 {
+    font-size: 21px;
+  }
+
+  .blog-card p {
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+
+  .blog-cta {
+    padding: 56px 15px;
+  }
+
+  .blog-cta h2 {
+    font-size: 40px;
+  }
+}
+
+/* Prevent desktop hover effects from causing awkward touch behaviour */
+@media (hover: none) and (pointer: coarse) {
+  .blog-card:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    border-color: rgba(255,255,255,.075);
+  }
+
+  .blog-card:hover .cover-mark {
+    transform: none;
+    color: rgba(201,168,76,.14);
+  }
+
+  .read-link:hover span {
+    transform: none;
+  }
+
+  .nav-links a:hover {
+    color: var(--muted);
+  }
+}
