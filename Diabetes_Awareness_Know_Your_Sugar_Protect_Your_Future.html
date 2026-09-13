@@ -9,38 +9,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles_for_blog.css">
-<script src="main_for_blog.js" defer></script>
 
-<style>
-/* DIABETES PAGE-SPECIFIC INTERACTIVE LAYER */
-.type-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px}
-.type-tab{padding:9px 13px;border:1px solid rgba(139,171,205,.15);border-radius:999px;background:rgba(255,255,255,.025);color:#c7d3de;font-size:12px;font-weight:600;cursor:pointer}
-.type-tab:hover,.type-tab.active{border-color:var(--teal-l);background:rgba(31,184,168,.08);color:#fff}
-.type-panel{display:none;padding:17px 18px;border-left:3px solid var(--teal-l);border-radius:6px;background:rgba(31,184,168,.045)}
-.type-panel.active{display:block}.type-panel strong{color:#fff}
-.risk-grid,.lifestyle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
-.risk-card,.lifestyle-card{padding:17px;border:1px solid rgba(31,184,168,.14);border-radius:8px;background:rgba(255,255,255,.025);transition:.25s ease}
-.risk-card:hover,.lifestyle-card:hover{transform:translateY(-2px);border-color:rgba(31,184,168,.35)}
-.risk-card strong{display:block;margin-bottom:6px;color:var(--teal-l)}.risk-card p,.lifestyle-card p{margin:0;font-size:13px}
-.lifestyle-card .icon{font-size:23px;margin-bottom:6px}.lifestyle-card h3{margin:0 0 6px;color:#fff;font-family:"Cormorant Garamond",serif;font-size:22px}
-.number-card{margin:24px 0;padding:21px;border:1px solid rgba(31,184,168,.2);border-radius:8px;background:linear-gradient(135deg,rgba(31,184,168,.07),rgba(201,168,76,.035))}
-.number-card h3{margin:0 0 7px;color:#fff;font-family:"Cormorant Garamond",serif;font-size:27px}.number-card p{margin:0}
-.hypo-flow{display:grid;gap:10px;margin:23px 0}.hypo-step{display:flex;gap:13px;padding:15px 16px;border:1px solid rgba(201,168,76,.16);border-radius:7px;background:rgba(201,168,76,.035)}
-.hypo-step-number{width:29px;height:29px;flex:0 0 29px;display:grid;place-items:center;border-radius:50%;background:rgba(201,168,76,.13);color:var(--gold-l);font-weight:700;font-size:12px}
-.hypo-step strong{display:block;margin-bottom:4px;color:#fff}.hypo-step p{margin:0;font-size:13px}
-.fast-carb{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 4px}.fast-carb span{padding:8px 11px;border-radius:999px;background:rgba(31,184,168,.07);border:1px solid rgba(31,184,168,.18);color:#cbd8e2;font-size:12px}
-.emergency-box{margin:23px 0;padding:20px;border:1px solid rgba(229,93,93,.3);border-left:4px solid #e55d5d;border-radius:7px;background:rgba(229,93,93,.055)}
-.emergency-box strong{display:block;margin-bottom:7px;color:#ff8d8d;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
-.emergency-list{display:grid;gap:8px;margin-top:15px}.emergency-list div{padding:10px 12px;border-radius:5px;background:rgba(255,255,255,.035);color:#d7e0e9;font-size:13px}
-.emergency-list div::before{content:"•";margin-right:8px;color:#ff8d8d}
-.future-box{margin-top:30px;padding:26px 22px;border:1px solid rgba(31,184,168,.22);border-left:4px solid var(--teal-l);border-radius:8px;background:linear-gradient(135deg,rgba(31,184,168,.075),rgba(201,168,76,.035))}
-.future-box p{margin:7px 0;color:#fff;font-family:"Cormorant Garamond",serif;font-size:27px;line-height:1.22}.future-box p:last-child{color:var(--teal-l)}
-@media(max-width:700px){.risk-grid,.lifestyle-grid{grid-template-columns:1fr}}
-</style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
 </head>
 
-<body>
+<body class="article-page">
 <div id="progress-bar"></div>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
@@ -162,18 +136,5 @@
 <footer>© 2026 <span class="gold"><a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Dr. Pratyush Ghosh</a></span> · MBBS, DNB Medicine, MRCP Part 1 · West Bengal &nbsp;·&nbsp; Made by <a href="https://instagram.com/Scorpio_gora97" target="_blank" rel="noopener noreferrer" class="footer-insta">@Scorpio_gora97</a></footer>
 
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
-
-<script>
-document.querySelectorAll(".type-tab").forEach(function(tab){
-  tab.addEventListener("click",function(){
-    document.querySelectorAll(".type-tab").forEach(function(x){x.classList.remove("active")});
-    document.querySelectorAll(".type-panel").forEach(function(x){x.classList.remove("active")});
-    tab.classList.add("active");
-    var panel=document.getElementById(tab.dataset.type);
-    if(panel) panel.classList.add("active");
-  });
-});
-</script>
-
 </body>
 </html>
