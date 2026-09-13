@@ -18,12 +18,11 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
-  <link rel="stylesheet" href="styles_for_blog.css">
-  <script src="main_for_blog.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
 </head>
 
-<body>
+<body class="article-page">
 <!-- =========================================================
        PAGE UI
        ========================================================= -->
@@ -38,15 +37,22 @@
        ========================================================= -->
   <header class="site-header">
 <nav id="main-nav">
-<a class="nav-logo" href="index.html">Dr. <span>Pratyush Ghosh</span></a>
-<button class="hamburger" id="hamburger" aria-label="Open navigation">☰</button>
-<div class="nav-links" id="nav-links">
-<a href="index.html">Home</a>
-<a href="index.html#articles">Articles</a>
-<a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer">Profile</a>
-</div>
+  <div class="nav-inner">
+    <a href="index.html" class="brand" aria-label="Medical Journal Blog home">
+      <span class="brand-mark">P</span>
+      <span class="brand-text"><strong>Dr. Pratyush Ghosh</strong><span>Medical Journal · Blog</span></span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Blog Home</a>
+      <a href="#" class="active">Article</a>
+      <a href="https://drpratyushghosh.netlify.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">Main Website ↗</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
-  </header>
+</header>
 
   <!-- =========================================================
        ARTICLE HERO
@@ -68,8 +74,17 @@
        ARTICLE BODY
        ========================================================= -->
   <main id="article-body">
-<article>
-
+<div class="layout">
+<aside class="side">
+  <div class="side-label">In this article</div>
+  <a href="#hepatitis-overview">Hepatitis is more than one disease</a>
+  <a href="#stigma">Stigma &amp; care</a>
+  <a href="#misinformation">Misinformation</a>
+  <a href="#access">Access to healthcare</a>
+  <a href="#action">Turn awareness into action</a>
+  <a href="#hepatitis-message">The message</a>
+</aside>
+<article class="article">
 <div class="reveal">
   <p class="intro">
     The human liver is a silent powerhouse, tirelessly filtering toxins from our blood and processing the nutrients that fuel our lives. Yet, despite its vital role, hepatitis—the inflammation of this essential organ—remains a major global health concern that often thrives in the shadows.
@@ -85,8 +100,8 @@
   </div>
 </div>
 
-<div class="reveal">
-  <h2>01 · Hepatitis Is More Than One Disease</h2>
+<section class="section reveal" id="hepatitis-overview">
+<h2>01 · Hepatitis Is More Than One Disease</h2>
 
   <p>
     When we hear the word "hepatitis", it is easy to think of it as one condition. In reality, viral hepatitis includes several different viruses—<strong>A, B, C, D, and E</strong>—with different patterns of transmission, prevention, and treatment.
@@ -113,10 +128,10 @@
   <p>
     The timeline also matters. Hepatitis may be acute, lasting for a relatively short period, or chronic, persisting for years or even a lifetime. Chronic infection can cause serious liver damage, including cirrhosis and liver cancer.
   </p>
-</div>
+</section>
 
-<div class="reveal">
-  <h2>02 · Stigma Can Become a Barrier to Care</h2>
+<section class="section reveal" id="stigma">
+<h2>02 · Stigma Can Become a Barrier to Care</h2>
 
   <p>
     Hepatitis is not only a medical issue. The way society talks about it can directly influence whether people feel comfortable seeking help.
@@ -136,10 +151,10 @@
   <p>
     Breaking the silence therefore means more than spreading information. It means creating an environment where people can ask questions, seek testing, and access care without being defined by stigma.
   </p>
-</div>
+</section>
 
-<div class="reveal">
-  <h2>03 · Misinformation Creates Fear</h2>
+<section class="section reveal" id="misinformation">
+<h2>03 · Misinformation Creates Fear</h2>
 
   <p>
     When reliable information is missing, myths can quickly fill the gap. Misunderstandings about transmission, diagnosis, or treatment can create unnecessary fear and hesitation.
@@ -159,11 +174,10 @@
   <div class="highlight">
     <span class="highlight-label">Remember</span>
     <strong>Good health communication replaces fear with understanding—and understanding makes action possible.</strong>
-  </div>
-</div>
+</section>
 
-<div class="reveal">
-  <h2>04 · Access to Healthcare Matters</h2>
+<section class="section reveal" id="access">
+<h2>04 · Access to Healthcare Matters</h2>
 
   <p>
     Awareness alone cannot eliminate hepatitis. People also need realistic access to prevention, screening, diagnosis, treatment, and follow-up care.
@@ -182,11 +196,10 @@
     <p>
       Real progress happens when reliable information is connected to services that people can actually reach and use.
     </p>
-  </div>
-</div>
+</section>
 
-<div class="reveal">
-  <h2>05 · Turn Awareness Into Action</h2>
+<section class="section reveal" id="action">
+<h2>05 · Turn Awareness Into Action</h2>
 
   <p>
     Hepatitis Week can start the conversation, but meaningful progress requires action beyond an awareness campaign.
@@ -229,9 +242,9 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="closing reveal">
+<section class="section reveal" id="hepatitis-message">
   <h2>Breaking the Silence Starts With Us</h2>
 
   <p>
@@ -249,14 +262,14 @@
   <p>
     <strong>Let's break it down. Let's break the silence. Let's move toward a healthier future.</strong>
   </p>
-</div>
+</section>
 
 <div class="article-note">
   This article is intended for general health education and awareness. It does not replace individualized medical advice, diagnosis, or treatment from a qualified healthcare professional.
 </div>
-
 </article>
-  </main>
+</div>
+</main>
 
   <!-- =========================================================
        FOOTER
